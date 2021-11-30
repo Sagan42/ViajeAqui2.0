@@ -1,0 +1,104 @@
+.divGerenciarLinhas{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100vh;
+  width: auto;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.divGerenciarLinhas h2{
+  margin: 2.5% auto 3% auto;
+  color: #1b4965;
+}
+
+.container-pesquisa{
+    color: #135c8a;
+    font-weight: bold;
+    font-size: 13pt;
+    align-self: flex-end;
+  }
+  
+  .container-pesquisa input{
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    text-align: center;
+    outline-color: #135c8a;
+  }
+
+.divGerenciarLinhas .divTabela{
+  margin: 0 auto auto auto;
+  width: 95%;
+  height: 85%;
+}
+
+.divGerenciarLinhas .divTabela .container-pesquisa{
+  float: right;
+}
+
+.divGerenciarLinhas .divTabela table{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  border-collapse: collapse;
+  float: right;
+  width: 100%;
+  font-size: 11pt;
+  text-align: center;
+}
+
+
+.divGerenciarLinhas .divTabela thead{
+  background-color: #1b4965;
+  color:white;
+}
+.divGerenciarLinhas .divTabela th{
+  padding: 1.5%;
+}
+.divGerenciarLinhas .divTabela td{
+  color: black;
+  padding: 1.5%;
+}
+
+.fa-pencil-square-o{
+  color:black;
+}
+
+#linePar{
+   background-color: rgb(235, 217, 217); 
+}
+
+#lineImpar{
+  background-color: white;
+}
+
+#inicio-th{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+#final-th{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.navegacao{
+  float: right;
+  width: 17%;
+  height: 5%;
+  background-color: white;
+}
+
+
+.navegacao .divSpan{
+  float: left;
+  margin: 2.5%;
+  width: 31.5%;
+  height: 100%;
+  border: 3px solid black;
+  border-radius: 10%;
+  background-color: var(--cor-primaria);
+  color: white;
+  font-size: 15pt;
+  text-align: center;
+}

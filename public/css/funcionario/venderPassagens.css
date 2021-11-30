@@ -1,0 +1,70 @@
+h1{
+    font-size: 2.1rem;
+    color: #1b4965;
+    margin-top:60px;
+    margin-left: 150px;
+}
+
+div.content-geral{
+}
+
+.informaçoes{
+    width: 500px;
+    height:450px;
+    box-shadow: 1px 1px 10px rgba(0,0,0);
+    background-color: rgba(95, 168, 211, 0.99);
+    margin: 100px auto 0 auto;
+    border-radius: 20px;
+}
+
+.info{
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(43, 41, 41);
+}
+
+.info-last{
+    margin-bottom: 20px;
+}
+
+form.form-venderPassagens{
+    border-radius:10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0);
+    width: 400px;
+    margin: auto;
+    background-color: white;
+    text-align: center;
+}
+
+form.form-venderPassagens input{
+    margin-top:8px;
+    margin-bottom:8px;
+}
+
+form.form-venderPassagens input[type="text"]{
+    width:70%;
+    height:30px;
+    text-align: center;
+    background-color:#CAE9FF;
+    border: none;
+    border: 1px solid rgb(87, 85, 85);
+    box-shadow: 1px 1px 2px rgb(61, 61, 61);
+    border-radius:7px;
+}
+
+form.form-venderPassagens label{
+    display: block;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+form.form-venderPassagens .button{
+    width:150px;
+    height:40px;
+    background-color: #1b4965;
+    color: white;
+    font-size: 17px;
+    border: none ;
+    border-radius:5px;
+    cursor: pointer;
+}

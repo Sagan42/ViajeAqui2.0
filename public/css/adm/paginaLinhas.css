@@ -1,0 +1,74 @@
+#pagina-linhas-de-onibus{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    grid-row: 1;
+    grid-column: 2;
+    grid-gap: 30px;
+    width: 50vw;
+    height: 100vh;
+    margin: 0 auto;
+    
+    }
+    
+    
+    .container-Linhas{
+    
+    padding: 10px;
+    background-color: #1b4965;
+    width: 100%;
+    height: 35%;
+    border-radius: 35px;
+    }
+    
+    .container-Linhas p{
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff;
+    }
+    
+    .container-Linhas div{
+      
+    display: flex;
+    justify-content: center;
+    height: 40%;
+    width: 70%;
+    padding: 10px;
+    background-color: #CAE9FF;
+    margin: 20px auto;
+    border-radius: 10px;
+    
+    
+    }
+    
+    .container-Linhas div i{
+    
+    
+    margin: 10px;
+    color: #1b4965;
+    
+    
+    }
+    
+    .container-Linhas p{
+    
+    margin-top: 50px;
+    
+    }
+    
+    .tituloPagina{
+      justify-self: center;
+      grid-column: 2;
+      grid-row: 1;
+      color: #1b4965;
+      padding-top: 20px;
+      
+    }
+
+   
+    
+    
+    /*Pagina de Cadastro de Linhas*/
+    

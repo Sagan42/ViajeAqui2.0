@@ -1,0 +1,45 @@
+.container-home-funcionario {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+    width: auto;
+    grid-column: 2;
+    grid-row: 1;
+    color: #000;
+    background-color: #CAE9FF;
+}
+
+.container-home-funcionario #graficoPizza {
+    grid-column: 1;
+    grid-row: 2;
+    margin: auto auto 0 auto;
+    width: 92%;
+    height: 70%;
+}
+
+.container-home-funcionario #div-title {
+    width: 45%;
+    height: 8%;
+    background-color: #1b4965;
+    margin: 0 auto auto auto;
+    border-radius: 10px;
+}
+
+.container-home-funcionario #sub-div-title {
+    position: relative;
+    width: 96.5%;
+    height: 80%;
+    background-color: rgba(95, 168, 211, 0.99);
+    border-radius: 7px;
+    top: 10%;
+    margin: auto;
+    text-align: center;
+}
+
+.container-home-funcionario span {
+    position: relative;
+    top: 16%;
+    font: bold 18pt Arial;
+    color: #CAE9FF;
+}

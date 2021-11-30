@@ -1,0 +1,377 @@
+/* Resetando Atributos*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+}
+
+
+:root{
+  --cor-primaria:  #1b4965;
+  --cor-secundaria: rgba(95, 168, 211, 0.99);
+  --cor-terciaria: #CAE9FF;
+
+  --cor-hover-primaria: #1b4975;;
+  --cor-hover-secundaria: rgb(90, 159, 199);
+  --cor-active-primaria: rgb(37, 104, 150);
+  --cor-active-secundaria: rgb(77, 143, 182);
+}
+
+body{
+display: grid;
+grid-template-columns: 1fr 7fr;  
+background-color: #CAE9FF;
+min-height: 100vh;
+
+
+}
+
+a{
+text-decoration: none;
+color: #fff;
+}
+
+a:hover{
+font-weight: bold;
+}
+
+.semNavbar{
+  
+  grid-template-columns: 10% 80%;
+  
+  
+
+
+}
+
+
+
+
+/*MENU LATERAL*/
+
+.menu-lateral{
+display: flex;
+flex-direction: column;
+background-color: #1b4965;
+width: 250px;
+height: 100%;
+color: #fff;   
+align-items: center;  
+transition: .9s;
+
+
+
+}
+
+.navbar-lateral{
+
+flex-grow: 2;
+width: 100%;
+margin-left: 40%;
+
+
+}
+
+.navbar-lateral ul{
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+list-style: none;
+height: 300px;
+text-align: left;
+margin: 0 auto;
+
+
+
+
+}
+
+.navbar-lateral ul li{
+font-size: 20px;
+
+
+
+}
+
+
+
+/*Foto/Perfil do Usuário*/
+
+.perfil{
+text-align: center;
+margin-top: 10px;
+
+}
+
+.perfil a {
+display: block;
+margin: 10px;
+
+
+}
+.imagem-perfil{
+
+border-radius: 50%;
+width: 50%;
+margin: 10px;
+padding: 10px;
+cursor: pointer;
+
+border: 2px solid #CAE9FF;
+
+}
+
+
+.imagem-perfil img{
+
+width: 100%;
+margin: auto 0;
+max-width: 100%;
+min-width: 100%;
+
+
+
+
+}
+
+
+/*Logo da empresa*/
+
+.logo-empresa{
+font-size: 20px;
+
+flex-grow: 2;
+}
+
+
+
+/*Hamburguer/Menu retrátil*/
+
+#menu {
+z-index: 2;
+}
+
+#menu-bar {
+width: 30px;
+height: 30px;
+margin: 30px 0 20px 20px;
+cursor: pointer;
+position: absolute;
+left: 190px;
+transition: 0.9s;
+
+}
+
+.bar {
+height: 5px;
+width: 100%;
+background-color: #fff;
+display: block;
+border-radius: 5px;
+transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+  
+}
+
+#bar2 {
+  opacity: 0;
+}
+
+#bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+  
+}
+
+.mudar{
+
+opacity: 0;
+visibility: hidden;
+
+animation: teste .9s;
+
+
+}
+
+.change-bar #bar1 {
+  transform: translateY(-4px);
+  background-color: #1b4965;
+}
+
+.change-bar #bar2 {
+    opacity: 1;
+    background-color: #1b4965;
+}
+
+.change-bar #bar3 {
+  transform: translateY(4px);
+  background-color: #1b4965;
+}
+
+.change-bar{
+  transition: .9s;
+  transform: translateX(-180px);
+ 
+}
+
+.change-navbar{
+  transition: .9s;
+  transform: translateX(-250px);
+}
+
+
+/* Modal */
+
+.container-modal{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  background: rgba(0, 0, 0, .5);
+
+  display: none;
+
+}
+
+.modal{
+
+  position: relative;
+
+  height: 70%;
+  width: 30%;
+  padding: 10px;
+
+  background-color: #1b4965;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  max-height: 500px;
+
+
+}
+
+.fechar{
+
+  width: 50px;
+  height: 50px;
+
+  background-color: #CAE9FF;
+  color: #1b4965;
+
+  border-radius: 50%;
+  border: none;
+
+  position: absolute;
+  top: -30px;
+  right: -30px;
+
+  cursor: pointer;
+}
+
+
+@keyframes modal {
+
+  from{
+    opacity: 0;
+    transform: translate3d(0, -60px,0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0, 0,0);
+  }
+
+}
+
+.container-modal .modal{
+  animation: modal .3s;
+}
+
+.modal input[type=text],.modal input[type=password]{
+  
+  width: 100%;
+  padding: 5px;
+  padding-left: 15px;
+  
+  background-color: #CAE9FF;
+  color: #1b4965;
+
+  border-radius: 10px;
+  outline: none;
+  border: none;
+
+  font-size: 12pt;
+ 
+}
+
+.modal img{
+
+  height: 100px;
+  width: 100px;
+  
+  border: 2px solid #CAE9FF;
+}
+
+.modal input[type=file],.modal img{
+  align-self: center;
+  
+}
+
+.modal label{
+  font-weight: bold;
+  color: #CAE9FF;
+}
+
+
+.modal input[type=file]{
+
+  color: #fff;
+}
+
+.modal input[type=submit]{
+
+  width: 30%;
+  padding: 5px;
+
+  align-self:center;
+  transform: translateY(20px);
+
+  color: #1b4965;
+  background-color: #CAE9FF;
+
+  border: none;
+  
+
+  cursor: pointer;
+}
+
+
+/* PAGINA RELATORIOS*/
+
+
+/* Pagina Linhas de Onibus */
+
+
+
+/*tela adm - para ver funcionarios*/
+
+
+
+
+/*Tela de Listagem de Linhas */
+
+
+
+
+/*Tela de Listagem de Clientes*/
+

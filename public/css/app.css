@@ -1,0 +1,186 @@
+:root{
+    --cor-primaria:  #1b4965;
+    --cor-secundaria: rgba(95, 168, 211, 0.99);
+    --cor-terciaria: #CAE9FF;
+  
+    --cor-hover-primaria: #1b4975;;
+    --cor-hover-secundaria: rgb(62, 162, 230);
+    --cor-active-primaria: rgb(37, 104, 150);
+    --cor-active-secundaria: rgb(120, 175, 207);
+  }
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2.1rem;
+}
+
+label {
+    font-size: 0.9rem;
+}
+
+.blue-one {
+    background-color: rgba(95, 168, 211, 0.99);
+}
+
+.blue-two {
+    background-color: #CAE9FF;
+}
+
+.blue-three {
+    background-color: #1b4965;
+}
+
+
+.color-blue-one {
+    color: rgba(95, 168, 211, 0.99);
+}
+
+.color-blue-two {
+    color: #CAE9FF;
+}
+
+.color-blue-three {
+    color: #1b4965;
+}
+
+.color-white {
+    color: white;
+}
+
+
+/* Header */
+
+.header {
+    border-bottom: solid 3px #000;
+}
+
+.logo {
+    display: inline-flex;
+    height: 60px;
+    padding: 15px;
+    margin-left: 60px;
+
+
+}
+
+.logo span {
+    color: #000;
+    height: 100%;
+    font-size: 40px;
+    font-family: 'Ink Free Bold', 'Ink Free Normal', 'Ink Free', sans-serif;
+    font-weight: 700;
+
+}
+
+.links a {
+    color: #cae9ff;
+    border-radius: 30px;
+    padding: 5px;
+    border: none;
+    width: 160px;
+    margin: 0 20px;
+    line-height: normal;
+    height: 35px;
+    cursor: pointer;
+}
+
+.links a:hover {
+    color: rgb(138, 196, 238);
+}
+
+/* Header End */
+
+
+.divOrigem {
+
+    position: relative;
+
+}
+
+#botaoTrocarPesquisa {
+
+    position: absolute;
+    right: -18px;
+    top: 50%;
+
+    border: none;
+    color: #1b4965;
+    cursor: pointer;
+
+}
+
+
+/*TELA DE MUDAR LOGIN*/
+
+/*.container-mudarLogin #btnVoltar{
+    position: absolute;
+   margin-left: 42.5%;
+    width: 15%;
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    border-color:white;
+
+
+}*/
+.container-mudarLogin {
+    display: flex;
+    
+    position: absolute;
+    top: 26%;
+    left: 23%;
+    width: 55%;
+    height: 60%;
+    color:var(--cor-secundaria);
+    font-family: Arial;
+    font-weight: 700;
+    
+}
+
+.container-mudarLogin div {
+    position: relative;
+    padding: 2%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    grid-row: 2;
+    margin: auto;
+    background:var(--cor-primaria);
+    height: 45%;
+    width: 35%;
+    border-radius: 35px;
+}
+
+.container-mudarLogin #mudarLogin1 {
+
+    float: left;
+    background-color: rgb(189, 197, 216);
+}
+
+.container-mudarLogin label {
+    margin: auto;
+    font-size: 18pt;
+}
+
+.container-mudarLogin button {
+    margin: auto;
+    border-radius: 10px;
+    width: 50%;
+    background-color: var(--cor-secundaria);
+    border-color: white;
+}
+
+.container-mudarLogin button:hover{
+    background-color: var(--cor-hover-secundaria);
+}
+
+.container-mudarLogin button:active{
+    background-color: var(--cor-active-secundaria);
+}
+
+.container-mudarLogin a{
+    color: inherit; 
+}

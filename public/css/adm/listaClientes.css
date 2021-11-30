@@ -1,0 +1,63 @@
+.container-listar-clientes{
+
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: auto auto;
+    height: 80%;
+    width: 60%;
+    grid-column: 2;
+    grid-row: 1;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 10px 10px;
+    color: #000;
+  
+  }
+  
+  .container-listar-clientes table{
+    
+    width: 100%;
+    background-color: rgb(235, 217, 217); 
+    border-radius: 20px;
+    border : 0 1px 1px 1px solid rgba(95, 168, 211, 0.99);
+    border-collapse: collapse;
+    
+  }
+  
+  .container-listar-clientes table tr:nth-child(even){
+    background-color: #fff;
+  }
+  
+  .container-listar-clientes thead{
+  
+  
+    background-color:var(--cor-secundaria);
+    border: 1px solid #135c8a;
+    border-radius: 20px; 
+    border: none;
+    font-size: 18pt;
+  
+  
+  
+  }
+  .container-listar-clientes th{
+  
+    padding: 10px;
+  }
+  
+  
+  
+  .container-listar-clientes td{
+  
+  
+    border: none;
+    text-align: center;
+    padding: 0px;
+    font-size: 18pt;
+    padding: 10px;
+  
+  
+  }
+  

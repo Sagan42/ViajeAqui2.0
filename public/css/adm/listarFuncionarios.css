@@ -1,0 +1,115 @@
+.divFuncionario{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100vh;
+    width: auto;
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .divFuncionario h2{
+    margin: 2.5% auto 3% auto;
+    color: #1b4965;
+  }
+
+  .divTabela{
+    margin: 0 auto auto auto;
+    width: 75%;
+    height: 85%;
+  }
+
+  .divTabela .container-pesquisa{
+    float: right;
+  }
+  
+  .divTabela table{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-collapse: collapse;
+    float: right;
+    width: 100%;
+    
+    font-size: 15pt;
+    text-align: center;
+  }
+
+ 
+
+  .fa-eye{
+    color: black;
+  }
+  
+  .divTabela thead{
+    background-color: var(--cor-secundaria); 
+  }
+  .divTabela th{
+    padding: 8px;
+  }
+  
+  #linePar{
+    background-color: white; 
+  }
+  
+  #lineImpar{
+    background-color: rgb(235, 217, 217); 
+  }
+  
+  #lineTopLeft{
+    border-top-left-radius: 10px;
+    text-align: center;
+  }
+  #lineTopRight{
+    border-top-right-radius: 10px;
+  }
+  
+  .navegacao{
+    float: right;
+    width: 17%;
+    height: 5%;
+  }
+  .navegacao .fa-2x{
+    height: 100%;
+    width: 31.5%;
+  }
+ 
+  .navegacao .divSpan{
+    float: left;
+    margin: 2.5%;
+    width: 31.5%;
+    height: 100%;
+    border: 3px solid black;
+    border-radius: 10%;
+    background-color: var(--cor-primaria);
+    color: white;
+    font-size: 15pt;
+    text-align: center;
+  }
+
+  
+  
+  
+/*
+
+
+  .navegacao img{
+    position: relative;
+    top: 5px;
+    width: 25px; 
+    height: 25px;
+    filter:gray;
+  }
+ #arrow1{
+    transform: rotate(180deg);
+  }
+
+.arrowLeft{
+    background-color:white;
+    color: gray;
+  }
+.arrowRight{
+    background-color:white;
+    color: gray;
+  }
+  
+  */
