@@ -2,6 +2,7 @@
 @section('contentTelaAdm')
 <div class="divRelatorio">
 <h2>Relatórios</h2>
+<input type="date" name="dataAcessoClientes" id="input-acesso-clientes" value = "<?php echo date('Y-m-d'); ?>">
     <div id="boxRelatorios">
         <a href="#">
             <div class="subBoxRelatorio relLeft">
@@ -32,10 +33,8 @@
 
         <a href="#">
             <div class="subBoxRelatorio relRight">
-                
                 <div id="divRelInternal">
                     <p>200</p>
-                    <input type="date" name="dataAcessoClientes" id="input-acesso-clientes">
                 </div>
                 <label id="titleRel">Acesso de clientes por dia</label>
             </div>

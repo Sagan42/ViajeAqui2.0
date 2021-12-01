@@ -9,19 +9,19 @@
 /*
     text-align: center; */
   }
-  
+
   .divRelatorio h2{
     margin: 2.5% auto 3% auto;
     color: #1b4965;
 /*
-    position: relative; 
-    color: #1b4965; 
+    position: relative;
+    color: #1b4965;
     top: 6%;*/
   }
   #boxRelatorios{
     /*background-color:gray; */
     margin:auto;
-    width: 70%; 
+    width: 70%;
     height: 70%;
 
   }
@@ -70,97 +70,93 @@
     display: block;
     text-align: center;
     margin: 0 15% 0 15%;
-    position:relative; 
-    line-height: 100%; 
-    top:3%; 
-    color: white; 
+    position:relative;
+    line-height: 100%;
+    top:3%;
+    color: white;
     width: 70%;
     height: 30%;
-    font-weight:bold; 
+    font-weight:bold;
     cursor: pointer;
   }
 
 
-  @media (min-width: 320px) and (max-width: 599px) {  
-    
+  @media (min-width: 320px) and (max-width: 599px) {
+
     .divRelatorio h2{
       font-size: 90%;
-    }   
+    }
     #titleRel{
      font-size: 60%;
-    }    
+    }
   }
-  @media (min-width: 600px) and (max-width: 723px) { 
-     
+  @media (min-width: 600px) and (max-width: 723px) {
+
     .divRelatorio h2{
       font-size: 100%;
-    } 
+    }
     #titleRel{
      font-size: 70%;
-    }    
+    }
   }
-  @media (min-width: 716px) and (max-width: 850px) { 
+  @media (min-width: 716px) and (max-width: 850px) {
     .divRelatorio h2{
       font-size: 120%;
     }
-      
+
     #titleRel{
      font-size: 80%;
-    }    
+    }
   }
-  @media (min-width: 851px) and (max-width: 1042px) {    
+  @media (min-width: 851px) and (max-width: 1042px) {
     .divRelatorio h2{
       font-size: 150%;
     }
     #titleRel{
     line-height: 105%;
      font-size: 100%;
-    }    
+    }
   }
-  @media (min-width: 1043px) and (max-width: 1364px) { 
+  @media (min-width: 1043px) and (max-width: 1364px) {
     .divRelatorio h2{
       font-size: 180%;
     }
     #titleRel{
     line-height: 100%;
      font-size: 120%;
-    }    
+    }
   }
-  @media (min-width: 1365px) and (max-width: 1536px) {   
+  @media (min-width: 1365px) and (max-width: 1536px) {
     .divRelatorio h2{
       font-size: 200%;
-    }  
+    }
     #titleRel{
     line-height: 110%;
      font-size: 120%;
-    }    
+    }
   }
-  @media (min-width: 1537px) and (max-width: 2048px) {    
+  @media (min-width: 1537px) and (max-width: 2048px) {
     .divRelatorio h2{
       font-size: 220%;
-    }  
+    }
     #titleRel{
     line-height: 130%;
      font-size: 180%;
-    }    
+    }
   }
 
 
   #input-acesso-clientes{
 
     /* transform: translateX(10px); */
-    background-color: #CAE9FF;
-    color: #1b4965;
-
+    background-color: #1b4965;
+    color: #CAE9FF;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: -20px;
+    padding: 6px;
+    font-size: 14pt;
     border: none;
     outline: none;
-
-    position: absolute;
-    top: -30px;
-    left: 0;
-
-    padding: 2px;
-    font-size: 12pt;
-
-
+    border-radius:5px;
   }
