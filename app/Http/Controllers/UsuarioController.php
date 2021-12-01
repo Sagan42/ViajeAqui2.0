@@ -156,7 +156,7 @@ class UsuarioController extends Controller
 
         else if($request->editSenhaAtual == $usuario->senha){
             if($request->editSenhaNova != null){
-                $senhaComHash = $request->editSenhaNova;
+                $senhaComHash = bcrypt($request->editSenhaNova);
                 $usuario->senha = $senhaComHash;
             }
             if($request->editEmailNovo != null){
