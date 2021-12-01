@@ -33,7 +33,7 @@
     <table class="table">
         <thead >
             <tr class="blue-one">
-                <th class="th-first">Data</th>
+                <th class="th-first">Dia da Semana</th>
                 <th>Saida</th>
                 <th>Embarque/Desembarque</th>
                 <th>Tipo de Linha</th>
@@ -44,22 +44,25 @@
         <tbody>
             <tr class="neutro"><td class="td-border_none"></td></tr>
             @foreach($linha as $l)
-                @if($l->origem == $linhaPesquisada->origem &&
-                    $l->destino == $linhaPesquisada->destino &&
-                    $l->dataSaida == $linhaPesquisada->dataSaida)
-                    <tr>
-                        <td class="border td-first"><p>{{$l->dataSaida}}</p></td>
-                        <td class="border"><p>{{$l->horario}}</p></td>
-                        <td class="td-rota border">
-                            {{$l->origem}}
-                            <br>
-                            {{$l->destino}}
-                        </td>
-                        <td  class="border"><p>{{$l->tipoLinha}}</p></td>
-                        <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
-                        <td  class="border td-last"><p>R${{$l->preco}},00</p></td>
-                    </tr>
-                @endif
+                @foreach($agenda as $a)
+                    @if($a->id_linha == $l->id && $dia == $a->dia_semana)
+                        <form method ="POST" action="{{route('site.client.formaPagamento')}}">
+                        @csrf    
+                            <tr>
+                                <td class="border td-first"><p>{{$a->dia_semana}}</p></td>
+                                <td class="border"><p>{{$a->hora}}</p></td>
+                                <td class="td-rota border">
+                                    {{$l->origem}}
+                                    <br>
+                                    {{$l->destino}}
+                                </td>
+                                <td  class="border"><p>{{$l->tipoLinha}}</p></td>
+                                <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
+                                <td  class="border td-last"><p>R${{$l->preco}},00</p></td>
+                            </tr>
+                        </form>
+                    @endif
+                @endforeach
             @endforeach
         </tbody>
     </table>

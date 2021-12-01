@@ -1,116 +1,78 @@
-.container-editar-usuario{
-
+.container-editar-usuario {
     grid-column: 2;
     grid-row: 1;
     height: 500px;
-    
     background-color: #1b4965;
     margin: auto;
-    padding: 10px;
+    padding: 40px;
     text-align: center;
     border-radius: 60px;
-
 }
-.container-editar-usuario h2{
+
+.container-editar-usuario h2 {
     font-size: 15pt;
     color: #fff;
     /* margin-bottom: 30px; */
 }
 
-.form-editar-usuario{
-   
+.form-editar-usuario {
     position: relative;
-   display: flex;
-   flex-direction: column;
-
-   height:100%;
-   width: 100%;
-  
-   font-weight: bold;
-   font-size: 14pt;
-   text-align: left;
-   transform: translateY(30px);
-   
-   color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14pt;
+    text-align: left;
+    transform: translateY(30px);
+    color: #fff;
     gap: 10px;
-
-    
-
 }
 
-
-
-
-.input-editar-usuario{
-
+.input-editar-usuario {
     height: 30px;
     width: 100%;
     padding: .375rem 0.75rem;
     margin-top: 2px;
     font-size: 15pt;
-
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 0.25rem;
-    
     background-color: #fff;
-    
-
 }
 
-.input-editar-usuario:focus{
+.input-editar-usuario:focus {
     color: #1b4965;
-    background-color: #fff; 
+    background-color: #fff;
     outline-color: #1b4965;
-      
 }
 
-
-.input-editar-usuario[type=number]{
-
+.input-editar-usuario[type=number] {
     width: 80px;
     font-size: 12pt;
-    
 }
 
-
-@media(max-width : 1075px){
-
-    .container-editar-usuario{
+@media(max-width: 1075px) {
+    .container-editar-usuario {
         height: 59%;
-     
     }
-    
-   
 }
 
-@media(min-width : 1375px){
-
-    .container-editar-usuario{
+@media(min-width: 1375px) {
+    .container-editar-usuario {
         width: 40%;
-        height: 60%;
-
-     
     }
-    .form-editar-usuario{
+    .form-editar-usuario {
         height: 100%;
     }
-   
 }
 
-#select-tipo-usuario{
+#select-tipo-usuario {
     font-size: 14pt;
 }
 
-.div-permissao{
-
+.div-permissao {
     transform: translateY(10px);
-
 }
-
-
-
-
-
 
 
 /* .form-editar-usuario div{
@@ -144,30 +106,23 @@
     color: black;
 } */
 
-.container-botao-editar-usuario{
-
+.container-botao-editar-usuario {
     position: absolute;
     bottom: 0;
     right: 0;
     transform: translateY(10px);
-    
-
 }
 
-.container-botao-editar-usuario button{
-
-    
+.container-botao-editar-usuario button {
     padding: 10px;
     border: inherit;
     border-radius: 5px;
-    color: var(--cor-terciaria);
-    background-color: #1b4965;
+    color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
     font-weight: bolder;
     z-index: 1;
-    
-   
 }
 
-.container-botao-editar-usuario button:hover{
+.container-botao-editar-usuario button:hover {
     cursor: pointer;
 }

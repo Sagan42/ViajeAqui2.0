@@ -37,21 +37,19 @@
                     <option value="1">Funcionario</option>
                     <option value="2">Adminstrador</option>
                 </select>
-              
+
+                <div class="container-botao-editar-usuario"> 
+                  <button type="reset">
+                      Limpar
+                  </button>
+                  <button type="submit">
+                      Confirmar
+                  </button>
+                </div>
               </div>
 
 
-            <div class="container-botao-editar-usuario"> 
-            <button type="reset">
-                Limpar
-            </button>
-
-            <button type="submit">
-                Confirmar
-            </button>
-
-
-        </div>
+            
    
         </form>
         

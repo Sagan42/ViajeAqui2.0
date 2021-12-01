@@ -46,7 +46,7 @@ class AgendaController extends Controller
         //$test = Carbon::createFromFormat('Y-m-d', $dataSaida)->toDateString();
         
         $diaSemanaPesquisado = Carbon::create($dataPesquisado)->locale('pt-BR')->dayName;
-       
+        
         for($i = 0; $i < 4; $i++) {     
             $dataPesquisado->add(7,'day');       
             foreach($agenda as $a){
