@@ -8,6 +8,7 @@ drop table if exists passagem;
 drop table if exists acesso;
 drop table if exists cliente;
 drop table if exists funcionario;
+drop table if exists agenda;
 drop table if exists linha;
 drop table if exists adm;
 drop table if exists usuario;
@@ -60,18 +61,26 @@ create table acesso (
 create table linha (
 	id int not null auto_increment,
     primary key (id),
-    dataSaida date not null,
-	horario varchar(5) not null,
     preco float not null,
     tipoLinha varchar(6) not null,
     quantidadePassagem int not null default 29,
     origem varchar(30) not null,
     destino varchar(30) not null,
+    num_linha int null,
     id_adm int not null,
     key fk_linha_id_adm(id_adm),
     constraint fk_linha_id_adm foreign key (id_adm) references adm (id)
 );
 
+create table agenda (
+	id int not null auto_increment,
+    primary key (id),
+    dia_semana varchar (20),
+    hora varchar (10),
+    id_linha int not null,
+    key fk_id_linha(id_linha),
+    constraint fk_id_linha foreign key (id_linha) references linha (id)
+);
 
 create table passagem (
 	id int not null auto_increment,
@@ -125,19 +134,19 @@ values
 insert into adm
 (id_usuario,admMaster)
 values
-('1','1'),
-('2','0');
+('4','1'),
+('5','0');
 
 insert into cliente
 (id_usuario)
 values
-('3'),
-('4');
+('1'),
+('2');
 
 insert into funcionario
 (id_usuario)
 values
-('5');
+('3');
 
 insert into acesso
 (dataAcesso,id_cliente)
@@ -146,11 +155,26 @@ values
 ('2021-10-15 14:50:00', '2');
 
 insert into linha
-(origem,destino,dataSaida,horario,preco,tipoLinha,quantidadePassagem,id_adm)
+(origem,destino,preco,tipoLinha,num_linha,quantidadePassagem,id_adm)
 values
-('Feira de Santana','Salvador','2021-10-15','13:50','40.0','Direta','29','1'),
-('Feira de Santana','Ilheus','2021-10-15','14:50','44.0','Direta','28','1'),
-('Salvador','Feira de Santana','2021-10-16','15:50','36.0','Comum','25','2');
+('Feira de Santana','Salvador','40.0','Direta',null,'29','1'),
+('Feira de Santana','Ilheus','44.0','Direta',null,'28','1'),
+('Salvador','Feira de Santana','36.0','Comum','1','25','2'),
+('Feira de Santana','Riachão do Jacuipe','36.0','Comum','2','25','2'),
+('Riachão do Jacuipe','Capim Grosso','40.0','Comum','2','25','2'),
+('Capim Grosso','Jacobina','35.0','Comum','2','25','2'),
+('Feira de Santana','Salvador','50.0','Direta',null,'24','1'),
+('Salvador','Camaçari','65.0','Direta',null,'30','1');
+
+insert into agenda
+(dia_semana, hora, id_linha)
+values
+('Segunda-Feira', '15:00', '1'),
+('Quarta-Feira', '10:00', '2'),
+('Quinta-Feira', '07:00', '3'),
+('Sábado', '13:00', '1'),
+('Domingo', '19:00', '8'),
+('Quinta-Feira', '05:00', '4');
 
 insert into passagem
 (id_cliente,id_linha,ativo,diaVenda)
