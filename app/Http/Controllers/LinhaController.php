@@ -45,6 +45,7 @@ class LinhaController extends Controller
         $linha->quantidadePassagem = $request->vagas;
         $linha->tipoLinha = $request->linha;
         $adm = Adm::where('id_usuario', '=', Session::get('usuario.id'))->first();
+        
         $linha->id_adm = $adm->id;
         $linha->save();
 

@@ -169,12 +169,12 @@ values
 insert into agenda
 (dia_semana, hora, id_linha)
 values
-('Segunda-Feira', '15:00', '1'),
-('Quarta-Feira', '10:00', '2'),
-('Quinta-Feira', '07:00', '3'),
-('Sábado', '13:00', '1'),
-('Domingo', '19:00', '8'),
-('Quinta-Feira', '05:00', '4');
+('segunda-feira', '15:00', '1'),
+('quarta-feira', '10:00', '1'),
+('quinta-feira', '07:00', '3'),
+('sábado', '13:00', '1'),
+('domingo', '19:00', '8'),
+('quinta-feira', '05:00', '4');
 
 insert into passagem
 (id_cliente,id_linha,ativo,diaVenda)

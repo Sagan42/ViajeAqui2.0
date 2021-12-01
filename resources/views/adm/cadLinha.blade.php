@@ -4,41 +4,26 @@
 <h2 class = "tituloPagina">Cadastro de Linhas</h2>
     <form action="" method="post" class="container-cadastro-linhas" onchange = "minhaFuncao()">
         @csrf
-        <div class="input-radio-linhas">
-
-            <div>
-                <label for="radioDireta">Linha Direta &nbsp &nbsp</label>
-                <input type="radio" name="linha" id="radioDireta" placeholder="Origem">
-            </div>
-
-            <div>
-                <label for="radioComum">Linha Comum&nbsp</label>
-                <input type="radio" name="linha" id="radioComum"  placeholder="Destino">
-            </div>
-        </div>
-
         <div class="input-cidade-origem-destino">
 
             <label for="origem">Origem</label>
             <input type="text" name="origem" id="origem">
 
-            <div id = "destinosIntermediarios" class="destinosIntermediarios">
-                
-                <label for="destino1">Destino 1</label>
-                <input type="text" name="" id="destino1">
-
-                <label for="destino2">Destino 2</label>
-                <input type="text" name="" id="destino2">
-
-
-            </div>
-
             <label for="destino">Destino</label>
             <input type="text" name="destino" id="destino">
 
-            
-            
+        </div>
+        
+        <div class="container-numero-linha">
+            <div>
+                <label for="radioDireta">Linha Direta &nbsp &nbsp</label>
+                <input type="radio" value="Direta" name="linha" id="radioDireta" placeholder="Origem">
+            </div>
 
+            <div>
+                <label for="radioComum">Linha Comum&nbsp</label>
+                <input type="radio" value="Comum" name="linha" id="radioComum"  placeholder="Destino">
+            </div>
         </div>
 
         <div class="container-numero-linha">
