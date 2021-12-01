@@ -8,6 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PassagemController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\RelatorioAdmController;
 use App\Models\Passagem;
 use App\Models\Linha;
 use App\Models\Usuario;
@@ -39,7 +40,7 @@ Route::prefix('/')->middleware('checkLogout')->group(function(){
     Route::post('/login', [UsuarioController::class, 'login']);
     Route::get('/logout', [UsuarioController::class, 'logout'])->name('site.logout');
 
-    
+
 
     Route::get('/recuperar', function () {
         return view('telasCadastrais.recuperarsenha');
@@ -125,7 +126,12 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     })->name('site.adm.editarUsuario');
 
     Route::post('/editarUsuario/{id}', [AdmController::class, 'update'])->name('site.adm.editarUsuario');
+
+    // ADM RELATORIOS ROTAS
+    Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidiasFuncionario');
 });
+
+
 
 //  FUNCIONARIOS ROTAS
 Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
