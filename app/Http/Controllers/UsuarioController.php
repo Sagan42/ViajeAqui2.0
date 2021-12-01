@@ -8,7 +8,7 @@ use App\Models\Cliente;
 use App\Models\Acesso;
 use Illuminate\Http\Request;
 use Session;
-
+use Illuminate\Support\Facades\Hash;
 class UsuarioController extends Controller
 {
     /**
@@ -41,7 +41,7 @@ class UsuarioController extends Controller
     {
             $usuario = new Usuario;
             $usuario->nome = $request->cadNome;
-            $usuario->senha = $request->cadSenha;
+            $usuario->senha = Hash::make($request->cadSenha);
             $usuario->email = $request->cadEmail;
             $usuario->cpf = $request->cadCPF;
             $usuario->celular = $request->cadCelular;
@@ -154,9 +154,9 @@ class UsuarioController extends Controller
             return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo NOVO EMAIL"]);
         }
 
-        else if($request->editSenhaAtual == $usuario->senha){
+        else if(Hash::check($request->editSenhaAtual, $usuario->senha)){
             if($request->editSenhaNova != null){
-                $senhaComHash = bcrypt($request->editSenhaNova);
+                $senhaComHash = Hash::make($request->editSenhaNova);
                 $usuario->senha = $senhaComHash;
             }
             if($request->editEmailNovo != null){
