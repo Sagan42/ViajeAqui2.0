@@ -3,8 +3,8 @@
 @section('contentTelasCliente')
 
 <h1 class="color-blue-three titulo">Minha Conta</h1>
-@if(!empty($error))
-    <h4 id="error" style="text-align:center; color:red">Preencha os dados corretamente</h4>
+@if(!empty($msg))
+    <h4 id="msg" style="text-align:center; color:red">{{$msg}}</h4>
 @endif
 <div class="container-cadastro blue-three color-white cadastro cad-minha-conta">
     <form action="" method="post">
@@ -69,7 +69,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     setTimeout(function() {
-    $('#error').fadeOut('fast');
-}, 2000);
+    $('#msg').fadeOut('fast');
+}, 3000);
 </script>
 @endsection

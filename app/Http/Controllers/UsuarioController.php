@@ -58,7 +58,7 @@ class UsuarioController extends Controller
 
             $usuario->save();
             return $usuario;
- 
+
         //cadastrar na tabela de clientes, verificar quem esta criando usuario
         //session()->put('id_user', $usuario->id);
         //echo session(key: 'id_user');
@@ -121,45 +121,43 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         $usuario = Usuario::find(Session::get('usuario.id'));
+        //Metodo para fazer com que fique escondida algumas informações do email
+        $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
 
         if($request->editSenhaNova != null && $request->editSenhaNovaConfirm != null && $request->editSenhaNova != $request->editSenhaNovaConfirm){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
+            //Esconder informações do email para mandar para a tela
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "As senhas estão diferentes"]);
         }
         else if($request->editSenhaNova != null && $request->editSenhaNovaConfirm == null){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo CONFIRMAR SENHA"]);
         }
 
         else if($request->editSenhaNova == null && $request->editSenhaNovaConfirm != null){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo NOVA SENHA"]);
         }
 
         else if($request->editEmailNovo != null && $request->editEmailNovoConfirm != null && $request->editEmailNovo != $request->editEmailNovoConfirm){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Os Emails estão diferentes"]);
         }
 
         else if($request->editEmailNovo != null && $request->editEmailNovoConfirm == null){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo CONFIRMAR EMAIL"]);
         }
 
         else if($request->editEmailNovo == null && $request->editEmailNovoConfirm != null){
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'error' => true]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo NOVO EMAIL"]);
         }
 
         else if($request->editSenhaAtual == $usuario->senha){
             if($request->editSenhaNova != null){
-                $usuario->senha = $request->editSenhaNova;
+                $senhaComHash = $request->editSenhaNova;
+                $usuario->senha = $senhaComHash;
             }
             if($request->editEmailNovo != null){
                 $usuario->email = $request->editEmailNovo;
@@ -169,9 +167,8 @@ class UsuarioController extends Controller
             $usuario->celular = $request->editCelular;
             $usuario->save();
 
-            $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
             $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario]);
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Dados atualizados com sucesso"]);
         }
     }
 

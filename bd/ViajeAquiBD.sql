@@ -18,7 +18,7 @@ create table usuario (
     primary key (id),
 	email varchar(30) not null,
 	nome varchar(40) not null,
-	senha varchar(16) not null,
+	senha varchar(60) not null,
 	celular varchar(12) not null,
 	cpf varchar(11) not null,
     tipoUsuario int not null
@@ -37,7 +37,7 @@ create table adm (
     primary key (id),
     id_usuario int not null,
     key fk_adm_id_usuario(id_usuario),
-    constraint fk_adm_id_usuario foreign key (id_usuario) references usuario (id),    
+    constraint fk_adm_id_usuario foreign key (id_usuario) references usuario (id),
     admMaster boolean not null
 );
 
@@ -101,7 +101,7 @@ create table passagem (
 create table relatorio (
 	id int not null auto_increment,
     primary key (id),
-	descricao varchar(60) not null	
+	descricao varchar(60) not null
 );
 
 create table relatorioFuncionario (
@@ -110,7 +110,7 @@ create table relatorioFuncionario (
     constraint fk_relatorioFuncionario_id_relatorio foreign key (id_relatorio) references relatorio (id),
     id_funcionario int not null,
     key fk_relatorioFuncionario_id_funcionario(id_funcionario),
-    constraint fk_relatorioFuncionario_id_funcionario foreign key (id_funcionario) references funcionario (id)	
+    constraint fk_relatorioFuncionario_id_funcionario foreign key (id_funcionario) references funcionario (id)
 );
 
 create table relatorioAdm (
@@ -119,7 +119,7 @@ create table relatorioAdm (
     constraint fk_relatorioAdm_id_relatorio foreign key (id_relatorio) references relatorio (id),
     id_adm int not null,
     key fk_relatorioAdm_id_adm(id_adm),
-    constraint fk_relatorioAdm_id_adm foreign key (id_adm) references adm (id)	
+    constraint fk_relatorioAdm_id_adm foreign key (id_adm) references adm (id)
 );
 
 insert into usuario
