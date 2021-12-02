@@ -33,14 +33,6 @@ Route::prefix('/')->middleware('checkLogout')->group(function(){
     //Route::post('/verpassagens', [LinhaController::class, 'linhaPesquisada'])->name('site.verPassagens');
     Route::get('/verpassagens', [LinhaController::class, 'linhaPesquisada'])->name('site.verPassagens');
 
-    Route::get('/login', function () {
-        return view('telasCadastrais.login');
-    })->name('site.login');
-
-    Route::post('/login', [UsuarioController::class, 'login']);
-    Route::get('/logout', [UsuarioController::class, 'logout'])->name('site.logout');
-
-
 
     Route::get('/recuperar', function () {
         return view('telasCadastrais.recuperarsenha');
@@ -49,6 +41,15 @@ Route::prefix('/')->middleware('checkLogout')->group(function(){
 
 Route::get('/cadastro', [ClienteController::class, 'create'])->name('site.cadastro');
 Route::post('/cadastro', [ClienteController::class, 'store'])->name('site.cadastro');
+
+Route::get('/login', function () {
+    return view('telasCadastrais.login');
+})->name('site.login');
+
+Route::post('/login', [UsuarioController::class, 'login']);
+Route::get('/logout', [UsuarioController::class, 'logout'])->name('site.logout');
+
+
 
 /** Rotas Cliente Cliente */
 Route::prefix('/cliente')->middleware('checkCliente')->group(function(){

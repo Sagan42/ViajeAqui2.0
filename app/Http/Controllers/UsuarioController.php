@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\LoginUserRequest;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Acesso;
@@ -183,28 +184,46 @@ class UsuarioController extends Controller
         //
     }
 
-    public function login(Request $request){
-        $usuario = Usuario::where([['cpf','=', $request->loginCPF], ['senha', '=', $request->loginSenha]])->first();
+    public function login(LoginUserRequest $request){
 
-        if(!$usuario == null){
-            Session::put('usuario', $usuario);
+        $usuario = Usuario::where('cpf', $request->loginCPF)->get()->first();
+
+        if(Hash::check($request->loginSenha, $usuario->senha) == true) {
+
             if($usuario->tipoUsuario == "0"){
+                Session::put('usuario', $usuario);
+                $cliente = Cliente::where([['id_usuario','=', $usuario->id]])->first();
 
-                // $cliente = Cliente::where([['id_usuario','=', $usuario->id]])->first();
-
-                //$acesso = new Acesso;
-                //$acesso->id_cliente = $cliente->id;
-                //$acesso->dataAcesso = now();
-                ///$acesso->save();
+                $acesso = new Acesso;
+                $acesso->id_cliente = $cliente->id;
+                $acesso->dataAcesso = now();
+                $acesso->save();
 
                 return redirect()->route('site.client.home');
-            }else if($usuario->tipoUsuario == "1"){
-                return redirect()->route('site.funcionario.home');
-            }else if($usuario->tipoUsuario == "2"){
-                return redirect()->route('site.adm.home');
+
             }
+            
+            else if($usuario->tipoUsuario == "1"){
+
+                return redirect()->route('site.funcionario.home');
+
+            }
+
+
+            else if($usuario->tipoUsuario == "2"){
+
+                return redirect()->route('site.adm.home');
+
+            }
+
         }
-        return redirect()->route('site.login');
+
+        else{
+        
+            return redirect()->route('site.login');
+        }
+        
+                
     }
 
     public function logout(){
