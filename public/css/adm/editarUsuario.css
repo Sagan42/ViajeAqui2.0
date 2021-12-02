@@ -10,7 +10,7 @@
 }
 
 .container-editar-usuario h2 {
-    font-size: 15pt;
+    font-size: 20pt;
     color: #fff;
     /* margin-bottom: 30px; */
 }
@@ -51,19 +51,38 @@
     font-size: 12pt;
 }
 
-@media(max-width: 1075px) {
+@media(max-width: 1366px) {
     .container-editar-usuario {
-        height: 59%;
+        width: 50%;
     }
+    
+
 }
 
-@media(min-width: 1375px) {
+@media(min-width: 1366px),(max-width:1530px) {
     .container-editar-usuario {
-        width: 40%;
+        width: 50%;
     }
     .form-editar-usuario {
         height: 100%;
     }
+}
+
+@media(min-width: 1531px){
+
+    .container-editar-usuario{
+        width: 640px;
+    }
+
+
+}
+@media(max-width: 1366px),(min-width: 817px){
+
+    .container-editar-usuario{
+        width: 560px;
+    }
+
+
 }
 
 #select-tipo-usuario {
@@ -110,7 +129,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
 }
 
 .container-botao-editar-usuario button {
