@@ -125,11 +125,11 @@ create table relatorioAdm (
 insert into usuario
 (nome,celular,senha,email,cpf,tipoUsuario)
 values
-('Joao Samuel','991951780','123','joaosvbg@gmail.com','1','0'),
-('Maria','99344780','123','maria@gmail.com','2','0'),
-('Jose','99346660','123','jose@gmail.com','3','1'),
-('Marcos','99756660','123','marcos@gmail.com','4','2'),
-('Isabela','93426660','123','isa@gmail.com','5','2');
+('Joao Samuel','991951780','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','joaosvbg@gmail.com','40274881560','0'),
+('Maria','99344780','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','maria@gmail.com','40648611590','0'),
+('Jose','99346660','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','jose@gmail.com','36558438526','1'),
+('Marcos','99756660','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','marcos@gmail.com','80759477540','2'),
+('Isabela','93426660','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','isa@gmail.com','69938577580','2');
 
 insert into adm
 (id_usuario,admMaster)
