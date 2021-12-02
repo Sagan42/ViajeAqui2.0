@@ -50,8 +50,8 @@
                         <form method ="POST" action="{{route('site.client.formaPagamento')}}">
                         @csrf    
                             <tr>
-                                <td class="border td-first"><p>{{$dataSaida}}</p></td>
-                                <td class="border"><p>{{$a->hora}}</p></td>
+                                <td class="border td-first"><p>{{$dataSaida}}</p><input type="hidden" name="dataPesq" value={{$dataSaida}}></td>
+                                <td class="border"><p>{{$a->hora}}</p><input type="hidden" name="horaPesq" value={{$a->hora}}></td>
                                 <td class="td-rota border">
                                     {{$l->origem}}
                                     <br>

@@ -59,8 +59,8 @@
             <tbody>
             <tr class="neutro"><td class="td-border_none"></td></tr>
             <tr>
-                <td class="border td-first"><p>{{$linhaComprada->dataSaida}}</p></td>
-                <td class="border"><p>{{$linhaComprada->horario}}</p></td>
+                <td class="border td-first"><p>{{$dataSaida}}</p></td>
+                <td class="border"><p>{{$horaSaida}}</p></td>
                 <td class="td-rota border">
                     {{$linhaComprada->origem}}
                     <br>

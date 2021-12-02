@@ -221,9 +221,12 @@ class LinhaController extends Controller
     public function pagamento(Request $request)
     {
         $id = $request->selecionado;
-        $linhaComprada = Linha::findOrFail($id);;
+        $dataSaida = $request->dataPesq;
+        $horaSaida = $request->horaPesq;
+        $linhaComprada = Linha::findOrFail($id);
         
-        //dd($linhaComprada);
-        return view('clients.formaPagamento',['linhaComprada'=>$linhaComprada]);
+        
+        //dd($request->horaPesq);
+        return view('clients.formaPagamento',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida]);
     }
 }
