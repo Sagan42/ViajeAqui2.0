@@ -10,7 +10,7 @@
         @csrf
         <div class="mb-3">
             <label class="form-label">CPF</label>
-            <input type="text" maxlength="11" name="loginCPF" class="form-control @error('loginCPF')is-invalid @endif" value="{{old('loginCPF')}} ">
+            <input type="text" maxlength="11" name="loginCPF" class="form-control @error('loginCPF')is-invalid @endif" value="{{old('loginCPF')}}">
 
             @error('loginCPF')
                 <div class="invalid-feedback">
@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label" >Senha</label>
-            <input type="password" maxlength="30" name="loginSenha" class="form-control @error('loginSenha')is-invalid @endif" value="{{old('loginSenha')}}  ">
+            <input type="password" maxlength="30" name="loginSenha" class="form-control @error('loginSenha')is-invalid @endif" value="{{old('loginSenha')}}">
 
             @error('loginSenha')
                 <div class="invalid-feedback">
