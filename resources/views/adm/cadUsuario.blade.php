@@ -1,34 +1,34 @@
 @extends('components.layoutTelaAdm')
-    <h2 class = "tituloPagina">Cadastrar Usuario</h2>
+    <h1 class = "tituloPagina">Cadastrar Usuario</h1>
     
-    <div class = "container-editar-usuario">
+    <div class = "container-cadastrar-usuario">
         <h2>Dados Cadastrais</h2>  
-        <form action="" method="post" class="form-editar-usuario">
+        <form action="" method="post" class="form-cadastrar-usuario">
           @csrf
         
               <div>
                 <label for="" >Nome   </label>
-                <input type="text" name="cadNome"  class = "input-editar-usuario"> 
+                <input type="text" name="cadNome"  class = "input-cadastrar-usuario"> 
               </div>
               
               <div>
                 <label for="">Senha</label>
-                <input type="password" name="cadSenha" class = "input-editar-usuario"> 
+                <input type="password" name="cadSenha" class = "input-cadastrar-usuario"> 
               </div>
 
              <div>
                 <label for="">CPF</label>
-                <input type="text" name="cadCPF" class = "input-editar-usuario"> 
+                <input type="text" name="cadCPF" class = "input-cadastrar-usuario"> 
              </div>
 
               <div>
                 <label for="">Celular</label>
-                <input type="text" name="cadCelular" class = "input-editar-usuario"> 
+                <input type="text" name="cadCelular" class = "input-cadastrar-usuario"> 
               </div>
               
               <div>
                 <label for="">Email</label>
-                <input type="text" name="cadEmail" class = "input-editar-usuario"> 
+                <input type="text" name="cadEmail" class = "input-cadastrar-usuario"> 
               </div>
               
               <div class="div-permissao">
@@ -38,10 +38,11 @@
                     <option value="2">Adminstrador</option>
                 </select>
 
-                <div class="container-botao-editar-usuario"> 
+                <div class="container-botao-cadastrar-usuario"> 
                   <button type="reset">
                       Limpar
                   </button>
+                  
                   <button type="submit">
                       Confirmar
                   </button>

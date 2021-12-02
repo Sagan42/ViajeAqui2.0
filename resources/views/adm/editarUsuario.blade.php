@@ -46,23 +46,23 @@
                     <option value="2" selected>Adminstrador</option>
                  @endif   
                 </select>
+
+              <div class="container-botao-editar-usuario"> 
+                  <button>
+                      Cancelar
+                  </button>
+    
+                  <button type="submit">
+                      Confirmar
+                  </button>
+              </div>
                 
               </div>
               
               @endif
               @endforeach
 
-            <div class="container-botao-editar-usuario"> 
-            <button>
-                Cancelar
-            </button>
 
-            <button type="submit">
-                Confirmar
-            </button>
-
-
-        </div>
    
         </form>
         
