@@ -187,11 +187,10 @@ class UsuarioController extends Controller
     public function login(LoginUserRequest $request){
 
         $usuario = Usuario::where('cpf', $request->loginCPF)->get()->first();
-
+        
         if(Hash::check($request->loginSenha, $usuario->senha) == true) {
-
+            Session::put('usuario', $usuario);
             if($usuario->tipoUsuario == "0"){
-                Session::put('usuario', $usuario);
                 $cliente = Cliente::where([['id_usuario','=', $usuario->id]])->first();
 
                 $acesso = new Acesso;
@@ -200,30 +199,17 @@ class UsuarioController extends Controller
                 $acesso->save();
 
                 return redirect()->route('site.client.home');
-
             }
-            
             else if($usuario->tipoUsuario == "1"){
-
                 return redirect()->route('site.funcionario.home');
-
             }
-
-
             else if($usuario->tipoUsuario == "2"){
-
                 return redirect()->route('site.adm.home');
-
             }
-
         }
-
         else{
-        
             return redirect()->route('site.login');
-        }
-        
-                
+        }                
     }
 
     public function logout(){
