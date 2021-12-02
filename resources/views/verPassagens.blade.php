@@ -33,7 +33,7 @@
     <table class="table">
         <thead >
             <tr class="blue-one">
-                <th class="th-first">Dia da Semana</th>
+                <th class="th-first">Data</th>
                 <th>Saida</th>
                 <th>Embarque/Desembarque</th>
                 <th>Tipo de Linha</th>
@@ -49,7 +49,7 @@
                         <form method ="POST" action="{{route('site.client.formaPagamento')}}">
                         @csrf    
                             <tr>
-                                <td class="border td-first"><p>{{$a->dia_semana}}</p></td>
+                                <td class="border td-first"><p>{{$dataSaida}}</p></td>
                                 <td class="border"><p>{{$a->hora}}</p></td>
                                 <td class="td-rota border">
                                     {{$l->origem}}
