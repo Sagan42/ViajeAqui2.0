@@ -1,0 +1,148 @@
+.container-cadastrar-usuario {
+    grid-column: 2;
+    grid-row: 1;
+    height: 500px;
+    background-color: #1b4965;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 60px;
+}
+
+.container-cadastrar-usuario h2 {
+    font-size: 20pt;
+    color: #fff;
+    /* margin-bottom: 30px; */
+}
+
+.form-cadastrar-usuario {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14pt;
+    text-align: left;
+    transform: translateY(30px);
+    color: #fff;
+    gap: 10px;
+}
+
+.input-cadastrar-usuario {
+    height: 30px;
+    width: 100%;
+    padding: .375rem 0.75rem;
+    margin-top: 2px;
+    font-size: 15pt;
+    border: 1px solid;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+.input-cadastrar-usuario:focus {
+    color: #1b4965;
+    background-color: #fff;
+    outline-color: #1b4965;
+}
+
+.input-cadastrar-usuario[type=number] {
+    width: 80px;
+    font-size: 12pt;
+}
+
+@media(max-width: 1366px) {
+    .container-cadastrar-usuario {
+        width: 50%;
+    }
+    
+
+}
+
+@media(min-width: 1366px),(max-width:1530px) {
+    .container-cadastrar-usuario {
+        width: 50%;
+    }
+    .form-cadastrar-usuario {
+        height: 100%;
+    }
+}
+
+@media(min-width: 1531px){
+
+    .container-cadastrar-usuario{
+        width: 640px;
+    }
+
+
+}
+@media(max-width: 1366px),(min-width: 817px){
+
+    .container-cadastrar-usuario{
+        width: 560px;
+    }
+
+
+}
+
+
+#select-tipo-usuario {
+    font-size: 14pt;
+}
+
+.div-permissao {
+    transform: translateY(10px);
+}
+
+
+/* .form-cadastrar-usuario div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;    
+    padding: 5px;
+   
+
+}
+
+
+
+.container-nomesDados p {
+    margin-left: 2px;
+}
+
+.container-cadastrar{
+    border-right: 1px solid;
+
+    width: 20%;
+}
+
+.container-dados{
+     width: 50%;
+     color: grey ;
+}
+
+.form-cadastrar-usuario a{
+    color: black;
+} */
+
+.container-botao-cadastrar-usuario{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(20px);
+}
+
+.container-botao-cadastrar-usuario button {
+    padding: 10px;
+    border: inherit;
+    border-radius: 5px;
+    color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
+    font-weight: bolder;
+    z-index: 1;
+}
+
+.container-botao-cadastrar-usuario button:hover {
+    cursor: pointer;
+}
