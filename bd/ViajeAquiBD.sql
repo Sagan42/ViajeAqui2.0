@@ -9,6 +9,7 @@ drop table if exists acesso;
 drop table if exists cliente;
 drop table if exists funcionario;
 drop table if exists agenda;
+drop table if exists linhaVendendo;
 drop table if exists linha;
 drop table if exists adm;
 drop table if exists usuario;
@@ -70,6 +71,16 @@ create table linha (
     id_adm int not null,
     key fk_linha_id_adm(id_adm),
     constraint fk_linha_id_adm foreign key (id_adm) references adm (id)
+);
+
+create table linhaVendendo (
+	id int not null auto_increment,
+    primary key (id),
+    quantidadePassagem int,
+    dataLinha varchar(10) not null,
+    id_linha int not null,
+    key fk_id_linhaVendendo(id_linha),
+    constraint fk_id_linhaVendendo foreign key (id_linha) references linha (id)
 );
 
 create table agenda (

@@ -26,7 +26,7 @@
 
         <div class="modalCartao" id="modalCartao">
             <h4>Codigo Cartao</h4>
-            <input type="text" maxlength="16" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" name="Cartao" id="campoCartao" placeholder = "Digite o numero do Cartao">
+            <input type="text" placeholder="" maxlength="16" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" name="Cartao" id="campoCartao" placeholder = "Digite o numero do Cartao">
 
             <button class="botaoModal">Confirmar</button>
 
