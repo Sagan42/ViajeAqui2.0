@@ -77,6 +77,7 @@ create table linhaVendendo (
 	id int not null auto_increment,
     primary key (id),
     quantidadePassagem int,
+    dataLinha varchar(10) not null,
     id_linha int not null,
     key fk_id_linhaVendendo(id_linha),
     constraint fk_id_linhaVendendo foreign key (id_linha) references linha (id)
