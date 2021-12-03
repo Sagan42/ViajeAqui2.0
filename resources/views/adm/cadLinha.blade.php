@@ -29,7 +29,7 @@
         <div class="container-numero-linha">
         
             <label for="">Numero da Linha</label>
-            <input type="text" name="num_linha" id="" placeholder="Numero da Linha" class="container-linha-input">
+            <input type="text" name="num_linha" id="numeroLinha" placeholder="Numero da Linha" class="container-linha-input">
 
         </div>
 
@@ -188,20 +188,20 @@
 
         var $radioDireta = document.getElementById('radioDireta')
         var $radioComum = document.getElementById('radioComum')
-
-        var $destinoIntermediario = document.getElementById('destinosIntermediarios')
-        var $destino2 = document.getElementById('destino2')
+        var numeroLinha = document.getElementById('numeroLinha')
 
         if($radioDireta.checked){
-            $destinoIntermediario.setAttribute("hidden","hidden")
-            // $destino2.setAttribute("hidden","hidden")
+           numeroLinha.disabled = 'true'
+           numeroLinha.value = ''
+       
         }
 
         if($radioComum.checked){
-            $destinoIntermediario.removeAttribute("hidden")
-            // $destino2.removeAttribute("hidden")
-
+            numeroLinha.removeAttribute('disabled');
+            
         }
+
+      
         
        
 
