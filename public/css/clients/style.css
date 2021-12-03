@@ -392,3 +392,59 @@
         box-shadow: #1b4965;
         border-radius: 30px;
     }
+
+    .msgConfirmacao{
+
+        
+        display: none;
+
+        text-align: center;
+     
+        height: 120px;
+        padding: 10px;
+
+        position: absolute;
+        top: -60px;
+        right: 0;
+        
+        color: green;
+        background-color: rgba(3, 238, 3, 0.192);
+
+        font-size: 15pt;
+        font-weight: bold;
+
+        border: 2px solid;
+        border-radius: 10px;
+
+        
+
+        
+        
+
+
+    }
+
+    .mostrar{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        animation: animacaoConfirmarPagamento .9s backwards;
+       
+    }
+
+    @keyframes animacaoConfirmarPagamento {
+
+        from{
+          opacity: 0;
+          transform: translate3d(0, -10px,0);
+        }
+        to{
+            opacity: 1;
+            transform: translate3d(0, 0,0);
+        }
+      
+      }

@@ -104,7 +104,14 @@
     
         </div>
     </a>
-    <button>Confirmar</button>
+
+    <button id="btnConfirmar">Confirmar</button>
+
+    <div class="msgConfirmacao" id="msgConfirmacao">
+        <i class="fas fa-check-circle fa-3x"></i>
+        <p>Pagamento Confirmado</p>
+        
+    </div>
 
 </div>
 
@@ -125,6 +132,7 @@
     const boleto = document.getElementById('boleto')
     const pix = document.getElementById('pix')
     const cartao = document.getElementById('cartao')
+    var opcaoMarcada = false;
 
       function modalPagamento(id){
         
@@ -156,6 +164,7 @@
             modalPix.style.display = "none"
             modalCartao.style.display = "none"
             
+            opcaoMarcada = true;
 
         }else if(id==="pix"){
 
@@ -167,6 +176,8 @@
             
             modalBoleto.style.display = "none"
             modalCartao.style.display = "none"
+
+            opcaoMarcada = true;
             
 
 
@@ -182,11 +193,36 @@
 
             modalBoleto.style.display = "none"
 
+            opcaoMarcada = true;
+
         }
     
 
     }
   
+
+    const botaoConfirmar = document.getElementById('btnConfirmar')
+    const t = document.getElementById('msgConfirmacao')
+
+    botaoConfirmar.addEventListener('click', function(){
+
+       
+        if(opcaoMarcada == false){
+            alert('Escolha uma opção de Pagamento')
+        }else if (opcaoMarcada == true){            
+                    t.style.display = 'block'
+                    t.classList.toggle('mostrar')
+                    setTimeout(() => {
+                        window.location.replace('/cliente')
+                    }, 1500);
+                    
+                                      
+              
+            
+        }
+
+
+    })
 
 
 </script>
