@@ -8,10 +8,10 @@
 
     @if(session('message'))
     
-        <h4 id="msg" style="text-align:center; color:Lime">{{session('message')}}</h4>
+        <h5 id="msg" style="text-align:center; color:lime">{{session('message')}}</h5>
 
     @endif
-
+    
     <form name="login-usuario" action="" method="post">
         @csrf
         <div class="mb-3">
