@@ -42,10 +42,10 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente->id_usuario = $usuario->id;
         $cliente->save();
-        return view('telasCadastrais.login', ['msg' => "Cadastramento com sucesso!"]);
-        //if($usuario->tipoUsuario == 0){
-           // return redirect()->route('site.login');            
-        //}
+ 
+        if($usuario->tipoUsuario == 0){
+            return redirect()->route('site.login')->with('message', "Cadastro Feito Com Sucesso!");            
+        }
     }
 
     /**

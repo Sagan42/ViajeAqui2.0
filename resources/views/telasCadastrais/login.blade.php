@@ -4,9 +4,12 @@
 
 <div class="container-cadastro blue-three color-white">
     <h1>Login</h1>
+    
 
-    @if(!empty($msg))
-        <h4 id="msg" style="text-align:center; color:Lime">{{$msg}}</h4>
+    @if(session('message'))
+    
+        <h4 id="msg" style="text-align:center; color:Lime">{{session('message')}}</h4>
+
     @endif
 
     <form name="login-usuario" action="" method="post">
