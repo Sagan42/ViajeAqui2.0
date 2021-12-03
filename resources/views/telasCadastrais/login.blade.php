@@ -5,7 +5,10 @@
 <div class="container-cadastro blue-three color-white">
     <h1>Login</h1>
 
-    
+    @if(!empty($msg))
+        <h4 id="msg" style="text-align:center; color:Lime">{{$msg}}</h4>
+    @endif
+
     <form name="login-usuario" action="" method="post">
         @csrf
         <div class="mb-3">

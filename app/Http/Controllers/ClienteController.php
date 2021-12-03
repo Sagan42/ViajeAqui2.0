@@ -41,9 +41,10 @@ class ClienteController extends Controller
         $cliente = new Cliente;
         $cliente->id_usuario = $usuario->id;
         $cliente->save();
-        if($usuario->tipoUsuario == 0){
-            return redirect()->route('site.login');            
-        }
+        return view('telasCadastrais.login', ['msg' => "Cadastramento com sucesso!"]);
+        //if($usuario->tipoUsuario == 0){
+           // return redirect()->route('site.login');            
+        //}
     }
 
     /**
