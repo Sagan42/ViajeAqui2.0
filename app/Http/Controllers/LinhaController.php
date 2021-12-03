@@ -140,7 +140,7 @@ class LinhaController extends Controller
         //retorna data com formato carbon
         //$test = Carbon::createFromFormat('Y-m-d', $dataSaida)->toDateString();
         
-        $diaSemanaPesquisado = Carbon::create($dataPesquisado)->locale('pt-BR')->dayName;
+        $diaSemanaPesquisado = Carbon::create($dataSaida)->locale('pt-BR')->dayName;
             
         foreach($agenda as $a){
             if($a->dia_semana == $diaSemanaPesquisado) {
