@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\RecuperarUserRequest;
 use App\Models\Cliente;
 
 class ClienteController extends Controller
@@ -90,5 +91,11 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function recuperar(RecuperarUserRequest $request){
+
+        return view('telasCadastrais.recuperarsenha', ['msg' => "Redefinição enviada com sucesso!"]);
+
     }
 }
