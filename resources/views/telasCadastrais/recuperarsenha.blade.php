@@ -13,7 +13,7 @@
     @csrf
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" maxlength="50" name="Email"  class="form-control blue-two @error('Email')is-invalid @endif">
+            <input type="email" maxlength="50" name="Email"  class="form-control  @error('Email')is-invalid @endif">
 
             @error('Email')
                 <div class="invalid-feedback">
