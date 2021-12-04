@@ -34,9 +34,7 @@ Route::prefix('/')->middleware('checkLogout')->group(function(){
     Route::get('/verpassagens', [LinhaController::class, 'linhaPesquisada'])->name('site.verPassagens');
 
 
-    Route::get('/recuperar', function () {
-        return view('telasCadastrais.recuperarsenha');
-    })->name('site.recuperar');
+
 });
 
 Route::get('/cadastro', [ClienteController::class, 'create'])->name('site.cadastro');
@@ -48,6 +46,13 @@ Route::get('/login', function () {
 
 Route::post('/login', [UsuarioController::class, 'login']);
 Route::get('/logout', [UsuarioController::class, 'logout'])->name('site.logout');
+
+
+Route::get('/recuperar', function () {
+    return view('telasCadastrais.recuperarsenha');
+})->name('site.recuperar');
+
+Route::post('/recuperar', [ClienteController::class, 'recuperar'])->name('site.recuperar');
 
 
 
