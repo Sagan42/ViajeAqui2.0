@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Linha;
 use App\Models\Adm;
 use App\Models\Agenda;
+use App\Models\Viajem;
+use App\Models\Passagem;
+use App\Models\Usuario;
 use Illuminate\Support\Carbon;
 
 use Session;
@@ -140,7 +143,7 @@ class LinhaController extends Controller
         //retorna data com formato carbon
         //$test = Carbon::createFromFormat('Y-m-d', $dataSaida)->toDateString();
         
-        $diaSemanaPesquisado = Carbon::create($dataPesquisado)->locale('pt-BR')->dayName;
+        $diaSemanaPesquisado = Carbon::create($dataSaida)->locale('pt-BR')->dayName;
             
         foreach($agenda as $a){
             if($a->dia_semana == $diaSemanaPesquisado) {
@@ -194,7 +197,7 @@ class LinhaController extends Controller
             }
         }
         
-        return view('verPassagens', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
+        return view('clients.home', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
     }
     
     /**
@@ -219,14 +222,51 @@ class LinhaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function pagamento(Request $request)
-    {
+    {   
         $id = $request->selecionado;
         $dataSaida = $request->dataPesq;
         $horaSaida = $request->horaPesq;
         $linhaComprada = Linha::findOrFail($id);
         
-        
         //dd($request->horaPesq);
-        return view('clients.formaPagamento',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida]);
+        return view('clients.formaPagamento',['idViajem' => $id, 'linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmarPagamento(Request $request)
+    {
+        //$usuario = Session::get('usuario'); 
+        $usuario = Usuario::find(Session::get('usuario.id'));
+        $passagens = Passagem::all();
+        $linha = Linha::all();
+        // criar passagem !!! para usuario!!!
+        $dataSaida = $request->dataViajem;
+        $horaSaida = $request->horaViajem;
+        $data = Carbon::createFromFormat('d/m/Y', $dataSaida)->format('Y-m-d');
+        $idLinha = $request->idViajem;
+        $linhaComprada = Linha::findOrFail($idLinha);
+        $viajens = Viajem::all();
+        //dd($linhaComprada);
+        $viajemBuscada = Viajem::where([['id_linha', '=', $linhaComprada->id]])->first();
+        
+        if($viajemBuscada != null && $viajemBuscada->dataViajem == $data && $viajemBuscada->quantidadePassagem != 0){
+           $viajemBuscada->quantidadePassagem = ($viajemBuscada->quantidadePassagem - 1);
+           $viajemBuscada->save();
+        } else {
+            $viajem = new Viajem;
+            
+            $viajem->dataViajem = $data;
+            $viajem->horaViajem = $horaSaida;
+            $viajem->id_linha = $linhaComprada->id;
+            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem;
+            $viajem->save();
+        }
+        //dd($request->horaPesq);
+        return view('clients.minhasPassagens',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario]);
     }
 }

@@ -1,4 +1,4 @@
-.container-editar-usuario {
+.container-cadastrar-usuario {
     grid-column: 2;
     grid-row: 1;
     height: 500px;
@@ -9,13 +9,13 @@
     border-radius: 60px;
 }
 
-.container-editar-usuario h2 {
+.container-cadastrar-usuario h2 {
     font-size: 20pt;
     color: #fff;
     /* margin-bottom: 30px; */
 }
 
-.form-editar-usuario {
+.form-cadastrar-usuario {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
     gap: 10px;
 }
 
-.input-editar-usuario {
+.input-cadastrar-usuario {
     height: 30px;
     width: 100%;
     padding: .375rem 0.75rem;
@@ -40,19 +40,19 @@
     background-color: #fff;
 }
 
-.input-editar-usuario:focus {
+.input-cadastrar-usuario:focus {
     color: #1b4965;
     background-color: #fff;
     outline-color: #1b4965;
 }
 
-.input-editar-usuario[type=number] {
+.input-cadastrar-usuario[type=number] {
     width: 80px;
     font-size: 12pt;
 }
 
 @media(max-width: 1366px) {
-    .container-editar-usuario {
+    .container-cadastrar-usuario {
         width: 50%;
     }
     
@@ -60,17 +60,17 @@
 }
 
 @media(min-width: 1366px),(max-width:1530px) {
-    .container-editar-usuario {
+    .container-cadastrar-usuario {
         width: 50%;
     }
-    .form-editar-usuario {
+    .form-cadastrar-usuario {
         height: 100%;
     }
 }
 
 @media(min-width: 1531px){
 
-    .container-editar-usuario{
+    .container-cadastrar-usuario{
         width: 640px;
     }
 
@@ -78,12 +78,13 @@
 }
 @media(max-width: 1366px),(min-width: 817px){
 
-    .container-editar-usuario{
+    .container-cadastrar-usuario{
         width: 560px;
     }
 
 
 }
+
 
 #select-tipo-usuario {
     font-size: 14pt;
@@ -94,7 +95,7 @@
 }
 
 
-/* .form-editar-usuario div{
+/* .form-cadastrar-usuario div{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -110,7 +111,7 @@
     margin-left: 2px;
 }
 
-.container-editar{
+.container-cadastrar{
     border-right: 1px solid;
 
     width: 20%;
@@ -121,18 +122,18 @@
      color: grey ;
 }
 
-.form-editar-usuario a{
+.form-cadastrar-usuario a{
     color: black;
 } */
 
-.container-botao-editar-usuario {
+.container-botao-cadastrar-usuario{
     position: absolute;
     bottom: 0;
     right: 0;
     transform: translateY(20px);
 }
 
-.container-botao-editar-usuario button {
+.container-botao-cadastrar-usuario button {
     padding: 10px;
     border: inherit;
     border-radius: 5px;
@@ -142,6 +143,6 @@
     z-index: 1;
 }
 
-.container-botao-editar-usuario button:hover {
+.container-botao-cadastrar-usuario button:hover {
     cursor: pointer;
 }

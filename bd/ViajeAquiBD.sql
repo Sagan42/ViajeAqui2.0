@@ -9,6 +9,7 @@ drop table if exists acesso;
 drop table if exists cliente;
 drop table if exists funcionario;
 drop table if exists agenda;
+drop table if exists viajem;
 drop table if exists linha;
 drop table if exists adm;
 drop table if exists usuario;
@@ -70,6 +71,17 @@ create table linha (
     id_adm int not null,
     key fk_linha_id_adm(id_adm),
     constraint fk_linha_id_adm foreign key (id_adm) references adm (id)
+);
+
+create table viajem (
+	id int not null auto_increment,
+    primary key (id),
+    quantidadePassagem int,
+    dataViajem varchar(10) not null,
+    horaViajem varchar(10),
+    id_linha int not null,
+    key fk_id_linhaVendendo(id_linha),
+    constraint fk_id_linhaVendendo foreign key (id_linha) references linha (id)
 );
 
 create table agenda (
@@ -177,9 +189,9 @@ values
 ('quinta-feira', '05:00', '4');
 
 insert into passagem
-(id_cliente,id_linha,ativo,diaVenda)
+(id_funcionario,id_cliente,id_linha,ativo,diaVenda)
 values
-('1','1','1','2021-05-10'),
-('1','2','0','2021-05-10'),
-('2','1','0','2021-05-10'),
-('2','2','1','2021-05-10');
+('1','1','1','1','2021-12-04'),
+('1','1','2','0','2021-12-04'),
+('1','2','1','0','2021-12-04'),
+('1','2','2','1','2021-12-04');

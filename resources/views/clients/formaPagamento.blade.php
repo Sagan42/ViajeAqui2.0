@@ -26,7 +26,7 @@
 
         <div class="modalCartao" id="modalCartao">
             <h4>Codigo Cartao</h4>
-            <input type="text" maxlength="16" name="Cartao" id="campoCartao" placeholder = "Digite o numero do Cartao">
+            <input type="text" placeholder="" maxlength="16" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');" name="Cartao" id="campoCartao" placeholder = "Digite o numero do Cartao">
 
             <button class="botaoModal">Confirmar</button>
 
@@ -42,7 +42,7 @@
     <h1 class="titulo color-blue-three"> Forma de Pagamento </h1>
     <div>
         <br>
-        <a href="{{route('site.client.selecionarPassagens')}}" class="blue-three btnVoltar">
+        <a href="{{url()->previous()}}" class="blue-three btnVoltar">
             <i class="bi bi-arrow-left"></i>
             Voltar
         </a>
@@ -75,44 +75,49 @@
 </div>
 
 <div class ="content-forma-pagamento">
-    <a href="#" id="cartao" onclick= "modalPagamento(id)">
-        <div class = "retangulo-pagamento">
-            <div class ="retangulo-pagamento-interno">
-                <img src="https://i.pinimg.com/originals/62/a3/f0/62a3f05f06cac1566abca1281ced0c41.png" alt="Cartão de Crédito">
-            </div>
-            <p>Cartão</p>
-        </div>        
-    
-    </a>   
-    
-    <a href="#" id="boleto" onclick= "modalPagamento(id)"> 
-           <div class = "retangulo-pagamento">
+    <form id="ismForm" action="{{route('site.client.confirmarPagamento')}}" method="POST" style="display: flex">
+    @csrf 
+        <input type="hidden" name="dataViajem" value={{$dataSaida}}>
+        <input type="hidden" name="horaViajem" value={{$horaSaida}}>
+        <input type="hidden" name="idViajem" value={{$idViajem}}>
+        <a href="#" id="cartao" onclick= "modalPagamento(id)" style="margin-right: 10px">
+            <div class = "retangulo-pagamento">
                 <div class ="retangulo-pagamento-interno">
-                    <img src="https://logodownload.org/wp-content/uploads/2019/09/boleto-logo.png" alt="Boleto">
+                    <img src="https://i.pinimg.com/originals/62/a3/f0/62a3f05f06cac1566abca1281ced0c41.png" alt="Cartão de Crédito">
                 </div>
-                <p>Boleto</p>            
-            </div>
-        
-    </a> 
-        
-    <a href="#" id="pix" onclick= "modalPagamento(id)">
-        <div class = "retangulo-pagamento">
-            <div class ="retangulo-pagamento-interno">
-                <img src="https://lojaterradonunca.com.br/skin/frontend/smartwave/porto_child/images/pix-icon.png" alt="PIX">
+                <p>Cartão</p>
             </div>        
-            <p>PIX</p>        
-    
+        
+        </a>   
+        
+        <a href="#" id="boleto" onclick= "modalPagamento(id)" style="margin-right: 10px"> 
+            <div class = "retangulo-pagamento">
+                    <div class ="retangulo-pagamento-interno">
+                        <img src="https://logodownload.org/wp-content/uploads/2019/09/boleto-logo.png" alt="Boleto">
+                    </div>
+                    <p>Boleto</p>            
+                </div>
+            
+        </a> 
+            
+        <a href="#" id="pix" onclick= "modalPagamento(id)" style="margin-right: 50px">
+            <div class = "retangulo-pagamento">
+                <div class ="retangulo-pagamento-interno">
+                    <img src="https://lojaterradonunca.com.br/skin/frontend/smartwave/porto_child/images/pix-icon.png" alt="PIX">
+                </div>        
+                <p>PIX</p>        
+        
+            </div>
+        </a>
+
+        <button type="submit" class="btn blue-three" id="btnConfirmar">Confirmar Compra</button>
+
+        <div class="msgConfirmacao" id="msgConfirmacao">
+            <i class="fas fa-check-circle fa-3x"></i>
+            <p>Pagamento Confirmado!</p>
         </div>
-    </a>
-    <button>Confirmar</button>
-
+    </form>
 </div>
-
-
-
-
-
-
 
 
 <script>
@@ -125,6 +130,9 @@
     const boleto = document.getElementById('boleto')
     const pix = document.getElementById('pix')
     const cartao = document.getElementById('cartao')
+    var opcaoMarcada = false;
+    
+        
 
       function modalPagamento(id){
         
@@ -156,6 +164,7 @@
             modalPix.style.display = "none"
             modalCartao.style.display = "none"
             
+            opcaoMarcada = true;
 
         }else if(id==="pix"){
 
@@ -167,6 +176,8 @@
             
             modalBoleto.style.display = "none"
             modalCartao.style.display = "none"
+
+            opcaoMarcada = true;
             
 
 
@@ -182,13 +193,32 @@
 
             modalBoleto.style.display = "none"
 
+            opcaoMarcada = true;
+
         }
     
 
     }
-  
 
+    const botaoConfirmar = document.getElementById('btnConfirmar')
+    const t = document.getElementById('msgConfirmacao')
+    const element = document.querySelector('form');
 
+    botaoConfirmar.addEventListener('click', function(){
+        if(opcaoMarcada == false){
+            alert('Escolha uma opção de Pagamento')
+            event.preventDefault();
+        }else if (opcaoMarcada == true){  
+                    setTimeout("submitForm()", 2000);         
+                    t.style.display = 'block'
+                    t.classList.toggle('mostrar')
+                    event.preventDefault();
+        }
+    })
+
+    function submitForm() {
+        document.getElementById("ismForm").submit()
+    }
 </script>
 
 

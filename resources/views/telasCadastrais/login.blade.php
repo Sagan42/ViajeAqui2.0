@@ -4,7 +4,13 @@
 
 <div class="container-cadastro blue-three color-white">
     <h1>Login</h1>
+    
 
+    @if(session('message'))
+    
+        <h5 id="msg" style="text-align:center; color:lime">{{session('message')}}</h5>
+
+    @endif
     
     <form name="login-usuario" action="" method="post">
         @csrf

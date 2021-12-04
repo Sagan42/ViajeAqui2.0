@@ -7,6 +7,7 @@ use App\Http\Requests\LoginUserRequest;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Acesso;
+use App\Rules\ExistsPassword;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -208,7 +209,10 @@ class UsuarioController extends Controller
             }
         }
         else{
-            return redirect()->route('site.login');
+
+            $request->validate([
+                'loginSenha' => new ExistsPassword,
+            ]);
         }                
     }
 
