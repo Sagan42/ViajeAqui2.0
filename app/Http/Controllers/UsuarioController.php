@@ -171,6 +171,9 @@ class UsuarioController extends Controller
 
             $usuario->email = $pEmail;
             return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Dados atualizados com sucesso"]);
+        }else{
+            $usuario->email = $pEmail;
+            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Informe a senha Atual"]);
         }
     }
 
@@ -188,7 +191,7 @@ class UsuarioController extends Controller
     public function login(LoginUserRequest $request){
 
         $usuario = Usuario::where('cpf', $request->loginCPF)->get()->first();
-        
+
         if(Hash::check($request->loginSenha, $usuario->senha) == true) {
             Session::put('usuario', $usuario);
             if($usuario->tipoUsuario == "0"){
@@ -213,7 +216,7 @@ class UsuarioController extends Controller
             $request->validate([
                 'loginSenha' => new ExistsPassword,
             ]);
-        }                
+        }
     }
 
     public function logout(){
