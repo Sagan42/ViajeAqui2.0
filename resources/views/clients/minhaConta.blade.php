@@ -28,17 +28,17 @@
 
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" name="" class="form-control blue-two" value="{{$usuario->email}}">
+                <input type="text" name="" class="form-control blue-two" value="{{$usuario->email}}" readonly>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Mudar Email</label>
-                <input type="text"  name="editEmailNovo" class="form-control blue-two">
+                <input type="email"  name="editEmailNovo" class="form-control blue-two">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Confirmar Email</label>
-                <input type="text"  name="editEmailNovoConfirm" class="form-control blue-two">
+                <input type="email"  name="editEmailNovoConfirm" class="form-control blue-two">
             </div>
 
         </div>

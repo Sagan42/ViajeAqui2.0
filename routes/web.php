@@ -65,7 +65,7 @@ Route::prefix('/cliente')->middleware('checkCliente')->group(function(){
     Route::get('/cliente/passagens', [AgendaController::class, 'index'])->name('site.client.selecionarPassagens');
 
     Route::post('/pagamento', [LinhaController::class, 'pagamento'])->name('site.client.formaPagamento');
-    
+
     Route::post('/pagamento/concluido', [LinhaController::class, 'confirmarPagamento'])->name('site.client.confirmarPagamento');
 });
 
@@ -132,6 +132,7 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
 
     // ADM RELATORIOS ROTAS
     Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidiasFuncionario');
+    Route::get('/relatorios/passvendidaslinha', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorLinhaDia'])->name('site.adm.relatoriosPassengensVendidiasLinha');
 });
 
 

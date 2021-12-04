@@ -4,7 +4,7 @@
 <h2>Relatórios</h2>
 <input type="date" name="dataAcessoClientes" id="input-acesso-clientes" value = "<?php echo date('Y-m-d'); ?>">
 <div id="boxRelatorios">
-    <a onclick="mudarLink()" href="#" class="link" target="_blank">
+    <a onclick="mudarLinkRelatorio1()" href="#" class="link" target="_blank">
         <div class="subBoxRelatorio relLeft">
             <div id="divRelInternal">
                 <i id="iconsRelatorios" class="fa fa-users fa-5x" aria-hidden="true"></i>
@@ -22,7 +22,7 @@
         </div>
     </a>
 
-    <a href="#">
+    <a href="#" onclick="mudarLinkRelatorio2()">
         <div class="subBoxRelatorio relLeft">
             <div id="divRelInternal">
                 <i id="iconsRelatorios" class="fa fa-road fa-5x" aria-hidden="true"></i>
@@ -43,11 +43,16 @@
 </div>
 </div>
 <script>
-    function mudarLink(){
+    function mudarLinkRelatorio1(){
         data = document.querySelector("input[type='date']").value;
         var guia = window.open(`/adm/relatorios/passvendidasfunc?data=${data}`, '_blank');
         guia.focus();
-        //window.location.replace(`/adm/relatorios/passvendidasfunc?data=${data}`)
+    }
+
+    function mudarLinkRelatorio2(){
+        data = document.querySelector("input[type='date']").value;
+        var guia = window.open(`/adm/relatorios/passvendidaslinha?data=${data}`, '_blank');
+        guia.focus();
     }
 </script>
 

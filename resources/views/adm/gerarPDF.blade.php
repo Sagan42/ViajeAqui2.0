@@ -4,26 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Relatório</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Funcionario</th>
-                <th>-</th>
-                <th>Passagens Vendidas no dia {{$data}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($funcionario_passagensVendidas as $Key => $funcionario)
+    <h1 style="text-align: center">Relatorio Referente ao dia {{$data}}</h1>
+    <br>
+    <br>
+    <table style="text-align: center;border-collapse: separate;border-spacing: 15px;width:90%;margin: 0 auto;">
+        @if ($tipoRelatorio == 0)
+            <thead>
                 <tr>
-                    <td><h3>{{$Key}}</h3></td>
-                    <td>-</td>
-                    <td><h3>{{$funcionario}}</h3></td>
+                    <th><h3>Funcionario</h3></th>
+                    <th><h3>Passagens Vendidas</h3></th>
                 </tr>
-            @endforeach
-        </tbody>
+            </thead>
+            <tbody>
+                @foreach($funcionario_passagensVendidas as $funcionario => $qtd)
+                    <tr>
+                        <td><h4>{{$funcionario}}</h4></td>
+                        <td><h4>{{$qtd}}</h4></td>
+                    </tr>
+                @endforeach
+            </tbody>
+
+        @else
+            <thead>
+                <tr>
+                    <th><h3>Linha</h3></th>
+                    <th><h3>Tipo de Linha</h3></th>
+                    <th><h3>Passagens Vendidas</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($linha_passagensVendidas as $linha => $qtd)
+                    <tr>
+                        <td><h4>{{explode('-', $linha)[0]. '-'. explode('-', $linha)[1]}}</h4></td>
+                        <td><h4>{{explode('-', $linha)[2]}}</h4></td>
+                        <td><h4>{{$qtd}}</h4></td>
+                    </tr>
+                @endforeach
+            </tbody>
+
+        @endif
     </table>
 </body>
 </html>
