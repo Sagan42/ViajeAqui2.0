@@ -166,5 +166,6 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
             return view('funcionario.mudarLogin');
         })->name('site.funcionario.mudaLogin');
     });
-
+    // FUNCIONARIOS RELATORIOS ROTAS
+    //Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidiasFuncionario');
 });
