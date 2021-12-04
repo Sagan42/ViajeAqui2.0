@@ -65,6 +65,8 @@ Route::prefix('/cliente')->middleware('checkCliente')->group(function(){
     Route::get('/cliente/passagens', [AgendaController::class, 'index'])->name('site.client.selecionarPassagens');
 
     Route::post('/pagamento', [LinhaController::class, 'pagamento'])->name('site.client.formaPagamento');
+    
+    Route::post('/pagamento/concluido', [LinhaController::class, 'confirmarPagamento'])->name('site.client.confirmarPagamento');
 });
 
 
