@@ -7,26 +7,14 @@
     <title>Relatório</title>
 </head>
 <body>
-    <h1 style="text-align: center">Passagens vendidas por linha </h1>
+    @if($tipoRelatorio == 1)
+        <h1 style="text-align: center">Passagens vendidas por linha </h1>
+    @else
+        <h1 style="text-align: center">Linhas que mais vendeu </h1>
+    @endif
     <br>
     <table style="text-align: center;border-collapse: separate;border-spacing: 0px;width:90%;margin: 0 auto;">
-        @if ($tipoRelatorio == 0)
-            <thead>
-                <tr>
-                    <th><h3>Funcionario</h3></th>
-                    <th><h3>Passagens Vendidas</h3></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($funcionario_passagensVendidas as $funcionario => $qtd)
-                    <tr>
-                        <td><h4>{{$funcionario}}</h4></td>
-                        <td><h4>{{$qtd}}</h4></td>
-                    </tr>
-                @endforeach
-            </tbody>
-
-        @else
+        @if ($tipoRelatorio == 1)
             <thead>
                 <tr>
                     <th><h3>Linha</h3></th>
@@ -40,6 +28,26 @@
                         <td><h4>{{explode('-', $linha)[0]. '-'. explode('-', $linha)[1]}}</h4></td>
                         <td><h4>{{explode('-', $linha)[2]}}</h4></td>
                         <td><h4>{{$qtd}}</h4></td>
+                    </tr>
+                @endforeach
+            </tbody>
+
+        @else
+            <thead>
+                <tr>
+                    <th><h3>Colocação</h3></th>
+                    <th><h3>Linha</h3></th>
+                    <th><h3>Tipo de Linha</h3></th>
+                    <th><h3>Passagens Vendidas</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($linha_passagensVendidas as $indice => $linha)
+                    <tr>
+                        <td><h4>{{$indice + 1}}</h4></td>
+                        <td><h4>{{explode('-', $linha)[0]. '-'. explode('-', $linha)[1]}}</h4></td>
+                        <td><h4>{{explode('-', $linha)[2]}}</h4></td>
+                        <td><h4>{{explode('-', $linha)[3]}}</h4></td>
                     </tr>
                 @endforeach
             </tbody>

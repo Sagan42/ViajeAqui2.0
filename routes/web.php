@@ -137,8 +137,8 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     Route::post('/editarUsuario/{id}', [AdmController::class, 'update'])->name('site.adm.editarUsuario');
 
     // ADM RELATORIOS ROTAS
-    Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidiasFuncionario');
-    Route::get('/relatorios/passvendidaslinha', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorLinhaDia'])->name('site.adm.relatoriosPassengensVendidiasLinha');
+    Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidasFuncionario');
+    Route::get('/relatorios/passvendidaslinha', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorLinhaDia'])->name('site.adm.relatoriosPassengensVendidasLinha');
 });
 
 
@@ -173,5 +173,8 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.mudaLogin');
     });
     // FUNCIONARIOS RELATORIOS ROTAS
-    Route::get('/relatorios/passvendidaslinha', [RelatorioFuncionarioController::class, 'gerarRelatorio_passagensVendidasPorLinha'])->name('site.adm.relatoriosPassengensVendidiasLinha');
+    Route::get('/relatorios/passvendidaslinha', [RelatorioFuncionarioController::class, 'gerarRelatorio_passagensVendidasPorLinha'])->name('site.funcionario.relatorioPassengensVendidasLinha');
+
+    Route::get('/relatorios/linhasmaisvendidas', [RelatorioFuncionarioController::class, 'gerarRelatorio_linhasQueMaisVendeu'])->name('site.funcionario.relatorioLinhasMaisVendidas');
+
 });

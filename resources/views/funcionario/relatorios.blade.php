@@ -12,7 +12,7 @@
             </div>
         </a>
 
-        <a href="relatorios/passvendidaslinha">
+        <a href="relatorios/passvendidaslinha" target="_blank">
             <div class="subBoxRelatorio  relRight">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-road fa-5x" aria-hidden="true"></i>
@@ -21,7 +21,7 @@
             </div>
         </a>
 
-        <a href="#">
+        <a href="relatorios/linhasmaisvendidas" target="_blank">
             <div class="subBoxRelatorio subBoxRelatorio2 relLeft ">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-bar-chart fa-5x" aria-hidden="true"></i>
