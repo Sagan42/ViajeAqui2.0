@@ -11,6 +11,16 @@ use Session;
 
 class RelatorioFuncionarioController extends Controller
 {
+    public function gerarRelatorio_passagensVendidas (Request $request){
+        $idUser = Session::get('usuario.id');
+        $arrayLinha = DB::select('SELECT origem, destino, tipoLinha FROM passagem INNER JOIN linha on passagem.id_linha = linha.id INNER JOIN funcionario on passagem.id_funcionario = funcionario.id WHERE funcionario.id_usuario = ?',[$idUser]);
+
+
+        $vendidas = count($arrayLinha);
+
+        return view('funcionario.relatorios', ['passagensVendidas' => $vendidas]);
+
+    }
     //
     public function gerarRelatorio_passagensVendidasPorLinha (Request $request){
         $idUser = Session::get('usuario.id');

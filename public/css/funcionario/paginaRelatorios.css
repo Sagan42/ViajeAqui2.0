@@ -45,6 +45,15 @@
   .itemLast{
   }
 
+  #divRelInternal p{
+
+    font-size: 60pt;
+    text-align: center;
+    color: #1b4965;
+
+    transform: translateY(10px);
+  }
+
   #divRelInternal .fa-5x{
     margin:5% auto auto auto;
     color:  var(--cor-secundaria);
