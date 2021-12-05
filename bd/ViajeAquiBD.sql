@@ -100,9 +100,9 @@ create table passagem (
     id_funcionario int,
     key fk_passagem_id_funcionario(id_funcionario),
     constraint fk_passagem_id_funcionario foreign key (id_funcionario) references funcionario (id),
-    id_linha int not null,
-    key fk_passagem_id_linha(id_linha),
-    constraint fk_passagem_id_linha foreign key (id_linha) references linha (id),
+    id_viajem int not null,
+    key fk_passagem_id_viajem(id_viajem),
+    constraint fk_passagem_id_viajem foreign key (id_viajem) references viajem (id),
     id_cliente int not null,
     key fk_passagem_id_cliente(id_cliente),
     constraint fk_passagem_id_cliente foreign key (id_cliente) references cliente (id),
@@ -169,27 +169,35 @@ values
 insert into linha
 (origem,destino,preco,tipoLinha,num_linha,quantidadePassagem,id_adm)
 values
-('Feira de Santana','Salvador','40.0','Direta',null,'29','1'),
+('Feira de Santana','Salvador','40.0','Direta',null,'28','1'),
 ('Feira de Santana','Ilheus','44.0','Direta',null,'28','1'),
-('Salvador','Feira de Santana','36.0','Comum','1','25','2'),
-('Feira de Santana','Riachão do Jacuipe','36.0','Comum','2','25','2'),
-('Riachão do Jacuipe','Capim Grosso','40.0','Comum','2','25','2'),
-('Capim Grosso','Jacobina','35.0','Comum','2','25','2'),
-('Feira de Santana','Salvador','50.0','Direta',null,'24','1'),
-('Salvador','Camaçari','65.0','Direta',null,'30','1');
+('Salvador','Feira de Santana','36.0','Comum','1','28','2'),
+('Feira de Santana','Riachão do Jacuipe','36.0','Comum','2','28','2'),
+('Riachão do Jacuipe','Capim Grosso','40.0','Comum','2','28','2'),
+('Capim Grosso','Jacobina','35.0','Comum','2','28','2'),
+('Feira de Santana','Salvador','50.0','Direta',null,'28','1'),
+('Salvador','Camaçari','65.0','Direta',null,'28','1');
+
+insert into viajem
+(dataViajem, horaViajem, id_linha, quantidadePassagem)
+values
+('2021-12-05','19:00','8','28'),
+('2021-12-06','15:00','1','28'),
+('2021-12-08','10:00','2','28'),
+('2021-12-09','07:00','7','28');
 
 insert into agenda
 (dia_semana, hora, id_linha)
 values
 ('segunda-feira', '15:00', '1'),
 ('quarta-feira', '10:00', '1'),
-('quinta-feira', '07:00', '3'),
+('quinta-feira', '07:00', '7'),
 ('sábado', '13:00', '1'),
 ('domingo', '19:00', '8'),
 ('quinta-feira', '05:00', '4');
 
 insert into passagem
-(id_funcionario,id_cliente,id_linha,ativo,diaVenda)
+(id_funcionario,id_cliente,id_viajem,ativo,diaVenda)
 values
 ('1','1','1','1','2021-12-04'),
 ('1','1','2','0','2021-12-04'),

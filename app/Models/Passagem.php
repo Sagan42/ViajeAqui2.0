@@ -17,7 +17,7 @@ class Passagem extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'id_funcionario', 'id_linha', 'id_cliente', 'preco', 'ativo', 'diaVenda'
+        'id', 'id_funcionario', 'id_viajem', 'id_cliente', 'ativo', 'diaVenda'
     ];
 
     protected $table = 'passagem';

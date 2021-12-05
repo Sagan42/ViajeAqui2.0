@@ -244,29 +244,50 @@ class LinhaController extends Controller
         $usuario = Usuario::find(Session::get('usuario.id'));
         $passagens = Passagem::all();
         $linha = Linha::all();
-        // criar passagem !!! para usuario!!!
+        $viajens = Viajem::all();
+
         $dataSaida = $request->dataViajem;
         $horaSaida = $request->horaViajem;
         $data = Carbon::createFromFormat('d/m/Y', $dataSaida)->format('Y-m-d');
         $idLinha = $request->idViajem;
         $linhaComprada = Linha::findOrFail($idLinha);
-        $viajens = Viajem::all();
-        //dd($linhaComprada);
         $viajemBuscada = Viajem::where([['id_linha', '=', $linhaComprada->id]])->first();
         
-        if($viajemBuscada != null && $viajemBuscada->dataViajem == $data && $viajemBuscada->quantidadePassagem != 0){
+        $passagem = new Passagem;  
+        $passagem->id_funcionario = null;
+        $passagem->id_viajem = $viajemBuscada->id;
+        $passagem->id_cliente = $usuario->id;
+        $passagem->ativo = 1;
+        $passagem->diaVenda = Carbon::now()->format('Y-m-d');
+        
+        $comprado = 0;
+        foreach ($passagens as $p) {
+            if($p->id_cliente == $usuario->id && $p->id_viajem == $passagem->id_viajem) {
+                $comprado++;
+            }
+        }
+
+        
+
+        if($viajemBuscada != null && $viajemBuscada->dataViajem == $data && $viajemBuscada->quantidadePassagem != 0 && $comprado == 0){
            $viajemBuscada->quantidadePassagem = ($viajemBuscada->quantidadePassagem - 1);
            $viajemBuscada->save();
-        } else {
+           $passagem->save();
+        } else if ($comprado == 0){
             $viajem = new Viajem;
             
             $viajem->dataViajem = $data;
             $viajem->horaViajem = $horaSaida;
             $viajem->id_linha = $linhaComprada->id;
-            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem;
+            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem-1;
             $viajem->save();
+            $viajemBuscada = $viajem;
+            $passagem->save();
         }
-        //dd($request->horaPesq);
-        return view('clients.minhasPassagens',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario]);
+
+        $passagens = Passagem::all();
+        $viajens = Viajem::all();
+        // Criar no front end de Minha passagem um alerta de mais de uma passagem por usuario
+        return view('clients.minhasPassagens',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
     }
 }

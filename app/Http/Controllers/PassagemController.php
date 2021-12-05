@@ -7,6 +7,7 @@ use App\Models\Passagem;
 use App\Models\Usuario;
 use App\Models\Linha;
 use App\Models\Cliente;
+use App\Models\Viajem;
 use Session;
 
 class PassagemController extends Controller
@@ -22,8 +23,9 @@ class PassagemController extends Controller
         $usuario = Usuario::find(Session::get('usuario.id'));
         $passagens = Passagem::all();
         $linha = Linha::all();
+        $viajens = Viajem::all();
         
-        return view('clients.minhasPassagens', ['passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario]);
+        return view('clients.minhasPassagens', ['passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens]);
     }
 
     /**

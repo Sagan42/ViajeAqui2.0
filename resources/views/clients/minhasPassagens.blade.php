@@ -11,31 +11,31 @@
                 <th>Saida</th>
                 <th>Embarque/Desembarque</th>
                 <th>Tipo de Linha</th>
-                <th>Vagas</th>
                 <th  class="th-last">Preço</th>
             </tr>
         </thead>
         <tbody>
 
         @foreach ($passagens as $p)
-            @foreach ($linha as $l) 
-            @if($l->dataSaida > date('Y-m-d'))
-                @if($p->id_linha == $l->id && $p->ativo == 1 && $p->id_cliente == $usuario->id)   
-                    <tr class="neutro"><td class="td-border_none"></td></tr>
-                    <tr>
-                        <td class="border td-first"><p>{{$l->dataSaida}}</p></td>
-                        <td class="border"><p>{{$l->horario}}</p></td>
-                        <td class="td-rota border">
-                            {{$l->origem}}
-                            <br>
-                            {{$l->destino}}
-                        </td>
-                        <td  class="border"><p>{{$l->tipoLinha}}</p></td>
-                        <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
-                        <td  class="border td-last"><p>{{$l->preco}}</p></td>
-                    </tr>
-                @endif
-              @endif      
+            @foreach ($linha as $l)
+                @foreach ($viajens as $v)
+                    @if($v->id_linha == $l->id && $v->dataViajem >= date('Y-m-d'))
+                        @if($p->id_viajem == $v->id && $p->ativo == 1 && $p->id_cliente == $usuario->id)   
+                            <tr class="neutro"><td class="td-border_none"></td></tr>
+                            <tr>
+                                <td class="border td-first"><p>{{$v->dataViajem}}</p></td>
+                                <td class="border"><p>{{$v->horaViajem}}</p></td>
+                                <td class="td-rota border">
+                                    {{$l->origem}}
+                                    <br>
+                                    {{$l->destino}}
+                                </td>
+                                <td  class="border"><p>{{$l->tipoLinha}}</p></td>
+                                <td  class="border td-last"><p>R${{$l->preco}},00</p></td>
+                            </tr>
+                        @endif
+                    @endif     
+                @endforeach     
             @endforeach
         @endforeach
             
@@ -51,30 +51,30 @@
                 <th>Saida</th>
                 <th>Embarque/Desembarque</th>
                 <th>Tipo de Linha</th>
-                <th>Vagas</th>
                 <th  class="th-last">Preço</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($passagens as $p)
-                @foreach ($linha as $l) 
-                    @if($l->dataSaida < date('Y-m-d'))
-                    @if($p->id_linha == $l->id && $p->ativo == 1 &&$p->id_cliente == $usuario->id)   
-                        <tr class="neutro"><td class="td-border_none"></td></tr>
-                        <tr>
-                            <td class="border td-first"><p>{{$l->dataSaida}}</p></td>
-                            <td class="border"><p>{{$l->horario}}</p></td>
-                            <td class="td-rota border">
-                                {{$l->origem}}
-                                <br>
-                                {{$l->destino}}
-                            </td>
-                            <td  class="border"><p>{{$l->tipoLinha}}</p></td>
-                            <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
-                            <td  class="border td-last"><p>{{$l->preco}}</p></td>
-                        </tr>
-                    @endif
-                  @endif      
+                @foreach ($linha as $l)
+                    @foreach ($viajens as $v)
+                        @if($v->dataViajem < date('Y-m-d'))
+                            @if($p->id_linha == $l->id && $p->ativo == 0 && $p->id_cliente == $usuario->id)   
+                                <tr class="neutro"><td class="td-border_none"></td></tr>
+                                <tr>
+                                    <td class="border td-first"><p>{{$l->dataSaida}}</p></td>
+                                    <td class="border"><p>{{$l->horario}}</p></td>
+                                    <td class="td-rota border">
+                                        {{$l->origem}}
+                                        <br>
+                                        {{$l->destino}}
+                                    </td>
+                                    <td  class="border"><p>{{$l->tipoLinha}}</p></td>
+                                    <td  class="border td-last"><p>{{$l->preco}}</p></td>
+                                </tr>
+                            @endif
+                        @endif      
+                    @endforeach
                 @endforeach
             @endforeach
         </tbody>
