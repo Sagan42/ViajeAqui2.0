@@ -196,23 +196,10 @@ class LinhaController extends Controller
                 }
             }
         }
+
+        
         
         return view('verPassagens', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
-    }
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function linhaPesquisadaLogado(Request $request) {
-        $linhaPesquisada = new Linha;
-        $linhaPesquisada->origem = $request->SelecionarOrigem;
-        $linhaPesquisada->destino = $request->SelecionarDestino;
-        $linhaPesquisada->dataSaida = $request->dataSaida;
-        $linha = Linha::all();
-        return view('clients.selecionarPassagens', ['linhaPesquisada' => $linhaPesquisada, 'linha' => $linha]);
     }
 
     /**
@@ -224,12 +211,35 @@ class LinhaController extends Controller
     public function pagamento(Request $request)
     {   
         $id = $request->selecionado;
+        $id_comum = $request->num_linha;
+        $origemDaLinha = $request->origemLinha;
+        $destinoDaLinha = $request->destinoLinha;
         $dataSaida = $request->dataPesq;
         $horaSaida = $request->horaPesq;
-        $linhaComprada = Linha::findOrFail($id);
+        $tipoL = $request->tipoL;
+        $precoLinha = $request->precoLinha;
         
-        //dd($request->horaPesq);
-        return view('clients.formaPagamento',['idViajem' => $id, 'linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida]);
+        $linha = Linha::where('origem','like', '%' . $origemDaLinha . '%')->first();
+        $origemDaLinha = $linha->origem;
+
+        $linha = Linha::where('destino','like', '%' . $destinoDaLinha . '%')->first();
+        $destinoDaLinha = $linha->destino;
+        
+        if ($id_comum == null){
+            $linhaComprada = Linha::findOrFail($id);
+        } else {
+            $linhaComprada = Linha::where('num_linha', $id_comum)->first();
+        }
+        $linhaComprada = Linha::findOrFail($id);
+
+        return view('clients.formaPagamento',['idViajem' => $id, 
+                                            'linhaComprada'=>$linhaComprada, 
+                                            'dataSaida' => $dataSaida, 
+                                            'horaSaida' => $horaSaida,
+                                            'origemLinha' => $origemDaLinha,
+                                            'destinoLinha' => $destinoDaLinha,
+                                            'tipoLinha' => $tipoL,
+                                            'precoLinha' => $precoLinha]);
     }
 
     /**
@@ -248,16 +258,43 @@ class LinhaController extends Controller
 
         $dataSaida = $request->dataViajem;
         $horaSaida = $request->horaViajem;
+        $origemL = $request->origemL;
+        $destinoL = $request->destinoL;
+        $precoL = $request->precoL;
+
+        $origemL = Linha::where('origem','like', '%' . $origemL . '%')->first();
+        $origemL = $origemL->origem;
+        $destinoL = Linha::where('destino','like', '%' . $destinoL . '%')->first();
+        $destinoL = $destinoL->destino;        
+
         $data = Carbon::createFromFormat('d/m/Y', $dataSaida)->format('Y-m-d');
         $idLinha = $request->idViajem;
         $linhaComprada = Linha::findOrFail($idLinha);
-        $viajemBuscada = Viajem::where([['id_linha', '=', $linhaComprada->id]])->first();
-        
+        $viajemBuscada = Viajem::where([['id_linha', '=', $linhaComprada->id]])->first();        
+
+        if($viajemBuscada != null && $viajemBuscada->dataViajem == $data && $viajemBuscada->quantidadePassagem != 0){
+           $viajemBuscada->quantidadePassagem = ($viajemBuscada->quantidadePassagem - 1);
+           $viajemBuscada->save();
+        } else{
+            $viajem = new Viajem;
+            
+            $viajem->dataViajem = $data;
+            $viajem->horaViajem = $horaSaida;
+            $viajem->id_linha = $linhaComprada->id;
+            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem-1;
+            $viajem->save();
+            $viajemBuscada = $viajem;
+            
+        }
+
         $passagem = new Passagem;  
         $passagem->id_funcionario = null;
         $passagem->id_viajem = $viajemBuscada->id;
         $passagem->id_cliente = $usuario->id;
-        $passagem->ativo = 1;
+        $passagem->origem = $origemL;
+        $passagem->destino = $destinoL;
+        $passagem->preco = $precoL;
+        
         $passagem->diaVenda = Carbon::now()->format('Y-m-d');
         
         $comprado = 0;
@@ -267,24 +304,10 @@ class LinhaController extends Controller
             }
         }
 
-        
-
-        if($viajemBuscada != null && $viajemBuscada->dataViajem == $data && $viajemBuscada->quantidadePassagem != 0 && $comprado == 0){
-           $viajemBuscada->quantidadePassagem = ($viajemBuscada->quantidadePassagem - 1);
-           $viajemBuscada->save();
-           $passagem->save();
-        } else if ($comprado == 0){
-            $viajem = new Viajem;
-            
-            $viajem->dataViajem = $data;
-            $viajem->horaViajem = $horaSaida;
-            $viajem->id_linha = $linhaComprada->id;
-            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem-1;
-            $viajem->save();
-            $viajemBuscada = $viajem;
+        if($comprado == 0){
             $passagem->save();
-        }
-
+        }        
+        
         $passagens = Passagem::all();
         $viajens = Viajem::all();
         // Criar no front end de Minha passagem um alerta de mais de uma passagem por usuario

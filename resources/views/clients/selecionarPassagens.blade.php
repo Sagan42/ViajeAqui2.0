@@ -50,6 +50,11 @@
                         <form method ="POST" action="{{route('site.client.formaPagamento')}}">
                         @csrf    
                             <tr>
+                                <input type="hidden" name="num_linha" value={{$l->num_linha}}>
+                                <input type="hidden" name="origemLinha" value={{$l->origem}}>
+                                <input type="hidden" name="destinoLinha" value={{$l->destino}}>
+                                <input type="hidden" name="tipoL" value={{$l->tipoLinha}}>
+                                <input type="hidden" name="precoLinha" value={{$l->preco}}>
                                 <td class="border td-first"><p>{{$dataSaida}}</p><input type="hidden" name="dataPesq" value={{$dataSaida}}></td>
                                 <td class="border"><p>{{$a->hora}}</p><input type="hidden" name="horaPesq" value={{$a->hora}}></td>
                                 <td class="td-rota border">

@@ -106,7 +106,10 @@ create table passagem (
     id_cliente int not null,
     key fk_passagem_id_cliente(id_cliente),
     constraint fk_passagem_id_cliente foreign key (id_cliente) references cliente (id),
-    ativo boolean not null,
+    origem varchar(30),
+    destino varchar(30),
+    preco float,
+    tipoLinha varchar(6),
     diaVenda date not null
 );
 
@@ -197,9 +200,9 @@ values
 ('quinta-feira', '05:00', '4');
 
 insert into passagem
-(id_funcionario,id_cliente,id_viajem,ativo,diaVenda)
+(id_funcionario,id_cliente,id_viajem,diaVenda,origem,destino,preco,tipoLinha)
 values
-('1','1','1','1','2021-12-04'),
-('1','1','2','0','2021-12-04'),
-('1','2','1','0','2021-12-04'),
-('1','2','2','1','2021-12-04');
+('1','1','1','2021-12-04','Salvador','Camaçari','65.0','Direta'),
+('1','1','2','2021-12-04','Feira de Santana','Salvador','40.0','Direta'),
+('1','2','1','2021-12-04','Salvador','Camaçari','65.0','Direta'),
+('1','2','2','2021-12-04','Feira de Santana','Salvador','40.0','Direta');

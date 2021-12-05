@@ -14,5 +14,9 @@ class TrimStrings extends Middleware
     protected $except = [
         'password',
         'password_confirmation',
+        'origemLinha',
+        'destinoLinha',
+        'origemDaLinha',
+        'destinoDaLinha' // Here add your inputs
     ];
 }

@@ -102,6 +102,7 @@ class AgendaController extends Controller
                 }
             }
         }
+
         return view('clients.selecionarPassagens', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
         //var_dump($linhas);
     }

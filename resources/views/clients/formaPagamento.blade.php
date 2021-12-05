@@ -62,12 +62,12 @@
                 <td class="border td-first"><p>{{$dataSaida}}</p></td>
                 <td class="border"><p>{{$horaSaida}}</p></td>
                 <td class="td-rota border">
-                    {{$linhaComprada->origem}}
+                    {{$origemLinha}}
                     <br>
-                    {{$linhaComprada->destino}}
+                    {{$destinoLinha}}
                 </td>
-                <td  class="border"><p>{{$linhaComprada->tipoLinha}}</p></td>
-                <td  class="border td-last"><p>R${{$linhaComprada->preco}},00</p></td>
+                <td  class="border"><p>{{$tipoLinha}}</p></td>
+                <td  class="border td-last"><p>R${{$precoLinha}},00</p></td>
             </tr>
         </tbody>
         </thead>        
@@ -80,6 +80,9 @@
         <input type="hidden" name="dataViajem" value={{$dataSaida}}>
         <input type="hidden" name="horaViajem" value={{$horaSaida}}>
         <input type="hidden" name="idViajem" value={{$idViajem}}>
+        <input type="hidden" name="origemL" value={{$origemLinha}}>
+        <input type="hidden" name="destinoL" value={{$destinoLinha}}>
+        <input type="hidden" name="precoL" value={{$precoLinha}}>
         <a href="#" id="cartao" onclick= "modalPagamento(id)" style="margin-right: 10px">
             <div class = "retangulo-pagamento">
                 <div class ="retangulo-pagamento-interno">
@@ -112,6 +115,10 @@
 
         <button type="submit" class="btn blue-three" id="btnConfirmar">Confirmar Compra</button>
 
+        <div class="msgConfirmacao" id="msgConfirmacao">
+            <i class="fas fa-check-circle fa-3x"></i>
+            <p>Pagamento Confirmado!</p>
+        </div>
         <div class="msgConfirmacao" id="msgConfirmacao">
             <i class="fas fa-check-circle fa-3x"></i>
             <p>Pagamento Confirmado!</p>
