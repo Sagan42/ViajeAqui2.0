@@ -14,7 +14,7 @@
 
         </div>
         
-        <div class="container-numero-linha">
+        <div class="input-radio-linhas">
             <div>
                 <label for="radioDireta">Linha Direta &nbsp &nbsp</label>
                 <input type="radio" value="Direta" name="linha" id="radioDireta" placeholder="Origem">
@@ -45,7 +45,7 @@
 
             <label for="">Vagas</label>
             <input type="text" name="vagas" id="" >
-
+            
 
         </div>
 
@@ -74,8 +74,8 @@
         <div class="modalAgenda" id="modalAgenda">
             <div class = "modalAgendaInterno">
                 
-                <button id="botaoConfirmar" class="botaoConfirmar">Confirmar</button>
-                <button id="botaoFechar" class="botaoFechar">X</button>
+                <input type="button" value="X" id="botaoFechar" class="botaoFechar">
+                <input type="button" value="Confirmar" id="botaoConfirmar" class="botaoConfirmar">
                
                
                 <table class ="tabela-cadastro-linha">
@@ -100,6 +100,7 @@
                             
                             <td>
                             <input type="text" id="horarioSegunda" class="input-horario" disabled>
+                            
                                
                         </td>
 
@@ -114,6 +115,7 @@
 
                             <td>
                                 <input type="text" id="horarioTerca" class="input-horario" disabled>
+                                
                             </td>
 
                         </tr>
