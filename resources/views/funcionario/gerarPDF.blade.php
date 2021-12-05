@@ -7,12 +7,7 @@
     <title>Relatório</title>
 </head>
 <body>
-    <h1 style="text-align: center">Relatorio Referente ao dia {{$data}}</h1>
-    @if ($tipoRelatorio == 0)
-        <h2 style="text-align: center">Passagens Vendidas por Funcionario</h2>
-    @else
-        <h2 style="text-align: center">Passagens Vendidas por Linha</h2>
-    @endif
+    <h1 style="text-align: center">Passagens vendidas por linha </h1>
     <br>
     <table style="text-align: center;border-collapse: separate;border-spacing: 0px;width:90%;margin: 0 auto;">
         @if ($tipoRelatorio == 0)

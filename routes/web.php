@@ -9,6 +9,7 @@ use App\Http\Controllers\PassagemController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\RelatorioAdmController;
+use App\Http\Controllers\RelatorioFuncionarioController;
 use App\Models\Passagem;
 use App\Models\Linha;
 use App\Models\Usuario;
@@ -172,5 +173,5 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.mudaLogin');
     });
     // FUNCIONARIOS RELATORIOS ROTAS
-    //Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatoriosPassengensVendidiasFuncionario');
+    Route::get('/relatorios/passvendidaslinha', [RelatorioFuncionarioController::class, 'gerarRelatorio_passagensVendidasPorLinha'])->name('site.adm.relatoriosPassengensVendidiasLinha');
 });

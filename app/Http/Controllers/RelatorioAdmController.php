@@ -35,7 +35,6 @@ class RelatorioAdmController extends Controller
     }
 
     public function gerarRelatorio_passagensVendidasPorLinhaDia (Request $request){
-        $arrayLinha = DB::select('SELECT nome FROM funcionario INNER JOIN usuario ON funcionario.id_usuario = usuario.id  INNER JOIN passagem ON funcionario.id = passagem.id_funcionario WHERE diaVenda = ?',[$request->data]);
 
         $arrayLinha = DB::select('SELECT origem, destino, tipoLinha FROM passagem INNER JOIN linha on passagem.id_linha = linha.id WHERE diaVenda = ?',[$request->data]);
 
