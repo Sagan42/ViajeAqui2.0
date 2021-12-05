@@ -4,7 +4,7 @@
 <h2>Relatórios</h2>
     <div id="boxRelatorios">
         <a href="#">
-            <div class="subBoxRelatorio relLeft ">
+            <div class="subBoxRelatorio relLeft">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-line-chart fa-5x" aria-hidden="true"></i>
                 </div>
@@ -12,7 +12,7 @@
             </div>
         </a>
 
-        <a href="#">
+        <a href="relatorios/passvendidaslinha">
             <div class="subBoxRelatorio  relRight">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-road fa-5x" aria-hidden="true"></i>
@@ -29,9 +29,7 @@
                 <p id="titleRel">Linhas que mais vendeu</label>
             </div>
         </a>
-
-
-
     </div>
 </div>
+
 @endsection
