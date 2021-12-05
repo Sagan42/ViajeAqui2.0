@@ -3,16 +3,16 @@
 <div class="divRelatorio">
 <h2>Relatórios</h2>
     <div id="boxRelatorios">
-        <a href="#">
+        <a>
             <div class="subBoxRelatorio relLeft">
                 <div id="divRelInternal">
-                    <i id="iconsRelatorios" class="fa fa-line-chart fa-5x" aria-hidden="true"></i>
+                    <p>{{$passagensVendidas}}</p>
                 </div>
-                <label id="titleRel">Passagens vendidas</label>
+                <label style="cursor:default ;" id="titleRel">Passagens vendidas</label>
             </div>
         </a>
 
-        <a href="relatorios/passvendidaslinha">
+        <a href="relatorios/passvendidaslinha" target="_blank">
             <div class="subBoxRelatorio  relRight">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-road fa-5x" aria-hidden="true"></i>
@@ -21,7 +21,7 @@
             </div>
         </a>
 
-        <a href="#">
+        <a href="relatorios/linhasmaisvendidas" target="_blank">
             <div class="subBoxRelatorio subBoxRelatorio2 relLeft ">
                 <div id="divRelInternal">
                     <i id="iconsRelatorios" class="fa fa-bar-chart fa-5x" aria-hidden="true"></i>

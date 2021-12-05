@@ -34,6 +34,19 @@ class RelatorioAdmController extends Controller
 
     }
 
+    //
+
+    public function gerarRelatorio_passagensVendidasPorDia (Request $request){
+        $data = date('Y-m-d');
+        if($request->data != null){
+            $data = $request->data;
+        }
+        $passagensVendidas = DB::select('SELECT count(id) as qtd FROM passagem where diaVenda = ?' ,[$data]);
+        return view('adm.relatorios', ['passagensVendidas' => $passagensVendidas[0]->qtd, 'newData' => $data]);
+    }
+
+    //
+
     public function gerarRelatorio_passagensVendidasPorLinhaDia (Request $request){
 
         $arrayLinha = DB::select('SELECT origem, destino, tipoLinha FROM passagem INNER JOIN linha on passagem.id_linha = linha.id WHERE diaVenda = ?',[$request->data]);
