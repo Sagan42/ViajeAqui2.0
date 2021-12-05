@@ -52,42 +52,51 @@ class AgendaController extends Controller
         $diaSemanaPesquisado = Carbon::create($dataSaida)->locale('pt-BR')->dayName;
 
         foreach($agenda as $a){
-            //echo $a->dia_semana, '<br>';
-            //echo $diaSemanaPesquisado,'<br>';
-            $linhaBusc = Linha::find($a->id_linha);
-            //echo $linhaBusc, '<br>';
-            if($linhaBusc->origem == $request->SelecionarOrigem && $linhaBusc->destino == $request->SelecionarDestino && $a->dia_semana == $diaSemanaPesquisado){
-                array_push($linhas,$linhaBusc);
-                //echo $linhaBusc;
-            }else if($a->dia_semana == $diaSemanaPesquisado && $linhaBusc->tipoLinha == 'Comum'){
-                $linhaAux = $linhaBusc;
-                $linhaAux->preco = 0;
-                $linhaAux2 = null;
-                $preco = 0;
-
-                foreach ($linha as $l){
-                    if ($l->origem == $linhaPesq->origem && $l->destino == $linhaPesq->destino && $l->num_linha == $linhaBusc->num_linha) {
-                        array_push($linhas,$l);
-                        //echo $l;
-                    }else if($linhaBusc->origem == $linhaPesq->origem && $l->num_linha == $linhaBusc->num_linha){
-                        $linhaAux->preco += $l->preco;
-                        if($l->destino == $linhaPesq->destino){
-                            $linhaAux->destino = $l->destino;
-                            array_push($linhas,$linhaAux);
-                            //echo $linhaAux;
-                        }
-                    }elseif($l->num_linha == $linhaBusc->num_linha){
-                        if($l->origem == $linhaPesq->origem){
-                            $linhaAux2 = $l;
-                        }
-                        if ($linhaAux2 != null) {
-                            $preco += $l->preco;
-                            if($l->destino == $linhaPesq->destino){
-                                $linhaAux2->destino = $l->destino;
-                                $linhaAux2->preco = $preco;
-                                array_push($linhas,$linhaAux2);
-                                //echo $linhaAux2;
-                            }                            
+            if($a->dia_semana == $diaSemanaPesquisado) {
+                $linhaAux = Linha::find($a->id_linha);
+                if($linhaAux->tipoLinha == 'Direta'){
+                    if($linhaAux->origem == $request->SelecionarOrigem && $linhaAux->destino == $request->SelecionarDestino){
+                        array_push($linhas,$linhaAux);
+                    }
+                    
+                }else{
+                    $linhaPesquisada = $linhaAux;
+                    $linhaPesquisada->preco = 0;
+                    $destino = $linhaAux->destino;
+    
+                    $preco = 0;
+    
+                    foreach($linha as $l){
+                        if($l->num_linha == $linhaAux->num_linha){
+                            if($l->origem == $request->SelecionarOrigem && $l->destino == $request->SelecionarDestino){
+                                $l->id = $linhaAux->id;
+                                array_push($linhas,$l);
+                            }elseif($linhaAux->origem == $request->SelecionarOrigem){
+                                $preco += $l->preco;
+                                if($destino == $l->origem){
+                                    if($l->destino == $request->SelecionarDestino){
+                                        $linhaPesquisada->destino = $l->destino;
+                                        $linhaPesquisada->preco = $preco;
+                                        array_push($linhas,$linhaPesquisada);
+                                    }
+                                    $destino = $l->destino;
+                                }
+                            }else{
+                                if($l->origem == $request->SelecionarOrigem){
+                                    $linha = $l;
+                                    $linha->id = $linhaAux->id;
+                                    $preco = 0;
+                                }
+    
+                                if($linha != null || $linha->origem == $request->SelecionarOrigem){
+                                    $preco += $l->preco;
+                                    if($l->destino == $request->SelecionarDestino){
+                                        $linha->preco = $preco;
+                                        $linha->destino = $l->destino;
+                                        array_push($linhas,$linha);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
