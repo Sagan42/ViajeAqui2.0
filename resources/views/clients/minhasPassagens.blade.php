@@ -3,7 +3,12 @@
 @section('contentTelasCliente')
 <div class="content-selecionar-passagens">
     <h1 class="titulo color-blue-three"> Passagens Compradas </h1>
-
+    @if ($comprado == 1)
+        <div class="msgBloqueio" id="msgConfirmacao">
+            <i class="fas fa-times-circle fa-3x"></i>
+            <p>Você ja comprou passagem para está viajem!</p>
+        </div>
+    @endif   
     <table class="table">
         <thead >
             <tr class="blue-one">
@@ -75,8 +80,19 @@
             @endforeach
         </tbody>
     </table>
-
+     
 </div>
+<script>
+    const t = document.getElementById('msgConfirmacao')
 
+    setTimeout("bloqueioPassagem()", 4000);         
+    t.style.display = 'block'
+    t.classList.toggle('mostrar')
+
+    function bloqueioPassagem() {
+        t.style.display = "none";
+    }
+
+</script>
 @endsection
 

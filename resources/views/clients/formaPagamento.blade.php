@@ -119,10 +119,6 @@
             <i class="fas fa-check-circle fa-3x"></i>
             <p>Pagamento Confirmado!</p>
         </div>
-        <div class="msgConfirmacao" id="msgConfirmacao">
-            <i class="fas fa-check-circle fa-3x"></i>
-            <p>Pagamento Confirmado!</p>
-        </div>
     </form>
 </div>
 

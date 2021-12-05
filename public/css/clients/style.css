@@ -331,6 +331,22 @@
     border-radius: 10px;
 }
 
+.msgBloqueio {
+    display: none;
+    text-align: center;
+    height: 120px;
+    padding: 10px;
+    margin-right: 20px;
+    top: 100px;
+    right: 0;
+    color: red;
+    background-color: rgba(250, 143, 135, 0.925);
+    font-size: 15pt;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
 .mostrar {
     display: flex;
     flex-direction: column;
