@@ -38,9 +38,8 @@
     </table>
 
     <div class ="container-setas">
-        <i class="far fa-caret-square-left fa-2x"></i>
-        <input type="text" class = "caixa-direcao-tabela">
-        <i class="far fa-caret-square-right fa-2x"></i>
+        <ul>{{$usuarios->onEachSide(1)->links()}}</ul>
+        
     </div>
 
 

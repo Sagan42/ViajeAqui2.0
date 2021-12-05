@@ -7,6 +7,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Models\Adm;
 use App\Models\Usuario;
 use App\Models\Funcionario;
+use App\Models\Linha;
+
+
 
 class AdmController extends Controller
 {
@@ -141,4 +144,24 @@ class AdmController extends Controller
         $adm->admMaster = 1;
         $adm->save();
     }
+
+    public function listarFuncionarios(){
+
+        $usuarios = Usuario::where('tipoUsuario', '>=', "1")->orderBy('nome')->paginate(8);
+        return view('adm.funcionarios', compact('usuarios'));
+
+    }
+
+    public function listarCLientes(){
+
+        $clientes = Usuario::where('tipoUsuario', '=', "0")->orderBy('nome')->paginate(8);
+        return view('adm.listaClientes', compact('clientes'));
+
+    }
+
+    public function listarLinhas(){
+        $linhas = Linha::paginate(7);
+        return view('adm.listarLinhas', compact('linhas'));
+    }
+
 }

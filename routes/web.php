@@ -110,20 +110,11 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     })->name('site.adm.paginaLinhas');
 
 
-    Route::get('/listaClientes', function(){
-        $clientes = Usuario::where('tipoUsuario', '0')->orderBy('nome')->get();
-        return view('adm.listaClientes', compact('clientes'));
-    })->name('site.adm.listaClientes');
+    Route::get('/listarLinhas', [AdmController::class, 'listarLinhas'])->name('site.adm.listarLinhas');
 
-    Route::get('/listarLinhas', function(){
-        $linhas = Linha::all();
-        return view('adm.listarLinhas', compact('linhas'));
-    })->name('site.adm.listarLinhas');
+    Route::get('/listaClientes', [AdmController::class, 'listarClientes'])->name('site.adm.listaClientes');
 
-    Route::get('/funcionarios', function() {
-        $usuarios = Usuario::where('tipoUsuario', '>=', "1")->orderBy('nome')->get();
-        return view('adm.funcionarios', compact('usuarios'));
-    })->name('site.adm.funcionarios');
+    Route::get('/funcionarios', [AdmController::class, 'listarFuncionarios'])->name('site.adm.funcionarios');
 
     Route::get('/editarUsuario/{id}', function($id) {
         $funcionarios = Usuario::where('tipoUsuario', '>=','1')->get();
