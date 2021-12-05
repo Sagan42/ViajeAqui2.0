@@ -125,10 +125,6 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
         return view('adm.funcionarios', compact('usuarios'));
     })->name('site.adm.funcionarios');
 
-    Route::get('/relatorios', function() {
-        return view('adm.relatorios');
-    })->name('site.adm.relatorios');
-
     Route::get('/editarUsuario/{id}', function($id) {
         $funcionarios = Usuario::where('tipoUsuario', '>=','1')->get();
         return view('adm.editarUsuario' ,['id'=> $id], compact('funcionarios'));
@@ -137,6 +133,8 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     Route::post('/editarUsuario/{id}', [AdmController::class, 'update'])->name('site.adm.editarUsuario');
 
     // ADM RELATORIOS ROTAS
+
+    Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia'])->name('site.adm.relatorios');
 
     Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatorios.PassengensVendidasFuncionario');
 
