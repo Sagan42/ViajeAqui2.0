@@ -5,9 +5,14 @@
 
 <div class = "container-listar-clientes">
     <div class="container-pesquisa">
+        <form action="{{route("site.adm.pesquisarFuncionarios")}}" method="GET">
+
             <i class="fas fa-search"></i>
             <label for="pesquisaClientes">Pesquisa de Funcionários </label> 
-            <input type="text">
+            <input type="text" name="nome" title="Nome do Funcionario">
+            <button type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
+    
+        </form>    
     </div>
     
     <table>
@@ -19,26 +24,38 @@
             <th id="final-th">Detalhes/Editar</th>
         </thead>
         
-        @foreach ($usuarios as $usuario)
-        <tr>
-            <td> {{ $loop->index }} </td>
-            <td> {{ $usuario->nome }} </td>
-            <td> {{ $usuario->cpf }} </td>
-             
-            @if($usuario->tipoUsuario == 1)
-            <td>Funcionario</td>
-            @elseif ($usuario->tipoUsuario == 2)
-            <td>Administrador</td>
-            @endif 
+        @if(empty($usuarios))
             
-            <td> <a href="/adm/editarUsuario/{{$usuario->id}}"><i class="fa fa-eye"></i></a> </td>
-        </tr>
-        @endforeach
+        @else
 
+            @foreach ($usuarios as $usuario)
+                <tr>
+                    <td> {{ $loop->index }} </td>
+                    <td> {{ $usuario->nome }} </td>
+                    <td> {{ $usuario->cpf }} </td>
+                    
+                    @if($usuario->tipoUsuario == 1)
+                    <td>Funcionario</td>
+                    @elseif ($usuario->tipoUsuario == 2)
+                    <td>Administrador</td>
+                    @endif 
+                    
+                    <td> <a href="/adm/editarUsuario/{{$usuario->id}}"><i class="fa fa-eye"></i></a> </td>
+                </tr>
+            @endforeach
+        @endif
     </table>
 
     <div class ="container-setas">
+
+        @if(isset($filtro))
+        <ul>{{$usuarios->appends($filtro)->onEachSide(1)->links()}}</ul> 
+    
+        @else
+
         <ul>{{$usuarios->onEachSide(1)->links()}}</ul>
+        
+        @endif    
         
     </div>
 

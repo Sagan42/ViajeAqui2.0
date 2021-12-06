@@ -115,6 +115,10 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
 
     Route::get('/listaClientes', [AdmController::class, 'listarClientes'])->name('site.adm.listaClientes');
 
+    Route::any('listaClientes/search', [AdmController::class, 'pesquisarClientes'])->name('site.adm.pesquisarClientes');
+
+    Route::any('listaFuncionarios/search', [AdmController::class, 'pesquisarFuncionarios'])->name('site.adm.pesquisarFuncionarios');
+
     Route::get('/editarClientes/{id}', function($id) {
         $clientes = Cliente::find($id);
         $usuario = Usuario::find($clientes->id_usuario);

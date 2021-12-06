@@ -61,3 +61,27 @@
   
   }
   
+ .btnPesquisar{
+
+    height: 30px;
+    width: 30px;
+
+    color: #fff;
+    background-color: var(--cor-secundaria);
+
+    border: none;
+    border-radius: 40%;
+    cursor: pointer;
+
+  }
+
+  .btnPesquisar:hover{
+    background-color: #135c8a;
+    transition: .5s;
+  }
+
+  label[for="pesquisaClientes"]{
+   
+    font-size: 15pt;
+
+  }
