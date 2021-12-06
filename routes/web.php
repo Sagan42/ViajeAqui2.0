@@ -13,6 +13,7 @@ use App\Http\Controllers\RelatorioFuncionarioController;
 use App\Models\Passagem;
 use App\Models\Linha;
 use App\Models\Usuario;
+use App\Models\Cliente;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,14 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     Route::get('/listarLinhas', [AdmController::class, 'listarLinhas'])->name('site.adm.listarLinhas');
 
     Route::get('/listaClientes', [AdmController::class, 'listarClientes'])->name('site.adm.listaClientes');
+
+    Route::get('/editarClientes/{id}', function($id) {
+        $clientes = Cliente::find($id);
+        $usuario = Usuario::find($clientes->id_usuario);
+        return view('adm.editarCliente' ,['id'=> $id], compact('usuario'));
+    })->name('site.adm.editarClientes');
+
+    Route::post('/editarClientes/{id}', [AdmController::class, 'updateUsuario'])->name('site.adm.editarCliente');
 
     Route::get('/funcionarios', [AdmController::class, 'listarFuncionarios'])->name('site.adm.funcionarios');
 

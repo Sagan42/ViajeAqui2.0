@@ -26,7 +26,7 @@
             <td> {{ $loop->index }} </td>
             <td> {{ $cliente->nome }} </td>
             <td> {{ $cliente->cpf }} </td>
-            <td><i class="far fa-eye"></i></td>
+            <td><a href="/adm/editarClientes/{{$cliente->id}}"><i class="far fa-eye"></i></td>
         </tr>
         @endforeach
 

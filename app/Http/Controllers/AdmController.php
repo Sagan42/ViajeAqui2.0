@@ -8,7 +8,7 @@ use App\Models\Adm;
 use App\Models\Usuario;
 use App\Models\Funcionario;
 use App\Models\Linha;
-
+use App\Models\Cliente;
 
 
 class AdmController extends Controller
@@ -114,6 +114,21 @@ class AdmController extends Controller
         }
 
         return redirect()->route('site.adm.funcionarios');
+    }
+
+    public function updateUsuario(Request $request, $id){
+
+        $clientes = Cliente::find($id);
+        $usuario = Usuario::find($clientes->id_usuario);
+
+        $usuario->nome = $request->editNome;
+        $usuario->senha = $request->editSenha;
+        $usuario->cpf = $request->editCPF;
+        $usuario->celular = $request->editCelular; 
+        $usuario->email = $request->editEmail;
+        $usuario->save();
+
+        return redirect()->route('site.adm.listaClientes');
     }
 
     /**
