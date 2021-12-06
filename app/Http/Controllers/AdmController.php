@@ -184,7 +184,8 @@ class AdmController extends Controller
         
         $clientes = Usuario::where('tipoUsuario', '=', '0')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
         $filtro = $request->all();  
-        return view('adm.listaClientes', compact('clientes','filtro'));
+        $nome = $request->nome;  
+        return view('adm.listaClientes', compact('clientes','filtro','nome'));
 
 
     }
@@ -192,8 +193,9 @@ class AdmController extends Controller
     public function pesquisarFuncionarios(Request $request){
         
         $usuarios = Usuario::where('tipoUsuario', '>=', '1')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
-        $filtro = $request->all();  
-        return view('adm.funcionarios', compact('usuarios','filtro'));
+        $filtro = $request->all();
+        $nome = $request->nome;  
+        return view('adm.funcionarios', compact('usuarios','filtro','nome'));
 
 
     }

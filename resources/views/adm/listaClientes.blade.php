@@ -12,7 +12,15 @@
             
             <i class="fas fa-search"></i>
             <label for="pesquisaClientes">Pesquisa de Clientes </label> 
-            <input type="text" name="nome" title="Nome do Cliente">
+
+            @if(isset($nome))
+            
+                <input  class="inputPesquisa" type="text" name="nome" title="Nome do Cliente" value="{{$nome}}">
+           
+            @else
+                <input  class="inputPesquisa" type="text" name="nome" title="Nome do Cliente" placeholder="Nome do Cliente">
+            @endif
+            
             <button  type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
         </form>
     </div>

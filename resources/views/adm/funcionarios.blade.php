@@ -8,8 +8,14 @@
         <form action="{{route("site.adm.pesquisarFuncionarios")}}" method="GET">
 
             <i class="fas fa-search"></i>
-            <label for="pesquisaClientes">Pesquisa de Funcionários </label> 
-            <input type="text" name="nome" title="Nome do Funcionario">
+            <label for="pesquisaClientes">Pesquisa de Funcionários </label>
+
+            @if(isset($nome))
+                <input class="inputPesquisa" type="text" name="nome" title="Nome do Funcionario" value="{{$nome}}">
+            @else
+                <input class="inputPesquisa" type="text" name="nome" title="Nome do Funcionario" placeholder="Nome do Funcionario">
+            @endif
+          
             <button type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
     
         </form>    
@@ -49,11 +55,12 @@
     <div class ="container-setas">
 
         @if(isset($filtro))
-        <ul>{{$usuarios->appends($filtro)->onEachSide(1)->links()}}</ul> 
+
+            <ul>{{$usuarios->appends($filtro)->onEachSide(1)->links()}}</ul> 
     
         @else
 
-        <ul>{{$usuarios->onEachSide(1)->links()}}</ul>
+            <ul>{{$usuarios->onEachSide(1)->links()}}</ul>
         
         @endif    
         
