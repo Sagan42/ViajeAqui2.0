@@ -5,10 +5,23 @@
 <h2 class = "tituloPagina">Listagem de Linhas</h2>
 
         <div class = "container-listar-linhas">
+            
             <div class="container-pesquisa">
+                
+                <form action="{{route("site.adm.pesquisarLinhas")}}" method="GET">
+                    
                     <i class="fas fa-search"></i>
-                    <label for="pesquisaLinha">Pesquisa de Linhas </label> 
-                    <input type="text">
+                        <label for="pesquisaLinhas">Pesquisa de Linhas </label>
+                        
+                        @if(isset($nome))
+                            <input class="inputPesquisa" type="text" name="nome" title="Nome da Linha" value="{{$nome}}">
+                        @else
+                            <input class="inputPesquisa" type="text" name="nome" title="Nome da Linha" placeholder="Nome da Linha">
+                        @endif
+
+                        <button  type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
+                </form>            
+            
             </div>
             
             <table>
@@ -31,7 +44,13 @@
             </table>
 
             <div class ="container-setas">
-                <ul>{{$linhas->onEachSide(1)->links()}}</ul>        
+                
+                @if(isset($filtro))
+                    <ul>{{$linhas->appends($filtro)->onEachSide(1)->links()}}</ul>         
+                @else    
+                    <ul>{{$linhas->onEachSide(1)->links()}}</ul>            
+                @endif         
+            
             </div>
 
 

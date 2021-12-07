@@ -199,4 +199,13 @@ class AdmController extends Controller
 
 
     }
+
+    public function pesquisarLinhas(Request $request){
+        
+        $linhas = Linha::where('origem', 'LIKE', "%{$request->nome}%")->orWhere('destino', 'LIKE', "%{$request->nome}%")->paginate(7);
+        $filtro = $request->all();
+        $nome = $request->nome;  
+        return view('adm.listarLinhas', compact('linhas','filtro','nome'));
+    
+    }
 }

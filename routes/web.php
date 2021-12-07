@@ -119,6 +119,8 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
 
     Route::any('listaFuncionarios/search', [AdmController::class, 'pesquisarFuncionarios'])->name('site.adm.pesquisarFuncionarios');
 
+    Route::any('listarLinhas/search', [AdmController::class, 'pesquisarLinhas'])->name('site.adm.pesquisarLinhas');
+
     Route::get('/editarClientes/{id}', function($id) {
         $clientes = Cliente::find($id);
         $usuario = Usuario::find($clientes->id_usuario);

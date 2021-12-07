@@ -130,6 +130,12 @@
     border-radius: 10px;
     
   }
+
+  label[for="pesquisaLinhas"]{
+   
+    font-size: 15pt;
+
+  }
  
   span.page-link{
     color: #fff;
