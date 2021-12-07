@@ -33,7 +33,7 @@ h2.tituloPagina{
   flex-direction: column;
   margin: auto auto;
   height: 80%;
-  width: 750px;
+  width: 850px;
   grid-column: 2;
   grid-row: 1;
   gap: 20px;

@@ -27,8 +27,8 @@
     
     <table>
         <thead>
-            <th id="inicio-th"> # </th>
-            <th >Nome</th>
+            
+            <th id="inicio-th">Nome</th>
             <th>CPF</th>
             <th id="final-th">Detalhes/Editar</th>
         </thead>
@@ -44,7 +44,7 @@
 
             @foreach ($clientes as $cliente)
             <tr>
-                <td> {{ $loop->index }} </td>
+                
                 <td> {{ $cliente->nome }} </td>
                 <td> {{ $cliente->cpf }} </td>
                 <td><a href="/adm/editarClientes/{{$cliente->id}}" title="Editar Cliente"><i class="far fa-eye"></i></td>

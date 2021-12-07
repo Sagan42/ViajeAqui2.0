@@ -26,8 +26,8 @@
             
             <table>
                 <thead>
-                    <th id="inicio-th">&nbsp # &nbsp</th>
-                    <th>Origem</th>
+                    
+                    <th id="inicio-th">Origem</th>
                     <th>Destino</th>
                     <th>Tipo da Linha</th>
                     <th id="final-th">Detalhes</th>
@@ -44,7 +44,7 @@
                 @else
                    @foreach ($linhas as $linha)
                     <tr>
-                        <td>{{ $loop->index}}</td>
+                       
                         <td>{{ $linha->origem }}</td>
                         <td> {{ $linha->destino }}</td>
                         <td>{{ $linha->tipoLinha }}</td>

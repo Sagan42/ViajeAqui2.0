@@ -23,8 +23,8 @@
     
     <table>
         <thead>
-            <th id="inicio-th"> # </th>
-            <th >Nome</th>
+           
+            <th id="inicio-th">Nome</th>
             <th>CPF</th>
             <th>Permissao</th>
             <th id="final-th">Detalhes/Editar</th>
@@ -41,7 +41,7 @@
         
             @foreach ($usuarios as $usuario)
                 <tr>
-                    <td> {{ $loop->index }} </td>
+                   
                     <td> {{ $usuario->nome }} </td>
                     <td> {{ $usuario->cpf }} </td>
                     
