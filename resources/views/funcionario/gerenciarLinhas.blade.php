@@ -1,68 +1,70 @@
 @extends('components.layoutTelaFuncionario')
+
 @section('contentTelaFuncionario')
-<div class="divGerenciarLinhas">
-    <h2>Gerenciar Linhas<h2>
 
-    <div class="divTabela">
-        <div class="container-pesquisa">
-            <i class="fas fa-search"></i>
-            <label for="pesquisaLinhas">Pesquisar por Linhas </label> 
-            <input type="text">
-        </div>
 
-        <table>
-            <thead>
-                <th id="inicio-th"> Nº </th>
-                <th>TIPO</th>
-                <th>ORIGEM</th>
-                <th>DESTINO</th>
-                <th>PREÇO</th>
-                <th id="final-th">EDITAR</th>
-            </thead>
-        
-            <tr id="lineImpar">
-                <td id="inicio-th" > 1 </td>
-                <td> LINHA DIRETA </td>
-                <td> FEIRA DE SANTANA, BA </td>
-                <td> SALVADOR, BA </td>
-                <td> R$ 50,00 </td>
-                <td id="final-th"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr id="linePar">
-                <td id="inicio-th"> 2 </td>
-                <td> LINHA DIRETA </td>
-                <td> FEIRA DE SANTANA, BA </td>
-                <td> SALVADOR, BA </td>
-                <td> R$ 50,00 </td>
-                <td id="final-th"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr id="lineImpar">
-                <td id="inicio-th"> 3 </td>
-                <td> LINHA DIRETA </td>
-                <td> FEIRA DE SANTANA, BA </td>
-                <td> SALVADOR, BA </td>
-                <td> R$ 50,00 </td>
-                <td id="final-th"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr id="linePar">
-                <td id="inicio-th"> 4 </td>
-                <td> LINHA DIRETA </td>
-                <td> FEIRA DE SANTANA, BA </td>
-                <td> SALVADOR, BA </td>
-                <td> R$ 50,00 </td>
-                <td id="final-th"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-            </tr>
-        </table>
-    <!--
-        <div class="navegacao">
-            <i class="far fa-caret-square-left fa-2x" style="float: left;"></i>
-                <div class="divSpan">
-                <span id="n1">1<span>
-            </div>
-            <i class="far fa-caret-square-right fa-2x"></i>
+        <div class = "container-listar-linhas">
             
+            <h2 class = "tituloPagina" >Gerenciar Linhas</h2>
+            <div class="container-pesquisa">
+                
+                <form action="{{route("site.funcionario.gerenciarLinhas")}}" method="GET">
+                    
+                    <i class="fas fa-search"></i>
+                        <label for="pesquisaLinhas">Pesquisa de Linhas </label>
+                        
+                        @if(isset($nome))
+                            <input class="inputPesquisa" type="text" name="nome" title="Nome da Linha" value="{{$nome}}">
+                        @else
+                            <input class="inputPesquisa" type="text" name="nome" title="Nome da Linha" placeholder="Nome da Linha">
+                        @endif
+
+                        <button  type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
+                </form>            
+            
+            </div>
+            
+            <table>
+                <thead>
+                    <th id="inicio-th">&nbsp # &nbsp</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Tipo da Linha</th>
+                    <th id="final-th">Detalhes</th>
+                </thead>
+                
+                @if($linhas->total() == 0)
+
+                    <tr style="background-color: #fff;" >
+                        <td colspan="5" style="text-align: center;color: #810000d0; font-weight: bold" >
+                        Sem Resultados
+                        </td>
+                    </tr>
+                    
+                @else
+                   @foreach ($linhas as $linha)
+                    <tr>
+                        <td>{{ $loop->index }}</td>
+                        <td>{{ $linha->origem }}</td>
+                        <td> {{ $linha->destino }}</td>
+                        <td>{{ $linha->tipoLinha }}</td>
+                        <td><a href=""><i class="far fa-eye"></i></a></td>
+                    </tr>
+                    @endforeach
+                @endif
+            </table>
+
+            <div class ="container-setas">
+                
+                @if(isset($filtro))
+                    <ul>{{$linhas->appends($filtro)->onEachSide(1)->links()}}</ul>         
+                @else    
+                    <ul>{{$linhas->onEachSide(1)->links()}}</ul>            
+                @endif         
+            
+            </div>
+
+
+
         </div>
-    -->
-    </div> 
-</div>
 @endsection

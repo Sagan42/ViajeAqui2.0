@@ -169,7 +169,7 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.venderpassagens');
     });
 
-    Route::get('/gerenciarLinhas', [LinhaController::class, 'index'])->name('site.funcionario.gerenciarLinhas');
+    Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
     Route::prefix('/mudarLogin')->group(function(){
         Route::get('/', function () {

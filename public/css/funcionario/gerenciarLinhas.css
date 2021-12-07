@@ -1,104 +1,193 @@
-.divGerenciarLinhas{
+
+h2.tituloPagina{
+  color: #135c8a;
+  
+  font-size: 25pt;
+  text-align: center;
+}
+.container-pesquisa{
+
+  color: #135c8a;
+  font-weight: bold;
+  font-size: 13pt;
+  align-self: flex-end;
+  
+
+}
+
+.container-pesquisa input{
+
+  border: none;
+  
+  padding: 5px;
+  border-radius: 7px;
+  text-align: center;
+  outline-color: #135c8a;
+
+}
+.container-listar-linhas{
+
+
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  height: 100vh;
-  width: auto;
+  margin: auto auto;
+  height: 80%;
+  width: 750px;
   grid-column: 2;
   grid-row: 1;
+  gap: 20px;
+  border-radius: 20px;
+  padding: 10px 10px;
+  color: #000;
+
+  transform: translateY(-70px);
+
 }
 
-.divGerenciarLinhas h2{
-  margin: 2.5% auto 3% auto;
-  color: #1b4965;
-}
 
-.container-pesquisa{
-    color: #135c8a;
-    font-weight: bold;
-    font-size: 13pt;
-    align-self: flex-end;
-  }
+.container-listar-linhas table{
   
-  .container-pesquisa input{
-    border: none;
-    padding: 5px;
-    border-radius: 7px;
-    text-align: center;
-    outline-color: #135c8a;
-  }
-
-.divGerenciarLinhas .divTabela{
-  margin: 0 auto auto auto;
-  width: 95%;
-  height: 85%;
+    width: 100%;
+    background-color: rgb(235, 217, 217); 
+    border-radius: 20px;
+    border : 0 1px 1px 1px solid rgba(95, 168, 211, 0.99);
+    border-collapse: collapse;
+    
 }
 
-.divGerenciarLinhas .divTabela .container-pesquisa{
-  float: right;
+.container-listar-linhas table tr:nth-child(even){
+    background-color: #fff;
 }
 
-.divGerenciarLinhas .divTabela table{
-  margin-top: 4%;
-  margin-bottom: 4%;
-  border-collapse: collapse;
-  float: right;
-  width: 100%;
-  font-size: 11pt;
+.container-listar-linhas thead{
+
+
+  background-color:var(--cor-secundaria);
+  border: 1px solid #135c8a;
+  border-radius: 20px; 
+  border: none;
+  font-size: 18pt;
+  
+
+
+}
+.container-listar-linhas th{
+
+  padding: 10px;
+}
+
+
+
+.container-listar-linhas td{
+
+  
+  border: none;
   text-align: center;
+  padding: 0px;
+  font-size: 18pt;
+  padding: 10px;
+  
+
 }
 
-
-.divGerenciarLinhas .divTabela thead{
-  background-color: #1b4965;
-  color:white;
-}
-.divGerenciarLinhas .divTabela th{
-  padding: 1.5%;
-}
-.divGerenciarLinhas .divTabela td{
-  color: black;
-  padding: 1.5%;
-}
-
-.fa-pencil-square-o{
-  color:black;
-}
-
-#linePar{
-   background-color: rgb(235, 217, 217); 
-}
-
-#lineImpar{
-  background-color: white;
-}
 
 #inicio-th{
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+
+  border-top-left-radius: 20px;
+
 }
+
 #final-th{
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 20px;
 }
 
-.navegacao{
-  float: right;
-  width: 17%;
-  height: 5%;
-  background-color: white;
+.container-setas{
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  
+ 
+  align-self: flex-end;
 }
 
-
-.navegacao .divSpan{
-  float: left;
-  margin: 2.5%;
-  width: 31.5%;
-  height: 100%;
-  border: 3px solid black;
-  border-radius: 10%;
-  background-color: var(--cor-primaria);
-  color: white;
-  font-size: 15pt;
+.caixa-direcao-tabela{
+  height: 27px;
+  width: 30px;
   text-align: center;
+  margin: 0 5px;
+  border: 1px solid;
+ 
+
+}
+
+.container-setas ul{
+
+  display: flex;
+  justify-content: space-around;    
+  list-style: none;
+
+}
+
+.container-setas ul li{
+
+
+  margin: 0 10px;
+  font-size: 17pt;
+  padding: 5px 10px;
+  background-color: var(--cor-secundaria);
+  border-radius: 10px;
+  
+}
+
+label[for="pesquisaLinhas"]{
+ 
+  font-size: 15pt;
+
+}
+a i.fa-eye{
+  color: #000;
+}
+
+a i.fa-eye:hover{
+  color: var(--cor-secundaria);
+}
+
+span.page-link{
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff
+} 
+
+.page-link{
+  font-weight: bolder;
+  color: #000;
+}
+
+ 
+.btnPesquisar{
+
+  height: 30px;
+  width: 30px;
+
+  color: #fff;
+  background-color: var(--cor-secundaria);
+
+  border: none;
+  border-radius: 40%;
+  cursor: pointer;
+
+}
+
+.btnPesquisar:hover{
+  background-color: #135c8a;
+  transition: .5s;
+}
+
+.inputPesquisa{
+
+  font-size: 13pt;
+  font-weight: bold;
+  color: #135c8a;
+
 }

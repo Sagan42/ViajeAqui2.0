@@ -22,8 +22,8 @@ class LinhaController extends Controller
      */
     public function index()
     {
-        $linhas = Linha::paginate(7);
-        return view('adm.listarLinhas', compact('linhas'));
+        // $linhas = Linha::paginate(7);
+        // return view('funcionario.gerenciarLinhas', compact('linhas'));
     }
 
     /**
@@ -328,5 +328,14 @@ class LinhaController extends Controller
         $viajens = Viajem::all();
 
         return view('clients.minhasPassagens',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
+    }
+
+
+    public function listarLinhaFuncionario(Request $request){
+        
+        $linhas = Linha::where('origem', 'LIKE', "%{$request->nome}%")->orWhere('destino', 'LIKE', "%{$request->nome}%")->paginate(7);
+        $filtro = $request->all();
+        $nome = $request->nome;  
+        return view('funcionario.gerenciarLinhas', compact('linhas','filtro','nome'));
     }
 }
