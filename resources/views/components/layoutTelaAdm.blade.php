@@ -35,6 +35,7 @@
 
 
            <p>Administrador</p>
+           <p>{{Session::get('usuario.nome')}}</p>
 
            <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
 
@@ -67,8 +68,7 @@
             <div class="modal">
                 <button class="fechar">X</button>
 
-                <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
-                <input type="file" name="foto" id="input-foto" accept = "image/png image/jpg" onchange = "alterarFoto(id)" >
+                <h3>Minha Conta</h3>
 
                 <label for="nome">Nome</label>
                 <input type="text" value="{{Session::get('usuario.nome')}}">
@@ -85,7 +85,6 @@
                 <label for="email">Email</label>
                 <input type="text" value="{{Session::get('usuario.email')}}">
 
-                <input type="submit" href="/adm/#/{{Session::get('usuario.id')}}" value="Confirmar">
             </div>
         </div>
 </body>
