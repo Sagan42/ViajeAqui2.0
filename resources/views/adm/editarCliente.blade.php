@@ -5,8 +5,7 @@
         <h2>Dados Cadastrais</h2>  
         <form action="" method="post" class="form-editar-usuario">
           @csrf
-          
-                <div>
+            <div>
                 <label for="" >Nome   </label>
                 <input type="text" name="editNome" value ="{{$usuario->nome}}" class = "input-editar-usuario"> 
                 </div>
@@ -33,7 +32,7 @@
               
                 <div class="div-permissao">
 
-                <div class="container-botao-editar-usuario"> 
+                <div class="container-botao-editar-usuario">
                     <button>
                         Cancelar
                     </button>
@@ -42,8 +41,7 @@
                         Confirmar
                     </button>
                 </div>
-            </div>
-              
+            </div>   
         </form>
     </div>
 @section('contentTelaAdm')
