@@ -136,6 +136,10 @@
     font-size: 15pt;
 
   }
+
+  a i.fa-eye:hover{
+    color: var(--cor-secundaria);
+  }
  
   span.page-link{
     color: #fff;
