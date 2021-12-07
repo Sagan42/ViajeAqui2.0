@@ -33,7 +33,12 @@
             <th id="final-th">Detalhes/Editar</th>
         </thead>
         
-        @if(empty($clientes))
+        @if($clientes->total() == 0)
+            <tr style="background-color: #fff;" >
+                <td colspan="5" style="text-align: center;color: #810000d0; font-weight: bold" >
+                Sem Resultados
+                </td>
+            </tr>
             
         @else
 

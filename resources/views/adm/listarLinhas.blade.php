@@ -32,15 +32,24 @@
                     <th id="final-th">Detalhes</th>
                 </thead>
                 
-                @foreach ($linhas as $linha)
-                <tr>
-                    <td>{{ $linha->id }}</td>
-                    <td>{{ $linha->origem }}/ {{ $linha->destino }}</td>
-                    <td>{{ $linha->tipoLinha }}</td>
-                    <td><i class="far fa-eye"></i></td>
-                </tr>
-                @endforeach
+                @if($linhas->total() == 0)
 
+                    <tr style="background-color: #fff;" >
+                        <td colspan="5" style="text-align: center;color: #810000d0; font-weight: bold" >
+                        Sem Resultados
+                        </td>
+                    </tr>
+                    
+                @else
+                   @foreach ($linhas as $linha)
+                    <tr>
+                        <td>{{ $linha->id }}</td>
+                        <td>{{ $linha->origem }}/ {{ $linha->destino }}</td>
+                        <td>{{ $linha->tipoLinha }}</td>
+                        <td><a href=""><i class="far fa-eye"></i></a></td>
+                    </tr>
+                    @endforeach
+                @endif
             </table>
 
             <div class ="container-setas">

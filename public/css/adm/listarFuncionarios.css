@@ -93,7 +93,7 @@
     list-style: none;
 
   }
-
+ 
   .container-setas ul li{
 
 
@@ -116,6 +116,10 @@
     color: #000;
   }
   
+  a i.fa-eye:hover{
+    color: var(--cor-secundaria);
+    
+  }
   
   
   
