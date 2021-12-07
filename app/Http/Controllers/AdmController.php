@@ -7,6 +7,9 @@ use App\Http\Controllers\UsuarioController;
 use App\Models\Adm;
 use App\Models\Usuario;
 use App\Models\Funcionario;
+use App\Models\Linha;
+use App\Models\Cliente;
+
 
 class AdmController extends Controller
 {
@@ -113,6 +116,21 @@ class AdmController extends Controller
         return redirect()->route('site.adm.funcionarios');
     }
 
+    public function updateUsuario(Request $request, $id){
+
+        $clientes = Cliente::find($id);
+        $usuario = Usuario::find($clientes->id_usuario);
+
+        $usuario->nome = $request->editNome;
+        $usuario->senha = $request->editSenha;
+        $usuario->cpf = $request->editCPF;
+        $usuario->celular = $request->editCelular; 
+        $usuario->email = $request->editEmail;
+        $usuario->save();
+
+        return redirect()->route('site.adm.listaClientes');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -140,5 +158,54 @@ class AdmController extends Controller
         $adm->id_usuario = $id_usuario;
         $adm->admMaster = 1;
         $adm->save();
+    }
+
+    public function listarFuncionarios(){
+
+        $usuarios = Usuario::where('tipoUsuario', '>=', "1")->orderBy('nome')->paginate(8);
+        return view('adm.funcionarios', compact('usuarios'));
+
+    }
+
+    public function listarCLientes(){
+
+        $clientes = Usuario::where('tipoUsuario', '=', "0")->orderBy('nome')->paginate(8);
+        return view('adm.listaClientes', compact('clientes'));
+
+    }
+
+    public function listarLinhas(){
+        $linhas = Linha::paginate(7);
+        return view('adm.listarLinhas', compact('linhas'));
+    }
+
+
+    public function pesquisarClientes(Request $request){
+        
+        $clientes = Usuario::where('tipoUsuario', '=', '0')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
+        $filtro = $request->all();  
+        $nome = $request->nome;  
+        return view('adm.listaClientes', compact('clientes','filtro','nome'));
+
+
+    }
+
+    public function pesquisarFuncionarios(Request $request){
+        
+        $usuarios = Usuario::where('tipoUsuario', '>=', '1')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
+        $filtro = $request->all();
+        $nome = $request->nome;  
+        return view('adm.funcionarios', compact('usuarios','filtro','nome'));
+
+
+    }
+
+    public function pesquisarLinhas(Request $request){
+        
+        $linhas = Linha::where('origem', 'LIKE', "%{$request->nome}%")->orWhere('destino', 'LIKE', "%{$request->nome}%")->paginate(7);
+        $filtro = $request->all();
+        $nome = $request->nome;  
+        return view('adm.listarLinhas', compact('linhas','filtro','nome'));
+    
     }
 }

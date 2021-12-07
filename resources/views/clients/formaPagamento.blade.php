@@ -79,10 +79,11 @@
     @csrf 
         <input type="hidden" name="dataViajem" value={{$dataSaida}}>
         <input type="hidden" name="horaViajem" value={{$horaSaida}}>
-        <input type="hidden" name="idViajem" value={{$idViajem}}>
+        <input type="hidden" name="idLinhaComprada" value={{$linhaID}}>
         <input type="hidden" name="origemL" value={{$origemLinha}}>
         <input type="hidden" name="destinoL" value={{$destinoLinha}}>
         <input type="hidden" name="precoL" value={{$precoLinha}}>
+        <input type="hidden" name="tipoLinhaC" value={{$tipoLinha}}>
         <a href="#" id="cartao" onclick= "modalPagamento(id)" style="margin-right: 10px">
             <div class = "retangulo-pagamento">
                 <div class ="retangulo-pagamento-interno">

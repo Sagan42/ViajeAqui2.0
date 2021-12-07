@@ -24,8 +24,9 @@ class PassagemController extends Controller
         $passagens = Passagem::all();
         $linha = Linha::all();
         $viajens = Viajem::all();
-        
-        return view('clients.minhasPassagens', ['passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens]);
+        $comprado = 0;
+
+        return view('clients.minhasPassagens', ['passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
     }
 
     /**

@@ -12,20 +12,20 @@
     grid-column: 2;
     grid-row: 1;
     position: relative;
+   
 }
 
 .input-radio-linhas {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: end;
-    gap: 20px;
-    text-align: center;
-    padding: 15px;
-    position: absolute;
-    left: -150px;
-    background-color: #1b4965;
-    border-radius: 10px;
+    padding: 10px;
+    transform: translateY(30px);
+
+    justify-content: space-around;
+    margin: 5px 0;
+
+    font-size: 15pt;
+
+ 
 }
 
 .input-cidade-origem-destino {
@@ -37,6 +37,7 @@
     width: 100%;
     height: 40%;
     margin-bottom: -80px;
+    font-size: 15pt;
 }
 
 .input-cidade-origem-destino input {
@@ -258,7 +259,7 @@
     position: absolute;
     bottom: -30px;
     right: 0;
-    height: 30px;
+    height: 40px;
     width: 100px;
     padding: 10px;
     transform: translateY(10px);
@@ -266,4 +267,30 @@
     background-color: #CAE9FF;
     border-radius: 10px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.tituloPagina{
+    font-size: 25pt;
+
+}
+
+@media(max-width:1367px){
+
+    .container-cadastro-linhas{
+        width: 537px;
+        
+
+    }
+}
+
+
+@media(min-width:1368px){
+
+    .container-cadastro-linhas{
+        width: 690px;
+        
+
+    }
+
 }

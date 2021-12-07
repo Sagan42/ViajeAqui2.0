@@ -13,6 +13,7 @@ use App\Http\Controllers\RelatorioFuncionarioController;
 use App\Models\Passagem;
 use App\Models\Linha;
 use App\Models\Usuario;
+use App\Models\Cliente;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,20 +111,25 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     })->name('site.adm.paginaLinhas');
 
 
-    Route::get('/listaClientes', function(){
-        $clientes = Usuario::where('tipoUsuario', '0')->orderBy('nome')->get();
-        return view('adm.listaClientes', compact('clientes'));
-    })->name('site.adm.listaClientes');
+    Route::get('/listarLinhas', [AdmController::class, 'listarLinhas'])->name('site.adm.listarLinhas');
 
-    Route::get('/listarLinhas', function(){
-        $linhas = Linha::all();
-        return view('adm.listarLinhas', compact('linhas'));
-    })->name('site.adm.listarLinhas');
+    Route::get('/listaClientes', [AdmController::class, 'listarClientes'])->name('site.adm.listaClientes');
 
-    Route::get('/funcionarios', function() {
-        $usuarios = Usuario::where('tipoUsuario', '>=', "1")->orderBy('nome')->get();
-        return view('adm.funcionarios', compact('usuarios'));
-    })->name('site.adm.funcionarios');
+    Route::any('listaClientes/search', [AdmController::class, 'pesquisarClientes'])->name('site.adm.pesquisarClientes');
+
+    Route::any('listaFuncionarios/search', [AdmController::class, 'pesquisarFuncionarios'])->name('site.adm.pesquisarFuncionarios');
+
+    Route::any('listarLinhas/search', [AdmController::class, 'pesquisarLinhas'])->name('site.adm.pesquisarLinhas');
+
+    Route::get('/editarClientes/{id}', function($id) {
+        $clientes = Cliente::find($id);
+        $usuario = Usuario::find($clientes->id_usuario);
+        return view('adm.editarCliente' ,['id'=> $id], compact('usuario'));
+    })->name('site.adm.editarClientes');
+
+    Route::post('/editarClientes/{id}', [AdmController::class, 'updateUsuario'])->name('site.adm.editarCliente');
+
+    Route::get('/funcionarios', [AdmController::class, 'listarFuncionarios'])->name('site.adm.funcionarios');
 
     Route::get('/editarUsuario/{id}', function($id) {
         $funcionarios = Usuario::where('tipoUsuario', '>=','1')->get();

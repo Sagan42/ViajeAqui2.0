@@ -143,5 +143,10 @@
 }
 
 .container-botao-editar-usuario button:hover {
+    color: #FFF;
     cursor: pointer;
+}
+
+.fix{
+    padding-bottom: 5%;
 }

@@ -58,12 +58,9 @@
         <p class="logo-empresa">
             Viaje Aqui
         </p>
-
     </header>
 
-
         @yield('contentTelaAdm')
-
 
         <div id="caixaModal" class="container-modal">
 
@@ -74,29 +71,23 @@
                 <input type="file" name="foto" id="input-foto" accept = "image/png image/jpg" onchange = "alterarFoto(id)" >
 
                 <label for="nome">Nome</label>
-                <input type="text">
+                <input type="text" value="{{Session::get('usuario.nome')}}">
 
                 <label for="cpf">CPF</label>
-                <input type="text">
+                <input type="text" value="{{Session::get('usuario.cpf')}}">
 
                 <label for="senha">Senha</label>
-                <input type="password">
+                <input type="password"value="{{Session::get('usuario.senha')}}">
 
                 <label for="celular">Celular</label>
-                <input type="text">
+                <input type="text" value="{{Session::get('usuario.celular')}}">
 
                 <label for="email">Email</label>
-                <input type="text">
+                <input type="text" value="{{Session::get('usuario.email')}}">
 
-                <input type="submit" value="Confirmar">
-
-
+                <input type="submit" href="/adm/#/{{Session::get('usuario.id')}}" value="Confirmar">
             </div>
-
         </div>
-
-
-
 </body>
 
 <script>

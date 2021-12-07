@@ -111,3 +111,43 @@
    
   
   }
+
+  .container-setas ul{
+
+    display: flex;
+    justify-content: space-around;    
+    list-style: none;
+
+  }
+
+  .container-setas ul li{
+
+
+    margin: 0 10px;
+    font-size: 17pt;
+    padding: 5px 10px;
+    background-color: var(--cor-secundaria);
+    border-radius: 10px;
+    
+  }
+
+  label[for="pesquisaLinhas"]{
+   
+    font-size: 15pt;
+
+  }
+
+  a i.fa-eye:hover{
+    color: var(--cor-secundaria);
+  }
+ 
+  span.page-link{
+    color: #fff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff
+  } 
+
+  .page-link{
+    font-weight: bolder;
+    color: #000;
+  }

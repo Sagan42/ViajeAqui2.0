@@ -8,9 +8,21 @@
 
 <div class = "container-listar-clientes">
     <div class="container-pesquisa">
+        <form action="{{route('site.adm.pesquisarClientes')}}" method="GET">
+            
             <i class="fas fa-search"></i>
             <label for="pesquisaClientes">Pesquisa de Clientes </label> 
-            <input type="text">
+
+            @if(isset($nome))
+            
+                <input  class="inputPesquisa" type="text" name="nome" title="Nome do Cliente" value="{{$nome}}">
+           
+            @else
+                <input  class="inputPesquisa" type="text" name="nome" title="Nome do Cliente" placeholder="Nome do Cliente">
+            @endif
+            
+            <button  type="submit" class="btn btn-info btnPesquisar" title="Pesquisar"><i class="fas fa-search"></i></button>
+        </form>
     </div>
     
     <table>
@@ -21,23 +33,37 @@
             <th id="final-th">Detalhes/Editar</th>
         </thead>
         
-        @foreach ($clientes as $cliente)
-        <tr>
-            <td> {{ $loop->index }} </td>
-            <td> {{ $cliente->nome }} </td>
-            <td> {{ $cliente->cpf }} </td>
-            <td><i class="far fa-eye"></i></td>
-        </tr>
-        @endforeach
+        @if($clientes->total() == 0)
+            <tr style="background-color: #fff;" >
+                <td colspan="5" style="text-align: center;color: #810000d0; font-weight: bold" >
+                Sem Resultados
+                </td>
+            </tr>
+            
+        @else
 
+            @foreach ($clientes as $cliente)
+            <tr>
+                <td> {{ $loop->index }} </td>
+                <td> {{ $cliente->nome }} </td>
+                <td> {{ $cliente->cpf }} </td>
+                <td><a href="/adm/editarClientes/{{$cliente->id}}" title="Editar Cliente"><i class="far fa-eye"></i></td>
+            </tr>
+            @endforeach
+        @endif
     </table>
 
     <div class ="container-setas">
-        <i class="far fa-caret-square-left fa-2x"></i>
-        <input type="text" class = "caixa-direcao-tabela">
-        <i class="far fa-caret-square-right fa-2x"></i>
-    </div>
+        @if(isset($filtro))
+        <ul>{{$clientes->appends($filtro)->onEachSide(1)->links()}}</ul> 
+    
+        @else
 
+        <ul>{{$clientes->onEachSide(1)->links()}}</ul>
+        
+        @endif       
+    </div>
+    
 
 
 </div>
