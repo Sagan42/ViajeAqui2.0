@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class validateName implements Rule
+class CampoObri implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,11 +25,14 @@ class validateName implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
-        $string = str_replace(' ', '', $value);
-        
-        return ctype_alpha($string);
+        if($value != null){
+            
+            return true;
+        }
 
+        else{
+            return false;
+        }
     }
 
     /**
@@ -39,6 +42,6 @@ class validateName implements Rule
      */
     public function message()
     {
-        return 'Seu nome possui caracters inválidos.';
+        return 'Esse campo é obrigatório.';
     }
 }

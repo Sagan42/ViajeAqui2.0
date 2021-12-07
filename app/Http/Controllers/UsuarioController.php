@@ -7,10 +7,20 @@ use App\Http\Requests\LoginUserRequest;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use App\Models\Acesso;
+use App\Rules\CampoObri;
+use App\Rules\ExistsEmail;
 use App\Rules\ExistsPassword;
+use App\Rules\FullName;
+use App\Rules\FullPassword;
+use App\Rules\UpdateEmail;
+use App\Rules\ValidateEmail;
+use App\Rules\validateName;
+use App\Rules\ValidateSenhas;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Hash;
+
+
 class UsuarioController extends Controller
 {
     /**
@@ -122,59 +132,117 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
+
         $usuario = Usuario::find(Session::get('usuario.id'));
-        //Metodo para fazer com que fique escondida algumas informações do email
-        $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
+    
+        if($request->editSenhaAtual == null){
 
-        if($request->editSenhaNova != null && $request->editSenhaNovaConfirm != null && $request->editSenhaNova != $request->editSenhaNovaConfirm){
-            //Esconder informações do email para mandar para a tela
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "As senhas estão diferentes"]);
-        }
-        else if($request->editSenhaNova != null && $request->editSenhaNovaConfirm == null){
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo CONFIRMAR SENHA"]);
+            $request->validate([
+                'editSenhaAtual'=> [new CampoObri]
+            ]);
         }
 
-        else if($request->editSenhaNova == null && $request->editSenhaNovaConfirm != null){
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo NOVA SENHA"]);
+        if(!Hash::check($request->editSenhaAtual, $usuario->senha)){
+
+            $request->validate([
+                'editSenhaAtual' => new ExistsPassword
+            ]);
+
         }
 
-        else if($request->editEmailNovo != null && $request->editEmailNovoConfirm != null && $request->editEmailNovo != $request->editEmailNovoConfirm){
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Os Emails estão diferentes"]);
-        }
+        if($request->editNome != $usuario->nome or $request->editCelular != $usuario->celular){
 
-        else if($request->editEmailNovo != null && $request->editEmailNovoConfirm == null){
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo CONFIRMAR EMAIL"]);
-        }
 
-        else if($request->editEmailNovo == null && $request->editEmailNovoConfirm != null){
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Preencha o campo NOVO EMAIL"]);
-        }
+            if($request->editNome == null){
 
-        else if(Hash::check($request->editSenhaAtual, $usuario->senha)){
-            if($request->editSenhaNova != null){
-                $senhaComHash = Hash::make($request->editSenhaNova);
-                $usuario->senha = $senhaComHash;
+                $request->validate([
+                    'editNome' => new CampoObri,
+                ]);
+
             }
-            if($request->editEmailNovo != null){
+            else if($request->editCelular == null){
+
+                $request->validate([
+                    'editCelular' => new CampoObri
+                ]);
+            }
+            else{
+
+                $request->validate([
+                    'editNome'=> [new FullName, new validateName],
+                    'editCelular' => ['digits_between:11,11']
+                ]);
+
+            }
+            $usuario->nome = $request->editNome;
+            $usuario->celular = $request->editCelular;
+            
+        }
+
+        if($request->editEmailNovo or $request->editEmailNovoConfirm != null){
+
+            $request->validate([
+                'editEmailNovo' => [new CampoObri, new ValidateEmail, new ExistsEmail],
+                'editEmailNovoConfirm' => [new CampoObri]
+                
+            ]);
+            if($request->editEmailNovo != $request->editEmailNovoConfirm){
+
+                $request->validate([
+
+                    'editEmailNovoConfirm' => new UpdateEmail
+                    
+                ]);
+
+            }
+
+            else{
+
                 $usuario->email = $request->editEmailNovo;
             }
 
-            $usuario->nome = $request->editNome;
-            $usuario->celular = $request->editCelular;
-            $usuario->save();
-
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Dados atualizados com sucesso"]);
-        }else{
-            $usuario->email = $pEmail;
-            return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Informe a senha Atual"]);
+            
         }
+        
+        if($request->editSenhaNova or $request->editSenhaNovaConfirm != null){
+
+            $request->validate([
+                'editSenhaNova' => [new CampoObri, new FullPassword],
+                'editSenhaNovaConfirm'=> [new CampoObri],
+            ]);
+            
+            if($request->editSenhaNova != $request->editSenhaNovaConfirm){
+
+                $request->validate([
+
+                    'editSenhaNovaConfirm'=> new ValidateSenhas
+                ]);
+            }
+
+            else{
+                
+                $usuario->senha = Hash::make($request->editSenhaNova);
+              
+            }
+        }
+
+        if($request->editNovoEmail != null){
+
+            $usuario->email = $request->editEmailNovo;
+        }
+        
+        if($request->editSenhaNova != null){
+
+            $usuario->senha = Hash::make($request->editSenhaNova);
+
+        }
+            
+        $usuario->nome = $request->editNome;
+        $usuario->celular = $request->editCelular;
+        $usuario->save();
+            
+        return view('clients.minhaConta', ['usuario' => $usuario, 'msg' => "Dados atualizados com sucesso"]);
+ 
     }
 
     /**
