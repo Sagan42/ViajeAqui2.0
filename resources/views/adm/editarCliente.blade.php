@@ -12,7 +12,7 @@
               
                 <div>
                     <label for="">Senha</label>
-                    <input type="password" value ="{{$usuario->senha}}" name="editSenha" class = "input-editar-usuario"> 
+                    <input type="password" value ="12345678" name="editSenha" class = "input-editar-usuario"> 
                 </div>
 
                 <div>
