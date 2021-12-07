@@ -30,7 +30,7 @@
                     <input type="text" value ="{{$usuario->email}}" name="editEmail" class = "input-editar-usuario"> 
                 </div>
               
-                <div class="div-permissao">
+                <div class="div-permissao fix">
 
                 <div class="container-botao-editar-usuario">
                     <button>
