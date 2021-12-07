@@ -22,7 +22,8 @@ class LinhaController extends Controller
      */
     public function index()
     {
-        //
+        $linhas = Linha::paginate(7);
+        return view('adm.listarLinhas', compact('linhas'));
     }
 
     /**
@@ -77,7 +78,8 @@ class LinhaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $linha = Linha::find($id);
+
     }
 
     /**
@@ -89,7 +91,16 @@ class LinhaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $linha = Linha::find($id);
+
+        $linha->origem = $request->origem;
+        $linha->destino = $request->destino;
+        $linha->preco = $request->valor;
+        $linha->num_linha = $request->num_linha;
+        $linha->quantidadePassagem = $request->vagas;
+        $linha->tipoLinha = $request->linha;
+
+        $linha->save();
     }
 
     /**

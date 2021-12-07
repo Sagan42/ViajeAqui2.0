@@ -169,11 +169,7 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.venderpassagens');
     });
 
-    Route::prefix('/gerenciarLinhas')->group(function(){
-        Route::get('/', function () {
-            return view('funcionario.gerenciarLinhas');
-        })->name('site.funcionario.gerenciarLinhas');
-    });
+    Route::get('/gerenciarLinhas', [LinhaController::class, 'index'])->name('site.funcionario.gerenciarLinhas');
 
     Route::prefix('/mudarLogin')->group(function(){
         Route::get('/', function () {
