@@ -8,7 +8,7 @@
         
               <div>
                 <label for="" >Nome   </label>
-                <input type="text" name="cadNome"  class = "form-control @error('cadNome')is-invalid @endif"  value="{{old('cadNome')}}"> 
+                <input type="text" name="cadNome"  class = "input-cadastrar-usuario form-control @error('cadNome')is-invalid @endif"  value="{{old('cadNome')}}"> 
               </div>
               
               <div>
@@ -28,7 +28,7 @@
               
               <div>
                 <label for="">Email</label>
-                <input type="text" name="cadEmail" class = "input-cadastrar-usuario form-control @error('cadEmail')is-invalid @endif"  value="{{old('cadEmail')}}"> 
+                <input type="text" name="cadEmail" class = "input-cadastrar-usuario form-control @error('cadEmail')is-invalid @endif"  value="{{old('cademail')}}"> 
               </div>
               
               <div class="div-permissao">
