@@ -36,13 +36,14 @@ class RelatorioAdmController extends Controller
 
     //
 
-    public function gerarRelatorio_passagensVendidasPorDia (Request $request){
+    public function gerarRelatorio_passagensVendidasPorDia_eAcessos (Request $request){
         $data = date('Y-m-d');
         if($request->data != null){
             $data = $request->data;
         }
-        $passagensVendidas = DB::select('SELECT count(id) as qtd FROM passagem where diaVenda = ?' ,[$data]);
-        return view('adm.relatorios', ['passagensVendidas' => $passagensVendidas[0]->qtd, 'newData' => $data]);
+        $passagensVendidas = DB::select('SELECT count(id) as qtd FROM passagem WHERE diaVenda = ?' ,[$data]);
+        $acessos = DB::select("SELECT count(id) as qtd FROM acesso WHERE dataAcesso LIKE ".DB::getPdo()->quote("$data%"));
+        return view('adm.relatorios', ['passagensVendidas' => $passagensVendidas[0]->qtd,'acessos' => $acessos[0]->qtd, 'newData' => $data]);
     }
 
     //

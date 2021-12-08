@@ -146,7 +146,7 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
 
     // ADM RELATORIOS ROTAS
 
-    Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia'])->name('site.adm.relatorios');
+    Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia_eAcessos'])->name('site.adm.relatorios');
 
     Route::get('/relatorios/passvendidasfunc', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasIndividuais'])->name('site.adm.relatorios.PassengensVendidasFuncionario');
 

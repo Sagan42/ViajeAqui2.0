@@ -35,7 +35,7 @@
     <a href="#">
         <div class="subBoxRelatorio relRight">
             <div id="divRelInternal">
-                <p>200</p>
+                <p>{{$acessos}}</p>
             </div>
             <label id="titleRel">Acesso de clientes por dia</label>
         </div>
