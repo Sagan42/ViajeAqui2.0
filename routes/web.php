@@ -138,6 +138,12 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
 
     Route::post('/editarUsuario/{id}', [AdmController::class, 'update'])->name('site.adm.editarUsuario');
 
+    Route::prefix('/alterarFuncao')->group(function(){
+        Route::get('/', function () {
+            return view('adm.alterarFuncao');
+        })->name('site.adm.alterarFuncao');
+    });
+
     // ADM RELATORIOS ROTAS
 
     Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia'])->name('site.adm.relatorios');
@@ -171,10 +177,10 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
 
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
-    Route::prefix('/mudarLogin')->group(function(){
+    Route::prefix('/alterarFuncao')->group(function(){
         Route::get('/', function () {
-            return view('funcionario.mudarLogin');
-        })->name('site.funcionario.mudaLogin');
+            return view('funcionario.alterarFuncao');
+        })->name('site.funcionario.alterarFuncao');
     });
 
 });

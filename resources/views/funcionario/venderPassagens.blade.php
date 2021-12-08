@@ -2,43 +2,66 @@
 @section('contentTelaFuncionario')
 <div class="content-geral">
 
-    <h1>Vender para</h1>
-
-    <div class="informaçoes">
-        <br>
-        <div class="info">
-            <h3>Saida/chegada</h3>
-            <p>06:00 - 07:40</p>
-        </div>
-
-        <div class="info">
-            <h3>Embarque/Desembarque</h3>
-            <p>Salvador, BA - Feira de Santana, BA</p>
-        </div>
-
-        <div class="info">
-            <h3>Tipo de Linha</h3>
-            <p>Direta</p>
-        </div>
-
-        <div class="info">
-            <h3>Duração</h3>
-            <p>1h 40m</p>
-        </div>
-
-        <div class="info info-last">
-            <h3>Preço</h3>
-            <p>R$ 40,00</p>
-        </div>
-
-        <form action="" class="form-venderPassagens">
-            <br>
-            <label for="">Informe o CPF</label>
-            <input type="text" placeholder="000.000.000-00">
-            <br>
-            <input class="button" type="submit" value="Vender">
+    <h2>Vender passagens</h2>
+    
+    
+    <div>
+        <form method="GET" action="{{route('site.client.selecionarPassagens')}}" class="form-selecionar-passagens">
+            <div class="divOrigem">
+                <label for="" class="color-blue-three" >Origem</label>
+                <input type="text" maxlength="25" id="origem" name="SelecionarOrigem" class="form-control" value="">
+                
+            </div>
+            <div id="trocaPesquisa">
+                <br>
+                <a onclick = "trocaPesquisa()" id= "botaoTrocarPesquisa"> <i class="fas fa-exchange-alt"></i> </a>
+            </div>
+            <div>
+                <label for="" class="color-blue-three"  >Destino</label>
+                <input type="text" maxlength="25" id="destino" name="SelecionarDestino" class="form-control" value="">
+            </div>
+            <div>
+                <label for="" class="color-blue-three">Data de Saida</label>
+                <input type="date"  name="dataSaida" class="form-control" value="">
+            </div>
+            <div>
+                <br>
+                <input type="submit" value="Buscar" class="blue-three">
+            </div>
         </form>
+        <div class="venderPassagemParaCPF">
+            <div>
+                <label for="" class="color-blue-three"  >Vender passagem para o CPF:</label>
+                <input type="text" maxlength="25" id="destino" name="SelecionarDestino" class="form-control" value="XXX.XXX.XXX-XX">
+            </div>
+            <div>
+                <br>
+                <input type="submit" value="Vender" class="blue-three">
+            </div>
+        </div>
     </div>
-
 </div>
+
+<script>
+
+    function trocaPesquisa(){
+
+       
+        const origem = document.getElementById('origem')
+        const destino = document.getElementById('destino')
+        var aux;
+
+        aux = origem.value;
+        origem.value = destino.value
+        destino.value = aux
+        
+
+
+    }
+    
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("dataSaida")[0].setAttribute('min', today);
+
+</script> 
+
 @endsection

@@ -50,18 +50,6 @@ a:hover {
 
 
 /*MENU LATERAL*/
-.perfil #divMudarLogin {
-  padding-left: 26%;
-  display: flex;
-  margin: 0;
-}
-
-#divMudarLogin p {
-  float: right;
-  margin-left: 4px;
-}
-
-
 .menu-lateral {
   display: flex;
   flex-direction: column;

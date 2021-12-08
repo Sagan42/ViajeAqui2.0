@@ -25,17 +25,12 @@
         <header class="menu-lateral" id="menu-lateral">
             <div class="perfil">
                 
-                <div id="divMudarLogin">
-                    <a href="/funcionario/mudarLogin" id="iconMudarLogin">
-                        <i class="fa fa-exchange" aria-hidden="true"></i>
-                        <p>Funcionário</p>
-                    </a>
-
+                <p>Funcionário</p>
                     
                 </div>
                 <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
 
-
+                <a href="/funcionario/alterarFuncao">Alterar Função</a>
                 <a href="#" id = "modalPerfil">Visualizar Perfil</a>
                 <a href="{{route('site.logout')}}" class="sair"  onclick="verificarSair()">Sair</a>
             </div>

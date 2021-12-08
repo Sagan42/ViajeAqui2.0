@@ -45,7 +45,7 @@
                 </button> 
             </div>
             <div>
-                <label>Administrador</label>
+                <label>Cliente</label>
                 <button>Acessar</button> 
             </div>
        </div>
