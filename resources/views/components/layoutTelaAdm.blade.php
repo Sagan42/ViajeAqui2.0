@@ -73,19 +73,19 @@
                 <h3>Minha Conta</h3>
 
                 <label for="nome">Nome</label>
-                <input type="text" value="{{Session::get('usuario.nome')}}">
+                <input type="text" value="{{Session::get('usuario.nome')}}" disabled>
 
                 <label for="cpf">CPF</label>
-                <input type="text" value="{{Session::get('usuario.cpf')}}">
+                <input type="text" value="{{Session::get('usuario.cpf')}}" disabled>
 
                 <label for="senha">Senha</label>
-                <input type="password"value="{{Session::get('usuario.senha')}}">
+                <input type="password" value="{{Session::get('usuario.senha')}}" disabled>
 
                 <label for="celular">Celular</label>
-                <input type="text" value="{{Session::get('usuario.celular')}}">
+                <input type="text" value="{{Session::get('usuario.celular')}}" disabled>
 
                 <label for="email">Email</label>
-                <input type="text" value="{{Session::get('usuario.email')}}">
+                <input type="text" value="{{Session::get('usuario.email')}}" disabled>
 
             </div>
         </div>

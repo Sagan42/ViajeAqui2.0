@@ -361,6 +361,11 @@ animation: teste .9s;
   color: #CAE9FF;
   text-align: center;
 }
+.modal label{
+  font-size: 14pt;
+  font-weight: bold;
+}
+
 
 
 /* PAGINA RELATORIOS*/

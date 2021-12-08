@@ -255,11 +255,24 @@ a:hover {
   border-radius: 30px;
 
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
 
   max-height: 500px;
 
 
+}
+
+
+.modal h3{
+  font-size: 30pt;
+  color: #CAE9FF;
+  text-align: center;
+}
+
+.modal label{
+  font-size: 14pt;
+  font-weight: bold;
 }
 
 .fechar {

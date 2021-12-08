@@ -26,6 +26,7 @@
             <div class="perfil">
                 
                 <p>Funcionário</p>
+                <p>{{Session::get('usuario.nome')}}</p>
                     
                 </div>
                 <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
@@ -58,26 +59,22 @@
                 <div class="modal">
                     <button class="fechar">X</button>
 
-                    <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
-                    <input type="file" name="foto" id="input-foto" accept = "image/png image/jpg" onchange = "alterarFoto(id)" >
+                    <h3>Minha Conta</h3>
 
                     <label for="nome">Nome</label>
-                    <input type="text">
+                    <input type="text" value="{{Session::get('usuario.nome')}}" disabled>
 
-                    <label for="cpf">CPF</label>
-                    <input type="text">
+                    <label for="cpf">CPF</label> 
+                    <input type="text" value="{{Session::get('usuario.cpf')}}" disabled>
 
                     <label for="senha">Senha</label>
-                    <input type="password">
+                    <input type="password" value="{{Session::get('usuario.senha')}}" disabled>
 
                     <label for="celular">Celular</label>
-                    <input type="text">
+                    <input type="text" value="{{Session::get('usuario.celular')}}" disabled>
 
                     <label for="email">Email</label>
-                    <input type="text">
-
-                    <input type="submit" value="Confirmar">
-
+                    <input type="text" value="{{Session::get('usuario.email')}}" disabled>
 
                 </div>
 
