@@ -192,8 +192,7 @@ Route::prefix('/alterarFuncao')->group(function(){
         return view('funcionario.alterarFuncao');
     })->name('site.funcionario.alterarFuncao');
 
-
+    Route::get('/cliente', [UsuarioController::class, 'alterarFuncao'])->name('site.alterarFuncao');
 });
 
 
-Route::get('/alterarFuncao/cliente', [UsuarioController::class, 'alterarFuncao'])->name('site.alterarFuncao');
