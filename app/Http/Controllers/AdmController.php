@@ -9,7 +9,7 @@ use App\Models\Usuario;
 use App\Models\Funcionario;
 use App\Models\Linha;
 use App\Models\Cliente;
-
+use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
 {
@@ -41,13 +41,13 @@ class AdmController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if($request->tipoUsuario==2){
             $usuario = app(\App\Http\Controllers\ClienteController::class)->store($request);
             $adm = new Adm;
             $adm->id_usuario = $usuario->id;
             $adm->admMaster = 0;
-            $adm->save();            
+            $adm->save();
         }else{
             app(\App\Http\Controllers\FuncionarioController::class)->store($request);
         }
@@ -89,9 +89,9 @@ class AdmController extends Controller
 
         if($request->tipoUsuario == $usuario->tipoUsuario){
             $usuario->nome = $request->editNome;
-            $usuario->senha = $request->editSenha;
+            $usuario->senha = Hash::make($request->editSenha);
             $usuario->cpf = $request->editCPF;
-            $usuario->celular = $request->editCelular; 
+            $usuario->celular = $request->editCelular;
             $usuario->email = $request->editEmail;
             $usuario->save();
         }else if($request->tipoUsuario == 1){
@@ -122,9 +122,9 @@ class AdmController extends Controller
         $usuario = Usuario::find($clientes->id_usuario);
 
         $usuario->nome = $request->editNome;
-        $usuario->senha = $request->editSenha;
+        $usuario->senha = Hash::make($request->editSenha);
         $usuario->cpf = $request->editCPF;
-        $usuario->celular = $request->editCelular; 
+        $usuario->celular = $request->editCelular;
         $usuario->email = $request->editEmail;
         $usuario->save();
 
@@ -181,31 +181,31 @@ class AdmController extends Controller
 
 
     public function pesquisarClientes(Request $request){
-        
+
         $clientes = Usuario::where('tipoUsuario', '=', '0')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
-        $filtro = $request->all();  
-        $nome = $request->nome;  
+        $filtro = $request->all();
+        $nome = $request->nome;
         return view('adm.listaClientes', compact('clientes','filtro','nome'));
 
 
     }
 
     public function pesquisarFuncionarios(Request $request){
-        
+
         $usuarios = Usuario::where('tipoUsuario', '>=', '1')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
         $filtro = $request->all();
-        $nome = $request->nome;  
+        $nome = $request->nome;
         return view('adm.funcionarios', compact('usuarios','filtro','nome'));
 
 
     }
 
     public function pesquisarLinhas(Request $request){
-        
+
         $linhas = Linha::where('origem', 'LIKE', "%{$request->nome}%")->orWhere('destino', 'LIKE', "%{$request->nome}%")->paginate(7);
         $filtro = $request->all();
-        $nome = $request->nome;  
+        $nome = $request->nome;
         return view('adm.listarLinhas', compact('linhas','filtro','nome'));
-    
+
     }
 }
