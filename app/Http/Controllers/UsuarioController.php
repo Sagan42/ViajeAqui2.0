@@ -60,7 +60,8 @@ class UsuarioController extends Controller
 
 
             //alterar o tipo quando for funcionario ou adm
-            if($request->tipoUsuario == null){
+            //dd($request->tipoUsuario);
+            if($request->tipoUsuario == null || $request->tipoUsuario == 0){
                 $usuario->tipoUsuario = 0;
             }elseif($request->tipoUsuario == 1){
                 $usuario->tipoUsuario = 1;

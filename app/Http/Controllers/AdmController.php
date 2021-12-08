@@ -49,8 +49,10 @@ class AdmController extends Controller
             $adm->id_usuario = $usuario->id;
             $adm->admMaster = 0;
             $adm->save();
-        }else{
+        }else if($request->tipoUsuario==1){
             app(\App\Http\Controllers\FuncionarioController::class)->store($request);
+        }else{
+            app(\App\Http\Controllers\ClienteController::class)->store($request);
         }
         return redirect()->route('site.adm.cadUsuario');
     }

@@ -42,6 +42,7 @@
               <div class="div-permissao">
                 <label for="">Nivel/Permissao</label>
                 <select name="tipoUsuario" id="select-tipo-usuario">
+                    <option value="0">Cliente</option>
                     <option value="1">Funcionario</option>
                     <option value="2">Adminstrador</option>
                 </select>
