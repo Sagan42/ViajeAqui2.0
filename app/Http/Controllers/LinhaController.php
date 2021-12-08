@@ -44,6 +44,8 @@ class LinhaController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request);
         $linha = new Linha;
         $linha->origem = $request->origem;
         $linha->destino = $request->destino;

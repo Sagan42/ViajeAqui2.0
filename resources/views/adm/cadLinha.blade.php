@@ -95,11 +95,11 @@
                         <tr>
                             <td>
                                 <label for="segunda">Segunda</label>
-                                <input type="checkbox" name="diaSemana" id="segunda" onchange = "habilitar(id)">
+                                <input type="checkbox" name="Segunda" id="segunda" onchange = "habilitar(id)">
                             </td>
                             
                             <td>
-                            <input type="text" id="horarioSegunda" class="input-horario" disabled>
+                            <input type="text" name ="horarioSegunda" id="horarioSegunda" class="input-horario" disabled>
                             
                                
                         </td>
@@ -110,11 +110,11 @@
 
                             <td>
                                 <label for="terca">Terca</label>
-                                <input type="checkbox" name="diaSemana" id="terca" onchange = "habilitar(id)" >
+                                <input type="checkbox" name="Terca" id="terca" onchange = "habilitar(id)" >
                             </td>
 
                             <td>
-                                <input type="text" id="horarioTerca" class="input-horario" disabled>
+                                <input type="text" name ="horarioTerca" id="horarioTerca" class="input-horario" disabled>
                                 
                             </td>
 
@@ -123,52 +123,52 @@
                         <tr>
                             <td>
                                 <label for="quarta">Quarta</label>
-                                <input type="checkbox" name="diaSemana" id="quarta" onchange = "habilitar(id)">
+                                <input type="checkbox" name="Quarta" id="quarta" onchange = "habilitar(id)">
                             </td>
 
                             <td>
-                                <input type="text" id="horarioQuarta" class="input-horario" disabled>
+                                <input type="text" name ="horarioQuarta" id="horarioQuarta" class="input-horario" disabled>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 <label for="quinta">Quinta</label>
-                                <input type="checkbox" name="diaSemana" id="quinta" onchange = "habilitar(id)">
+                                <input type="checkbox" name="Quinta" id="quinta" onchange = "habilitar(id)">
                             </td>
 
                             <td>
-                                <input type="text" id="horarioQuinta" class="input-horario" disabled>
+                                <input type="text" name ="horarioQuinta" id="horarioQuinta" class="input-horario" disabled>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 <label for="sexta">Sexta</label>
-                                <input type="checkbox" name="diaSemana" id="sexta" onchange = "habilitar(id)"> 
+                                <input type="checkbox" name="Sexta" id="sexta" onchange = "habilitar(id)"> 
                             </td>
                             <td>
-                                <input type="text" id="horarioSexta" class="input-horario" disabled>
+                                <input type="text" name ="horarioSexta" id="horarioSexta" class="input-horario" disabled>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 <label for="sabado">Sabado</label>
-                                <input type="checkbox" name="diaSemana" id="sabado" onchange = "habilitar(id)"> 
+                                <input type="checkbox" name="Sabado" id="sabado" onchange = "habilitar(id)"> 
                             </td>
                             <td>
-                                <input type="text" id="horarioSabado" class="input-horario" disabled>
+                                <input type="text" name ="horarioSabado" id="horarioSabado" class="input-horario" disabled>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
                                 <label for="domingo">Domingo</label>
-                                <input type="checkbox" name="diaSemana" id="domingo" onchange = "habilitar(id)"> 
+                                <input type="checkbox" name="Domingo" id="domingo" onchange = "habilitar(id)"> 
                             </td>
                             <td>
-                                <input type="text" id="horarioDomingo" class="input-horario" disabled>
+                                <input type="text" name ="horarioDomingo" id="horarioDomingo" class="input-horario" disabled>
                             </td>
                         </tr>
 
