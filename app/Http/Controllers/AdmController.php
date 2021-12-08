@@ -211,7 +211,7 @@ class AdmController extends Controller
 
     public function backup(){
         $data = date('d-m-Y');
-        $comand = shell_exec("cmysqldump --column-statistics=0 --host=localhost --user=root viajeaqui > {$data}.sql");
+        $comand = shell_exec("mysqldump --column-statistics=0 --host=localhost --user=root viajeaqui > {$data}.sql");
         return view('adm.home');
     }
 
