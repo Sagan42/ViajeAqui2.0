@@ -44,8 +44,20 @@ class LinhaController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< Updated upstream
 
         dd($request);
+=======
+        $segunda = $request->sexo;
+        $horarioSabado = $request->asd;
+        $horarioDomingo = $request->fgh;
+        $x = $request->test;
+
+        
+
+        dd($request);
+
+>>>>>>> Stashed changes
         $linha = new Linha;
         $linha->origem = $request->origem;
         $linha->destino = $request->destino;
@@ -58,6 +70,7 @@ class LinhaController extends Controller
         $linha->id_adm = $adm->id;
         $linha->save();
 
+        
         return redirect()->route('site.adm.cadLinha');
     }
 

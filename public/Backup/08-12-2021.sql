@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.18-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: viajeaqui
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.17-MariaDB
+-- Server version	10.4.18-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `acesso`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cliente` int(11) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `acesso` (
   PRIMARY KEY (`id`),
   KEY `fk_acesso_id_cliente` (`id_cliente`),
   CONSTRAINT `fk_acesso_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `acesso` (
 
 LOCK TABLES `acesso` WRITE;
 /*!40000 ALTER TABLE `acesso` DISABLE KEYS */;
-INSERT INTO `acesso` VALUES (1,1,'2021-10-15 13:50:00'),(2,2,'2021-10-15 14:50:00'),(3,1,'2021-12-08 14:50:00'),(4,2,'2021-12-08 02:24:39'),(5,2,'2021-12-08 02:25:01'),(6,1,'2021-12-08 02:52:03');
+INSERT INTO `acesso` VALUES (1,1,'2021-10-15 13:50:00'),(2,2,'2021-10-15 14:50:00');
 /*!40000 ALTER TABLE `acesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,7 +48,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `adm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `adm` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
@@ -75,7 +75,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `agenda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agenda` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dia_semana` varchar(20) DEFAULT NULL,
@@ -103,7 +103,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
@@ -129,7 +129,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `funcionario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `funcionario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
@@ -155,7 +155,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `linha`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `linha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `preco` float NOT NULL,
@@ -187,7 +187,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `passagem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `passagem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_funcionario` int(11) DEFAULT NULL,
@@ -205,7 +205,7 @@ CREATE TABLE `passagem` (
   CONSTRAINT `fk_passagem_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
   CONSTRAINT `fk_passagem_id_funcionario` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`id`),
   CONSTRAINT `fk_passagem_id_viajem` FOREIGN KEY (`id_viajem`) REFERENCES `viajem` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +214,7 @@ CREATE TABLE `passagem` (
 
 LOCK TABLES `passagem` WRITE;
 /*!40000 ALTER TABLE `passagem` DISABLE KEYS */;
-INSERT INTO `passagem` VALUES (1,1,1,1,'Salvador','Camaçari',65,'Direta','2021-12-04'),(2,1,2,1,'Feira de Santana','Salvador',40,'Direta','2021-12-04'),(3,1,1,2,'Salvador','Camaçari',65,'Direta','2021-12-04'),(4,1,2,2,'Feira de Santana','Salvador',40,'Direta','2021-12-04'),(5,1,5,2,'Feira de Santana','Salvador',40,'Direta','2021-12-08');
+INSERT INTO `passagem` VALUES (1,1,1,1,'Salvador','Camaçari',65,'Direta','2021-12-04'),(2,1,2,1,'Feira de Santana','Salvador',40,'Direta','2021-12-04'),(3,1,1,2,'Salvador','Camaçari',65,'Direta','2021-12-04'),(4,1,2,2,'Feira de Santana','Salvador',40,'Direta','2021-12-04');
 /*!40000 ALTER TABLE `passagem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +224,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `relatorio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `relatorio` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(60) NOT NULL,
@@ -247,7 +247,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `relatorioadm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `relatorioadm` (
   `id_relatorio` int(11) NOT NULL,
   `id_adm` int(11) NOT NULL,
@@ -273,7 +273,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `relatoriofuncionario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `relatoriofuncionario` (
   `id_relatorio` int(11) NOT NULL,
   `id_funcionario` int(11) NOT NULL,
@@ -299,7 +299,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
@@ -318,7 +318,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'joaosvbg@gmail.com','Joao Samuel da  Silva','$2y$10$eJp8pTFMKIwczyd0/ZGWYOzqEXVuR5el1VVF5hP5ggDIdA0QS5wHq','991951780','40274881560',0),(2,'maria@gmail.com','Maria da Silva','$2y$10$XLsX/x8H1j.wL/atBbPGY.DF6mfD5KwEYPSac..5H353V4UCFKDQm','75999344780','40648611590',0),(3,'jose@gmail.com','Jose da Silva','$2y$10$Qd480zS.qAHvN3zDtDY0J.ebkDMHeZsazzKR38Rg9QDZrLG0PsVLS','99346660','36558438526',1),(4,'marcos@gmail.com','Marcos','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','99756660','80759477540',2),(5,'isa@gmail.com','Isabela','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','93426660','69938577580',2);
+INSERT INTO `usuario` VALUES (1,'joaosvbg@gmail.com','Joao Samuel','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','991951780','40274881560',0),(2,'maria@gmail.com','Maria','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','99344780','40648611590',0),(3,'jose@gmail.com','Jose','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','99346660','36558438526',1),(4,'marcos@gmail.com','Marcos','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','99756660','80759477540',2),(5,'isa@gmail.com','Isabela','$2a$12$zDiaHVGJsuZl4BR/MTCpOebn6p34heqJxnzbvcgK.RR/BykP7fz7W','93426660','69938577580',2);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +328,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `viajem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `viajem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantidadePassagem` int(11) DEFAULT NULL,
@@ -338,7 +338,7 @@ CREATE TABLE `viajem` (
   PRIMARY KEY (`id`),
   KEY `fk_id_linhaVendendo` (`id_linha`),
   CONSTRAINT `fk_id_linhaVendendo` FOREIGN KEY (`id_linha`) REFERENCES `linha` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +347,7 @@ CREATE TABLE `viajem` (
 
 LOCK TABLES `viajem` WRITE;
 /*!40000 ALTER TABLE `viajem` DISABLE KEYS */;
-INSERT INTO `viajem` VALUES (1,28,'2021-12-04','19:00',8),(2,28,'2021-12-06','15:00',1),(3,28,'2021-12-08','10:00',2),(4,28,'2021-12-09','07:00',7),(5,27,'2021-12-08','10:00',1);
+INSERT INTO `viajem` VALUES (1,28,'2021-12-04','19:00',8),(2,28,'2021-12-06','15:00',1),(3,28,'2021-12-08','10:00',2),(4,28,'2021-12-09','07:00',7);
 /*!40000 ALTER TABLE `viajem` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -360,4 +360,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< Updated upstream
 -- Dump completed on 2021-12-08 16:39:20
+=======
+-- Dump completed on 2021-12-08 16:36:20
+>>>>>>> Stashed changes
