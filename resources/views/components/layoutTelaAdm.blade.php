@@ -52,7 +52,7 @@
            <a href="/adm/listaClientes"> <li><i class="fas fa-id-card-alt"></i>  Clientes</li></a>
            <a href="/adm/paginaLinhas"><li><i class="fas fa-clipboard-list"></i> Linhas de Ônibus</li></a>
            <a href="/adm/cadUsuario"><li><i class="fas fa-user-plus"></i> Cadastrar Usuario</li></a>
-           <a href="/adm/backup"><li><i class="fa fa-hdd-o"></i> Backup</li></a>
+           <a onclick="verificarBackup()" class='backup' href="/adm/backup"><li><i class="fa fa-hdd-o"></i> Backup</li></a>
 
         </ul>
 
@@ -138,6 +138,19 @@
         if(confimacao == false){
             btnSair = document.querySelector(".sair")
             btnSair.setAttribute("href",'')
+        }
+    }
+
+    // Verificação para backup
+    function verificarBackup(){
+        const confimacao = confirm("Deseja fazer Backup?")
+        if(confimacao == false){
+            btnSair = document.querySelector(".backup")
+            btnSair.setAttribute("href",'')
+        }else{
+            setTimeout(()=>{
+                alert("Backup Realizado Com Sucesso")
+            },400)
         }
     }
 
