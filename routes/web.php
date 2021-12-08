@@ -144,6 +144,8 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
         })->name('site.adm.alterarFuncao');
     });
 
+    Route::get('/backup', [AdmController::class, 'backup'])->name('site.adm.backup');
+
     // ADM RELATORIOS ROTAS
 
     Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia_eAcessos'])->name('site.adm.relatorios');

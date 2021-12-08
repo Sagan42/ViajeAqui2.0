@@ -208,4 +208,11 @@ class AdmController extends Controller
         return view('adm.listarLinhas', compact('linhas','filtro','nome'));
 
     }
+
+    public function backup(){
+        $data = date('d-m-Y');
+        $comand = shell_exec("cmysqldump --column-statistics=0 --host=localhost --user=root viajeaqui > {$data}.sql");
+        return view('adm.home');
+    }
+
 }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/adm/home.css')}}">
     <link rel="stylesheet" href="{{asset('css/adm/editarUsuario.css')}}">
     <link rel="stylesheet" href="{{asset('css/adm/cadUsuario.css')}}">
-    
+
 
 
 </head>
@@ -52,6 +52,8 @@
            <a href="/adm/listaClientes"> <li><i class="fas fa-id-card-alt"></i>  Clientes</li></a>
            <a href="/adm/paginaLinhas"><li><i class="fas fa-clipboard-list"></i> Linhas de Ônibus</li></a>
            <a href="/adm/cadUsuario"><li><i class="fas fa-user-plus"></i> Cadastrar Usuario</li></a>
+           <a href="/adm/backup"><li><i class="fa fa-hdd-o"></i> Backup</li></a>
+
         </ul>
 
         </nav>
