@@ -56,7 +56,8 @@
                     <th>Origem/Destino</th>
                     <th>Tipo de Linha</th>
                     <th>Vagas</th>
-                    <th class="th-last">Preço</th>
+                    <th>Preço</th>
+                    <th class="th-last">Ação</th>
                 </tr>
             </thead>
 
@@ -66,7 +67,7 @@
                 @foreach($linha as $l)
                     @foreach($agenda as $a)
                         @if($a->id_linha == $l->id && $dia == $a->dia_semana)
-                            <form method ="POST" action="{{route('site.client.formaPagamento')}}">
+                        
                             @csrf    
                                 <tr>
                                     <input type="hidden" name="num_linha" value={{$l->num_linha}}>
@@ -74,6 +75,7 @@
                                     <input type="hidden" name="destinoLinha" value={{$l->destino}}>
                                     <input type="hidden" name="tipoL" value={{$l->tipoLinha}}>
                                     <input type="hidden" name="precoLinha" value={{$l->preco}}>
+                                    <input type="hidden" name="selecionado" value={{$l->id}}>
                                     <td class=" td-first"><p>{{$dataSaida}}</p><input type="hidden" name="dataPesq" value={{$dataSaida}}></td>
                                     <td class="border"><p>{{$a->hora}}</p><input type="hidden" name="horaPesq" value={{$a->hora}}></td>
                                     <td class="td-rota border">
@@ -84,9 +86,9 @@
                                     <td  class="border"><p>{{$l->tipoLinha}}</p></td>
                                     <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
                                     <td  ><p>R${{$l->preco}},00</p></td>
-                                    
+                                    <td  class="border td-last"><button name="selecionado" value="{{$l->id}}" id="btnSelecionar" class="btn blue-three color-white" onclick="mostrarVender()">Selecionar</button></td>
                                 </tr>
-                            </form>
+                            
                         @endif
                     @endforeach
                 @endforeach
@@ -96,16 +98,20 @@
 
         </table>
         
-        <div class="venderPassagemParaCPF">
-            <div>
-                <label for="" class="color-blue-three" >Vender passagem para o CPF:</label>
-                <input type="text" maxlength="25" id="destino" name="SelecionarDestino" class="form-control" value="XXX.XXX.XXX-XX">
-            </div>
-            <div>
-                <br>
-                <input type="submit" value="Vender" class="blue-three">
-            </div>
+        <div class="venderPassagemParaCPF" id="divVender" >
+            
+                <div>
+                    <label for="" class="color-blue-three" >Vender passagem para o CPF:</label>
+                   
+                </div>
+
+                <div>
+                    <input type="text" maxlength="11" id="destino" name="cpf" class="form-control" value="" placeholder="xxx.xxx.xxx-xx">
+                    <input type="submit" value="Vender" class="blue-three">
+                </div>
+            
         </div>
+       
     </div>
 </div>
 
@@ -129,10 +135,18 @@
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("dataSaida")[0].setAttribute('min', today);
 
+
+    function mostrarVender(){
+        const divVender = document.getElementById('divVender');
+        const btn = document.getElementById('btnSelecionar'); 
+        divVender.style.display = "flex"
+        btn.style.outline = "#CAE9FF 5px solid"
+  
+
+    }
+
 </script> 
 
 
-<script>
 
-</script>
 @endsection

@@ -88,36 +88,61 @@ div.content-geral h2 {
 
 
 .venderPassagemParaCPF{
-    display: flex;
+    display: none;
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 auto;
     width: 50%;
+    animation: modal .9s;
     
 }
 .venderPassagemParaCPF div{
     display: flex;
-    flex-direction: column;
+  
     margin-left: 3%;
-    width: 50%;
+    
     gap: 10px;
 }
 
 .venderPassagemParaCPF label{
-    font-size: 12pt;
+    font-size: 15pt;
     font-weight: bold;
+    margin-bottom: 20px;
 }
+
 .venderPassagemParaCPF .blue-three{
     color: #fff;
     background-color: #135c8a;
-    height: 75%;
+   
     border-radius: 10px;
-    width: 50%;
+    width: 150px;
     padding: 5px;
     font-weight: bold;
     border: none;
     cursor: pointer;
     font-size: 15pt;
+}
+
+button.blue-three{
+    color: #fff;
+    background-color: #135c8a;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.blue-three:hover{
+    outline: #CAE9FF 5px solid;
+    color: #CAE9FF;
+}
+
+input.blue-three:hover{
+    outline: #CAE9FF 5px solid;
+    color: #CAE9FF;
 }
 
 .venderPassagemParaCPF .form-control{
