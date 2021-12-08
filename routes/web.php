@@ -145,8 +145,11 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
         })->name('site.adm.alterarFuncao');
     });
 
-    Route::get('/backup', [AdmController::class, 'backup'])->name('site.adm.backup');
+    Route::get('/backup', [AdmController::class, 'backup']);
 
+    Route::get('/backupHome', function () {
+        return view('adm.home');
+    })->name('site.adm.homeBackup');
     // ADM RELATORIOS ROTAS
 
     Route::get('/relatorios', [RelatorioAdmController::class, 'gerarRelatorio_passagensVendidasPorDia_eAcessos'])->name('site.adm.relatorios');
@@ -178,8 +181,8 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.venderpassagens');
     });
 
-    Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens'); 
-   
+    Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens');
+
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
     Route::prefix('/alterarFuncao')->group(function(){

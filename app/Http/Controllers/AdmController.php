@@ -210,10 +210,11 @@ class AdmController extends Controller
 
     }
 
+    //Método para fazer backup do banco de dados
     public function backup(){
         $data = date('d-m-Y');
-        $comand = shell_exec("mysqldump --column-statistics=0 --host=localhost --user=root viajeaqui > Backup\/$data.sql");
-        return view('adm.home');
+        $comand = shell_exec("mysqldump  --column-statistics=0 --host=localhost --user=root viajeaqui > Backup\/$data.sql");
+        return redirect()->route('site.adm.home');
     }
 
 }
