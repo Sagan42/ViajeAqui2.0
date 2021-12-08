@@ -8,7 +8,7 @@
         
               <div>
                 <label for="" >Nome   </label>
-                <input type="text" name="cadNome"  class = "input-cadastrar-usuario form-control @error('cadNome')is-invalid @endif"  value="{{old('cadNome')}}"> 
+                <input type="text" name="cadNome"  class = "form-control @error('cadNome')is-invalid @endif"  value="{{old('cadNome')}}"> 
               </div>
               
               <div>
