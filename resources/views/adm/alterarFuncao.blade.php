@@ -46,7 +46,7 @@
             </div>
             <div>
                 <label>Cliente</label>
-                <button>Acessar</button> 
+                <button onclick="mudarFuncao()"> Acessar</button> 
             </div>
        </div>
        
@@ -59,4 +59,12 @@
 </body>
 
 
-
+<script>
+function mudarFuncao(){
+        const confimacao = confirm("Tem certeza que deseja mudar de função?")
+        if(confimacao == false){
+            
+        }
+    }
+    
+</script>
