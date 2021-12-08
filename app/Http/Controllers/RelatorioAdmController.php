@@ -49,7 +49,7 @@ class RelatorioAdmController extends Controller
 
     public function gerarRelatorio_passagensVendidasPorLinhaDia (Request $request){
 
-        $arrayLinha = DB::select('SELECT origem, destino, tipoLinha FROM passagem INNER JOIN linha on passagem.id_linha = linha.id WHERE diaVenda = ?',[$request->data]);
+        $arrayLinha = DB::select('SELECT passagem.origem as origem, passagem.destino as destino, passagem.tipoLinha as tipoLinha FROM passagem WHERE diaVenda = ?',[$request->data]);
 
         $newArray = array();
         foreach ($arrayLinha as $obj){
