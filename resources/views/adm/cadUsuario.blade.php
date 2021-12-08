@@ -28,7 +28,7 @@
               
               <div>
                 <label for="">Email</label>
-                <input type="text" name="cadEmail" class = "input-cadastrar-usuario form-control @error('cadEmail')is-invalid @endif"  value="{{old('cademail')}}"> 
+                <input type="text" name="cadEmail" class = "input-cadastrar-usuario form-control @error('cadEmail')is-invalid @endif"  value="{{old('cadEmail')}}"> 
               </div>
               
               <div class="div-permissao">
