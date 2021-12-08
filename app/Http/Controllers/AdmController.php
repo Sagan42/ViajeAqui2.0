@@ -161,6 +161,7 @@ class AdmController extends Controller
         $adm->save();
     }
 
+    //Método de Listar funcionarios
     public function listarFuncionarios(){
 
         $usuarios = Usuario::where('tipoUsuario', '>=', "1")->orderBy('nome')->paginate(8);
@@ -168,6 +169,7 @@ class AdmController extends Controller
 
     }
 
+    //Método de Listar clientes
     public function listarCLientes(){
 
         $clientes = Usuario::where('tipoUsuario', '=', "0")->orderBy('nome')->paginate(8);
@@ -175,12 +177,14 @@ class AdmController extends Controller
 
     }
 
+    //Método para listar Linhas
     public function listarLinhas(){
         $linhas = Linha::paginate(7);
         return view('adm.listarLinhas', compact('linhas'));
     }
 
 
+    //Método de pesquisar clientes
     public function pesquisarClientes(Request $request){
 
         $clientes = Usuario::where('tipoUsuario', '=', '0')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
@@ -191,6 +195,7 @@ class AdmController extends Controller
 
     }
 
+    //Método de pesquisar funcionarios
     public function pesquisarFuncionarios(Request $request){
 
         $usuarios = Usuario::where('tipoUsuario', '>=', '1')->where('nome', 'LIKE', "%{$request->nome}%" )->orderBy('nome')->paginate(7);
@@ -200,7 +205,7 @@ class AdmController extends Controller
 
 
     }
-
+    //Método de pesquisar linhas
     public function pesquisarLinhas(Request $request){
 
         $linhas = Linha::where('origem', 'LIKE', "%{$request->nome}%")->orWhere('destino', 'LIKE', "%{$request->nome}%")->paginate(7);
