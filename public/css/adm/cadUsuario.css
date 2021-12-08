@@ -7,6 +7,8 @@
     padding: 40px;
     text-align: center;
     border-radius: 60px;
+
+    position: relative;
 }
 
 .container-cadastrar-usuario h2 {
@@ -94,6 +96,18 @@
     transform: translateY(10px);
 }
 
+
+.mensagemErro{
+
+    font-size: 15pt;
+    position: absolute;
+
+    top: -10px;
+    right: 100px;
+    color: red;
+
+
+}
 
 /* .form-cadastrar-usuario div{
     display: flex;

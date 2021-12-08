@@ -7,9 +7,9 @@
           @csrf
 
           @if($errors->any())
-                <p style="color:red; font-size:10pt">
+                <p class="mensagemErro">
 
-                    dados inválidos, tente novamente!
+                    Dados inválidos, tente novamente!
                 </p>
 
           @endif 
