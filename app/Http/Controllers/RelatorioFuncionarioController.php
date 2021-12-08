@@ -43,7 +43,7 @@ class RelatorioFuncionarioController extends Controller
 
     public function gerarRelatorio_linhasQueMaisVendeu (Request $request){
         $idUser = Session::get('usuario.id');
-        $arrayLinha = DB::select('SELECT origem, destino, tipoLinha FROM passagem INNER JOIN linha on passagem.id_linha = linha.id INNER JOIN funcionario on passagem.id_funcionario = funcionario.id WHERE funcionario.id_usuario = ?',[$idUser]);
+        $arrayLinha = DB::select('SELECT passagem.origem as origem, passagem.destino as destino, passagem.tipoLinha as tipoLinha FROM passagem INNER JOIN funcionario on passagem.id_funcionario = funcionario.id WHERE funcionario.id_usuario = ?',[$idUser]);
 
         $newArray = array();
         foreach ($arrayLinha as $obj){
