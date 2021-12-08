@@ -9,6 +9,7 @@ use App\Models\Funcionario;
 use App\Models\Linha;
 use App\Models\Agenda;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\StoreUserRequest;
 
 class FuncionarioController extends Controller
 {
@@ -38,9 +39,11 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
+
         $usuario = app(\App\Http\Controllers\ClienteController::class)->store($request);
+
         $funcionario = new Funcionario;
         $funcionario->id_usuario = $usuario->id;
         $funcionario->save();

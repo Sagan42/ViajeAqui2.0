@@ -10,6 +10,7 @@ use App\Models\Funcionario;
 use App\Models\Linha;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
 
 class AdmController extends Controller
 {
@@ -39,7 +40,7 @@ class AdmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
 
         if($request->tipoUsuario==2){

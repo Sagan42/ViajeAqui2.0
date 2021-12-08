@@ -46,6 +46,7 @@ class ClienteController extends Controller
         if($usuario->tipoUsuario == 0){
             return redirect()->route('site.login')->with('message', "Cadastro Feito Com Sucesso !");            
         }
+        return $usuario;
     }
 
     /**
