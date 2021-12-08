@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdmController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PassagemController;
 use App\Http\Controllers\LinhaController;
@@ -177,6 +178,8 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
         })->name('site.funcionario.venderpassagens');
     });
 
+    Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens'); 
+   
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
     Route::prefix('/alterarFuncao')->group(function(){

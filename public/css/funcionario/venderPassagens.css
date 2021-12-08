@@ -1,18 +1,28 @@
-h1 {
-    font-size: 2.1rem;
-    color: #1b4965;
-    margin-top: 60px;
-    margin-left: 150px;
-}
+
 
 div.content-geral {
+
     display: flex;
     flex-direction: column;
-   height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 900px;
+    gap: 10px;
+    margin: 0 auto;
+    position: relative;
+
 }
 
+.conteudo{
+    transform: translateY(100px);
+}
 div.content-geral h2 {
-    margin: 2.5% auto 3% auto;
+    position: absolute;
+    top: 20px;
+    font-size: 25pt;
+
+
     color: #1b4965;
 }
 
@@ -20,12 +30,21 @@ div.content-geral h2 {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    margin-left: 4%;
-    width: 96%;
+    width: 900px;
+    height: 70px;
+    margin-bottom: 50px;
+
+  
 }
 .form-selecionar-passagens .form-control {
-   height: 75%;
-   border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 13pt;
+    color: #135c8a;
+    outline-color: #135c8a;
+
+    height: 75%;
+    border-radius: 5px;
 }
 
 .form-selecionar-passagens div {
@@ -37,41 +56,56 @@ div.content-geral h2 {
 }
 
 .form-selecionar-passagens #trocaPesquisa {
-  width:8%;
+    font-size: 17pt;
+    width:100%;
 }
 .form-selecionar-passagens #botaoTrocarPesquisa{
-    margin-top: 3px;
+    margin: auto auto;
+}
+
+.form-selecionar-passagens label{
+    font-size: 14pt;
+    font-weight: bold;
 }
 
 
-.form-selecionar-passagens div a {
-    color: #fff;
-}
 
 
 .form-selecionar-passagens input[type="submit"] {
+
     color: #fff;
     background-color: #135c8a;
     height: 75%;
     border-radius: 10px;
-    width: 70%;
     padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    font-size: 15pt;
 }
+
 
 
 .venderPassagemParaCPF{
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    margin-top: 4%;
-    margin-left: 4%;
+    margin: 0 auto;
     width: 50%;
+    
 }
 .venderPassagemParaCPF div{
     display: flex;
     flex-direction: column;
     margin-left: 3%;
     width: 50%;
+    gap: 10px;
+}
+
+.venderPassagemParaCPF label{
+    font-size: 12pt;
+    font-weight: bold;
 }
 .venderPassagemParaCPF .blue-three{
     color: #fff;
@@ -80,76 +114,90 @@ div.content-geral h2 {
     border-radius: 10px;
     width: 50%;
     padding: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15pt;
 }
 
 .venderPassagemParaCPF .form-control{
-    height: 75%;
-   border-radius: 5px;
-}
-
-
-
-
-
-
-
-.informaçoes {
-    width: 500px;
-    height: 450px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0);
-    background-color: rgba(95, 168, 211, 0.99);
-    margin: 100px auto 0 auto;
-    border-radius: 20px;
-}
-
-.info {
-    text-align: center;
-    margin-top: 20px;
-    color: rgb(43, 41, 41);
-}
-
-.info-last {
-    margin-bottom: 20px;
-}
-
-form.form-venderPassagens {
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0);
-    width: 400px;
-    margin: auto;
-    background-color: white;
-    text-align: center;
-}
-
-form.form-venderPassagens input {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-form.form-venderPassagens input[type="text"] {
-    width: 70%;
-    height: 30px;
-    text-align: center;
-    background-color: #CAE9FF;
-    border: none;
-    border: 1px solid rgb(87, 85, 85);
-    box-shadow: 1px 1px 2px rgb(61, 61, 61);
-    border-radius: 7px;
-}
-
-form.form-venderPassagens label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 4px;
-}
-
-form.form-venderPassagens .button {
-    width: 150px;
     height: 40px;
-    background-color: #1b4965;
-    color: white;
-    font-size: 17px;
-    border: none;
     border-radius: 5px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    color: #135c8a;
+}
+
+#trocaPesquisa a i{
+    color: #135c8a;
     cursor: pointer;
+}
+
+.tabelaPassagens{
+
+    width: 900px;
+   
+    margin: 10px auto;
+    margin-bottom: 150px;
+    border-collapse: collapse;
+}
+
+.th-first{
+    border-top-left-radius: 10px;
+}
+
+.th-last{
+    border-top-right-radius: 10px;
+}
+
+.tabelaPassagens thead tr th{
+
+    text-align: center;
+    width: 100px;
+    font-size: 15pt;
+    padding: 0 20px 0 10px;
+    margin-bottom: 10px;
+   
+    
+    
+    
+
+}
+
+.tabelaPassagens thead{
+
+    border-collapse: collapse;
+
+}
+.cabecalho{
+   
+    background-color: #135c8a9d;
+}
+
+.tabelaPassagens tr td{
+
+    font-size: 15pt;
+    font-weight: bold;
+    background-color: #fff;
+
+    border: 1px solid #dee2e6;
+    text-align: center;
+
+    padding: 15px;
+   
+
+
+}
+
+.td-border_none{
+    padding: 15px;
+    border: none !important;
+    background-color: #CAE9FF !important;
+
+}
+
+.border{
+    border: 1px solid #dee2e6 !important;
+
 }
