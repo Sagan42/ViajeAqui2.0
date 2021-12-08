@@ -185,6 +185,10 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
 
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
+    Route::get('/funcionario/pagamento', function (){
+        return view('funcionario.pagamento');
+    })->name('site.funcionario.pagamento');
+
 });
     
 Route::prefix('/alterarFuncao')->group(function(){

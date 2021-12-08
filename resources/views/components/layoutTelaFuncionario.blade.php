@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/funcionario/paginaRelatorios.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/venderPassagens.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/gerenciarLinhas.css')}}">
-
+        <link rel="stylesheet" href="{{asset('css/funcionario/pagamento.css')}}">
     </head>
 
     <body id="body">
@@ -25,12 +25,12 @@
         <header class="menu-lateral" id="menu-lateral">
             <div class="perfil">
                 
-                <p>Funcionário</p>
-                <p>{{Session::get('usuario.nome')}}</p>
+                <p style="font-weight: bold">Funcionário</p>
+                <p style="font-weight: bold">{{Session::get('usuario.nome')}}</p>
                     
                 </div>
                 <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
-
+            <div style="display: flex;flex-direction: column;align-items: center;gap:7px">
                 <a href="/alterarFuncao">Alterar Função</a>
                 <a href="#" id = "modalPerfil">Visualizar Perfil</a>
                 <a href="{{route('site.logout')}}" class="sair"  onclick="verificarSair()">Sair</a>

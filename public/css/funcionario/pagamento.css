@@ -1,0 +1,168 @@
+.tituloPagina{
+    color: #1b4965;
+    text-align: center;
+    transform: translateY(20px);
+}
+
+.content-pagamento-passagens{
+
+    margin: 0 auto;
+    height: 100vh;
+    
+
+}
+.content-forma-pagamento {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+   
+    
+
+    
+}
+
+.retangulo-pagamento {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background-color: #1b4965;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+    
+}
+
+.retangulo-pagamento-interno {
+    height: 30%;
+    width: 40%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.retangulo-pagamento-interno img {
+    width: 100%;
+    height: 100%;
+}
+
+.retangulo-pagamento>p {
+    font-size: 15pt;
+    color: #fff;
+}
+
+.content-forma-pagamento button {
+    padding: 10px;
+    align-self: center;
+    background-color: #1b4965;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+}
+
+.marcado .retangulo-pagamento {
+    border: 5px solid yellow;
+}
+
+#btnConfirmar{
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btnConfirmar:hover{
+    outline: #078de0 2px solid;
+   
+}
+.modalPix {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.modalPix p {
+    width: 100%;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.modalBoleto {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.modalCartao {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#modalCartao input {
+    width: 80%;
+    background-color: #fff;
+    color: #1b4965;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btnModal{
+    position: absolute;
+    padding: 10px;
+    bottom: -45px;
+    right: 5px;
+    width: 110px;
+    background-color: #1b4965;
+    color: #fff;
+    box-shadow: #1b4965;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.msgConfirmacao {
+    
+    display: none;
+    text-align: center;
+    height: 120px;
+    padding: 10px;
+    width: 200px;
+    position: absolute;
+    transform: translate(300px,-150px);
+   
+    color: green;
+    background-color: rgba(3, 238, 3, 0.192);
+    font-size: 15pt;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 10px;
+}
+.mostrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: animacaoConfirmarPagamento .9s backwards;
+}
+
+@keyframes animacaoConfirmarPagamento {
+    from {
+        opacity: 0;
+        transform: translate3d(350px, -150, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(300px, -150, 0);
+    }
+}
+
