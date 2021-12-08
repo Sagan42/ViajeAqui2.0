@@ -24,6 +24,9 @@
                 </a>
             </div>
             <aside class="links">
+                @if (Session::get('usuario.tipoUsuario')==1 || Session::get('usuario.tipoUsuario')==2)
+                    <a class="btn blue-three " href="{{route('site.funcionario.alterarFuncao')}}">Alterar Função</a>
+                @endif
                 <a class="btn blue-three " href="{{route('site.client.minhasPassagens')}}">Minhas Passagens</a>
                 <a class="btn blue-three " href="{{route('site.client.minhaConta')}}">Conta</a>
                 <a class="btn blue-three sair" onclick="verificarSair()" href="{{route('site.logout')}}">Sair</a>

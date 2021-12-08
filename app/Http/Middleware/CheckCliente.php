@@ -18,7 +18,7 @@ class CheckCliente
     {
         if(Session::exists('usuario')){
             $id = Session::get('usuario.tipoUsuario');   
-            if($id == '0'){ 
+            if($id == '0' || $id == '1' || $id == '2'){ 
                 return $next($request);
             }
         }

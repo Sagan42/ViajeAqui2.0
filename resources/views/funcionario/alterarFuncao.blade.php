@@ -23,49 +23,24 @@
             </div>
         </nav>
     </header>
-
-
        <div class="container-mudarLogin">
-
-            <!--
-            <button id="btnVoltar"> 
-                <a href="{{route('site.funcionario.home')}}"> 
-                    <i class="bi bi-arrow-left"></i>
-                        Voltar
-                </a>
-            </button>
-            -->
-
             <div id="mudarLogin1">
-                <label>Funcionário</label>
-                <button>
-                    <a href="{{route('site.funcionario.home')}}"> 
-                        Acessar
-                    </a>
-                </button> 
+                @if (Session::get('usuario.tipoUsuario')==1)
+                    <label>Funcionário</label>
+                    <button> <a href="{{route('site.funcionario.home')}}"> Acessar </a> </button> 
+                @else
+                    <label>Administrador</label>
+                    <button> <a href="{{route('site.adm.home')}}"> Acessar </a> </button>
+                @endif
             </div>
             <div>
                 <label>Cliente</label>
-                <button onclick="mudarFuncao()">Acessar</button> 
+                <button><a href="{{route('site.alterarFuncao')}}"> Acessar </a></button> 
             </div>
        </div>
-       
-
-
     <footer>
-
     </footer>
-
 </body>
-<script>
-function mudarFuncao(){
-        const confimacao = confirm("Tem certeza que deseja mudar de função?")
-        if(confimacao == false){
-            
-        }
-    }
-    
-</script>
 
 
 

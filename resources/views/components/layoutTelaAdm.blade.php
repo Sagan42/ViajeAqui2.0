@@ -39,7 +39,7 @@
 
            <img class="imagem-perfil" src="https://russocorretora.com.br/images/foto-perfil-generica.jpg" alt="Foto-Perfil" id="imagem-perfil">
 
-           <a href="/adm/alterarFuncao">Alterar Função</a>
+            <a href="/alterarFuncao">Alterar Função</a>
             <a href="#" id = "modalPerfil">Visualizar Perfil</a>
             <a href="{{route('site.logout')}}" class='sair' onclick="verificarSair()">Sair</a>
         </div>

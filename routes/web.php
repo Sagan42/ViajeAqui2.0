@@ -185,10 +185,15 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
 
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
-    Route::prefix('/alterarFuncao')->group(function(){
-        Route::get('/', function () {
-            return view('funcionario.alterarFuncao');
-        })->name('site.funcionario.alterarFuncao');
-    });
+});
+    
+Route::prefix('/alterarFuncao')->group(function(){
+    Route::get('/', function () {
+        return view('funcionario.alterarFuncao');
+    })->name('site.funcionario.alterarFuncao');
+
 
 });
+
+
+Route::get('/alterarFuncao/cliente', [UsuarioController::class, 'alterarFuncao'])->name('site.alterarFuncao');

@@ -259,7 +259,6 @@ class UsuarioController extends Controller
     public function login(LoginUserRequest $request){
 
         $usuario = Usuario::where('cpf', $request->loginCPF)->get()->first();
-
         if(Hash::check($request->loginSenha, $usuario->senha) == true) {
             Session::put('usuario', $usuario);
             if($usuario->tipoUsuario == "0"){
@@ -271,13 +270,16 @@ class UsuarioController extends Controller
                 $acesso->save();
 
                 return redirect()->route('site.client.home');
+            }else{
+                return redirect()->route('site.funcionario.alterarFuncao');
             }
-            else if($usuario->tipoUsuario == "1"){
+
+            /*else if($usuario->tipoUsuario == "1"){
                 return redirect()->route('site.funcionario.home');
             }
             else if($usuario->tipoUsuario == "2"){
                 return redirect()->route('site.adm.home');
-            }
+            }*/
         }
         else{
 
@@ -305,5 +307,15 @@ class UsuarioController extends Controller
         //session()->put('id_user', $usuario->id);
         Session::put('id_user', $usuario->id);
         //return session(key: 'id_user');
+    }
+
+    public function alterarFuncao(){
+        $cliente = Cliente::where([['id_usuario','=', Session::get('usuario.id')]])->first();
+
+        $acesso = new Acesso;
+        $acesso->id_cliente = $cliente->id;
+        $acesso->dataAcesso = now();
+        $acesso->save();
+        return redirect()->route('site.client.home');
     }
 }
