@@ -156,7 +156,10 @@ insert into cliente
 (id_usuario)
 values
 ('1'),
-('2');
+('2'),
+('3'),
+('4'),
+('5');
 
 insert into funcionario
 (id_usuario)

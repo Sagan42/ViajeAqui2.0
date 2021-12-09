@@ -97,7 +97,7 @@
 
 
         </table>
-        
+        <form action="{{route('site.funcionario.pagamento')}}">
         <div class="venderPassagemParaCPF" id="divVender" >
             
                 <div>
@@ -111,7 +111,7 @@
                 </div>
             
         </div>
-       
+    </form>
     </div>
 </div>
 
