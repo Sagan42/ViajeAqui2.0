@@ -1,13 +1,13 @@
-:root{
-    --cor-primaria:  #1b4965;
+:root {
+    --cor-primaria: #1b4965;
     --cor-secundaria: rgba(95, 168, 211, 0.99);
     --cor-terciaria: #CAE9FF;
-  
-    --cor-hover-primaria: #1b4975;;
+    --cor-hover-primaria: #1b4975;
+    ;
     --cor-hover-secundaria: rgb(62, 162, 230);
     --cor-active-primaria: rgb(37, 104, 150);
     --cor-active-secundaria: rgb(120, 175, 207);
-  }
+}
 
 a {
     text-decoration: none;
@@ -32,7 +32,6 @@ label {
 .blue-three {
     background-color: #1b4965;
 }
-
 
 .color-blue-one {
     color: rgba(95, 168, 211, 0.99);
@@ -62,8 +61,6 @@ label {
     height: 60px;
     padding: 15px;
     margin-left: 60px;
-
-
 }
 
 .logo span {
@@ -72,7 +69,11 @@ label {
     font-size: 40px;
     font-family: 'Ink Free Bold', 'Ink Free Normal', 'Ink Free', sans-serif;
     font-weight: 700;
+}
 
+.logo a i {
+    color: #000;
+    min-height: 200px;
 }
 
 .links a {
@@ -91,29 +92,25 @@ label {
     color: rgb(138, 196, 238);
 }
 
+
 /* Header End */
 
-
 .divOrigem {
-
     position: relative;
-
 }
 
 #botaoTrocarPesquisa {
-
     position: absolute;
     right: -18px;
     top: 50%;
-
     border: none;
     color: #1b4965;
     cursor: pointer;
-
 }
 
 
 /*TELA DE MUDAR LOGIN*/
+
 
 /*.container-mudarLogin #btnVoltar{
     position: absolute;
@@ -125,18 +122,17 @@ label {
 
 
 }*/
+
 .container-mudarLogin {
     display: flex;
-    
     position: absolute;
     top: 26%;
     left: 23%;
     width: 55%;
     height: 60%;
-    color:var(--cor-secundaria);
+    color: var(--cor-secundaria);
     font-family: Arial;
     font-weight: 700;
-    
 }
 
 .container-mudarLogin div {
@@ -148,14 +144,13 @@ label {
     grid-column: 1;
     grid-row: 2;
     margin: auto;
-    background:var(--cor-primaria);
+    background: var(--cor-primaria);
     height: 45%;
     width: 35%;
     border-radius: 35px;
 }
 
 .container-mudarLogin #mudarLogin1 {
-
     float: left;
     background-color: rgb(189, 197, 216);
 }
@@ -173,14 +168,14 @@ label {
     border-color: white;
 }
 
-.container-mudarLogin button:hover{
+.container-mudarLogin button:hover {
     background-color: var(--cor-hover-secundaria);
 }
 
-.container-mudarLogin button:active{
+.container-mudarLogin button:active {
     background-color: var(--cor-active-secundaria);
 }
 
-.container-mudarLogin a{
-    color: inherit; 
+.container-mudarLogin a {
+    color: inherit;
 }
