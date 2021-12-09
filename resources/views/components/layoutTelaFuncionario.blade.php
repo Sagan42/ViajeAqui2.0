@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{asset('css/funcionario/venderPassagens.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/gerenciarLinhas.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/pagamento.css')}}">
+        <link rel="stylesheet" href="{{asset('css/funcionario/cadLinha.css')}}">
     </head>
 
     <body id="body">

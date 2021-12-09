@@ -1,8 +1,10 @@
 @extends('components.layoutTelaFuncionario')
 
 @section('contentTelaFuncionario')
-<h2 class = "tituloPagina">Editar de Linhas</h2>
+
+    
     <form action="" method="post" class="container-cadastro-linhas" onchange = "minhaFuncao()">
+        <h1 class = "tituloPaginaEditarLinha">Editar de Linhas</h1>
         @csrf
         <div class="input-cidade-origem-destino">
 

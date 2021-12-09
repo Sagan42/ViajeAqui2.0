@@ -1,0 +1,304 @@
+.container-cadastro-linhas {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: auto auto;
+    height: 80%;
+    width: 50%;
+    background-color: #1b4965;
+    border-radius: 60px;
+    padding: 10px 100px;
+    color: #fff;
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+   
+}
+
+.input-radio-linhas {
+    display: flex;
+    padding: 10px;
+    transform: translateY(30px);
+
+    justify-content: space-around;
+    margin: 5px 0;
+
+    font-size: 15pt;
+
+ 
+}
+
+.input-cidade-origem-destino {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+    width: 100%;
+    height: 40%;
+    margin-bottom: -80px;
+    font-size: 15pt;
+}
+
+.input-cidade-origem-destino input {
+    width: 100%;
+    height: 15%;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15pt;
+    color: #135c8a;
+}
+
+.input-cidade-origem-destino label {
+    align-self: flex-start;
+}
+
+#destinosIntermediarios {
+    height: 30%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#destinosIntermediarios input {
+    height: 40%;
+    font-size: 15pt;
+}
+
+.container-valor-passagem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    height: 7%;
+    transform: translateY(20px);
+}
+
+.container-valor-passagem label {
+    font-size: 15pt;
+}
+
+.container-numero-linha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 7%;
+    transform: translateY(20px);
+}
+
+.container-linha-input {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container-numero-linha label {
+    font-size: 15pt;
+}
+
+.tituloPaginaEditarLinha{
+    position: absolute;
+    top: -50px;
+    transform: translateX(40px);
+    
+       
+    color: #135c8a;
+}
+
+.container-numero-vagas {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 7%;
+    font-size: 15pt;
+    gap: 10px;
+    transform: translateY(15px);
+}
+
+.container-numero-vagas input {
+    height: 100%;
+    width: 20%;
+    font-size: 15pt;
+    text-align: center;
+}
+
+.container-agenda-linha {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-agenda-linha label {
+    font-size: 15pt;
+}
+
+.container-botao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    height: 10%;
+    width: 50%;
+}
+
+.container-botao button {
+    width: 100%;
+    height: 70%;
+    margin: 0 10px;
+    padding: 10px;
+    border: inherit;
+    border-radius: 5px;
+    color: #1b4965;
+    background-color: var(--cor-terciaria);
+    font-weight: bolder;
+    cursor: pointer;
+    text-align: center;
+}
+
+.container-botao button:hover {
+    padding-bottom: 15px;
+    background-color: #135c8a;
+    color: #fff;
+    transition: .4s;
+    outline-color: aqua;
+}
+
+.modalAgenda {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+}
+
+.modalAgendaInterno {
+    width: 40%;
+    height: 70%;
+    position: relative;
+    background-color: #135c8a;
+    display: flex;
+    justify-content: center;
+}
+
+#botaoFechar {
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    background-color: #135c8a;
+    border-radius: 50%;
+    border: 1px solid;
+    top: -30px;
+    right: -30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.modalAgenda .modal {
+    animation: modal .3s;
+}
+
+.tabela-cadastro-linha {
+    width: 100%;
+    font-size: 15PT;
+}
+
+.tabela-cadastro-linha thead th {
+    padding: 10px;
+    text-align: center;
+    border-collapse: separate;
+    border: 1px solid #fff;
+}
+
+.tabela-cadastro-linha tbody tr td {
+    padding: 10px;
+    text-align: center;
+    border-collapse: separate;
+    border: 1px solid #fff;
+}
+
+.tabela-cadastro-linha tbody tr td input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
+.tabela-cadastro-linha tbody tr td label:hover {
+    cursor: pointer;
+}
+
+.input-horario {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    font-size: 14pt;
+}
+
+#botaoConfirmar {
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    height: 40px;
+    width: 100px;
+    padding: 10px;
+    transform: translateY(10px);
+    color: #135c8a;
+    background-color: #CAE9FF;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tituloPagina{
+    font-size: 25pt;
+
+}
+
+@media(max-width:1367px){
+
+    .container-cadastro-linhas{
+        width: 537px;
+        
+
+    }
+}
+
+
+@media(min-width:1368px){
+
+    .container-cadastro-linhas{
+        width: 690px;
+        
+
+    }
+}
