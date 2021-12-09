@@ -38,9 +38,6 @@
         @yield('contentTelasCliente')
     </main>
 
-    <footer>
-
-    </footer>
 
     <!-- Verificação para botão de Sair -->
     <Script>
