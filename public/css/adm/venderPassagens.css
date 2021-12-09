@@ -1,0 +1,228 @@
+
+
+div.content-geral {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 900px;
+    gap: 10px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.conteudo{
+    transform: translateY(100px);
+}
+div.content-geral h2 {
+    position: absolute;
+    top: 20px;
+    font-size: 25pt;
+
+
+    color: #1b4965;
+}
+
+.form-selecionar-passagens {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 900px;
+    height: 70px;
+    margin-bottom: 50px;
+
+  
+}
+.form-selecionar-passagens .form-control {
+    border: none;
+    text-align: center;
+    font-size: 13pt;
+    color: #135c8a;
+    outline-color: #135c8a;
+
+    height: 75%;
+    border-radius: 5px;
+}
+
+.form-selecionar-passagens div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.form-selecionar-passagens #trocaPesquisa {
+    font-size: 17pt;
+    width:100%;
+}
+.form-selecionar-passagens #botaoTrocarPesquisa{
+    margin: auto auto;
+}
+
+.form-selecionar-passagens label{
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+
+
+
+.form-selecionar-passagens input[type="submit"] {
+
+    color: #fff;
+    background-color: #135c8a;
+    height: 75%;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    font-size: 15pt;
+}
+
+
+
+.venderPassagemParaCPF{
+    display: none;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+    animation: modal .9s;
+    
+}
+.venderPassagemParaCPF div{
+    display: flex;
+  
+    margin-left: 3%;
+    
+    gap: 10px;
+}
+
+.venderPassagemParaCPF label{
+    font-size: 15pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.venderPassagemParaCPF .blue-three{
+    color: #fff;
+    background-color: #135c8a;
+   
+    border-radius: 10px;
+    width: 150px;
+    padding: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 15pt;
+}
+
+button.blue-three{
+    color: #fff;
+    background-color: #135c8a;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 13pt;
+    font-weight: bold;
+}
+
+.blue-three:hover{
+    outline: #CAE9FF 5px solid;
+    color: #CAE9FF;
+}
+
+input.blue-three:hover{
+    outline: #CAE9FF 5px solid;
+    color: #CAE9FF;
+}
+
+.venderPassagemParaCPF .form-control{
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    color: #135c8a;
+}
+
+#trocaPesquisa a i{
+    color: #135c8a;
+    cursor: pointer;
+}
+
+.tabelaPassagens{
+
+    width: 900px;
+   
+    margin: 10px auto;
+    margin-bottom: 150px;
+    border-collapse: collapse;
+}
+
+.th-first{
+    border-top-left-radius: 10px;
+}
+
+.th-last{
+    border-top-right-radius: 10px;
+}
+
+.tabelaPassagens thead tr th{
+
+    text-align: center;
+    width: 100px;
+    font-size: 15pt;
+    padding: 0 20px 0 10px;
+    margin-bottom: 10px;
+   
+    
+    
+    
+
+}
+
+.tabelaPassagens thead{
+
+    border-collapse: collapse;
+
+}
+.cabecalho{
+   
+    background-color: #135c8a9d;
+}
+
+.tabelaPassagens tr td{
+
+    font-size: 15pt;
+    font-weight: bold;
+    background-color: #fff;
+
+    border: 1px solid #dee2e6;
+    text-align: center;
+
+    padding: 15px;
+   
+
+
+}
+
+.td-border_none{
+    padding: 15px;
+    border: none !important;
+    background-color: #CAE9FF !important;
+
+}
+
+.border{
+    border: 1px solid #dee2e6 !important;
+
+}

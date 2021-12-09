@@ -114,7 +114,17 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
         return view('adm.paginaLinhas');
     })->name('site.adm.paginaLinhas');
 
-
+    
+     Route::get('/venderpassagens', function(){
+            return view('adm.venderPassagens');
+        })->name('site.adm.venderPassagens');
+    
+    Route::get('/adm/venderpassagens', [AdmController::class, 'selecionarPassagens'])->name('site.adm.selecionarPassagens');
+    
+    Route::post('/adm/pagamento', [AdmController::class, 'pagamento'])->name('site.adm.pagamento');
+    
+    Route::post('/adm/concluido', [AdmController::class, 'confirmarPagamento'])->name('site.adm.confirmarPagamento');
+    
     Route::get('/listarLinhas', [AdmController::class, 'listarLinhas'])->name('site.adm.listarLinhas');
 
     Route::get('/listaClientes', [AdmController::class, 'listarClientes'])->name('site.adm.listaClientes');
