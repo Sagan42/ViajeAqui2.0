@@ -138,34 +138,15 @@ class LinhaController extends Controller
         $linhaPesq->destino = $request->SelecionarDestino;
         $dataSaida = $request->dataSaida;
         $linhaPesq->dataSaida = $dataSaida;
-        //2021-12-01 -> quarta
-        // 1 -> quinta
-        // 8
-        // 2 -> sexta
-        // 9
 
         $agenda = Agenda::all();
         $linha = Linha::all();
         $linhas = array();
         $agendas = array();
 
-        // Data de hoje
-        //$dia = Carbon::today()->format('l');
         date_default_timezone_set('America/Sao_Paulo');
-        //$dia = Carbon::createFromFormat('Y-m-d', $dataSaida)->toDateString();
-
-        
-        //$dataPesquisado = Carbon::createFromFormat('Y-m-d', $dataSaida);
         $dataPesquisado = Carbon::createFromFormat('Y-m-d', $dataSaida)->format('d/m/Y');
-        
-        //$dataPesquisado->add(1,'day');
-        //$weekdays = Carbon::getDays();
-        //$diaSemanaPesquisado = Carbon::create($dataPesquisado)->locale('pt-BR')->dayName;
-
-        //dd($diaSemana);
-        //retorna data com formato carbon
-        //$test = Carbon::createFromFormat('Y-m-d', $dataSaida)->toDateString();
-        
+           
         $diaSemanaPesquisado = Carbon::create($dataSaida)->locale('pt-BR')->dayName;
             
         foreach($agenda as $a){
@@ -173,6 +154,14 @@ class LinhaController extends Controller
                 $linhaAux = Linha::find($a->id_linha);
                 if($linhaAux->tipoLinha == 'Direta'){
                     if($linhaAux->origem == $request->SelecionarOrigem && $linhaAux->destino == $request->SelecionarDestino){
+                        $viaj = Viajem::where('id_linha','=',$linhaAux->id)
+                                        ->where('dataViajem','=', $dataSaida)
+                                        ->first();
+
+                        if($viaj != null){
+                            $linhaAux->quantidadePassagem = $viaj->quantidadePassagem;
+                        }
+                        
                         array_push($linhas,$linhaAux);
                     }
                     
@@ -187,6 +176,14 @@ class LinhaController extends Controller
                         if($l->num_linha == $linhaAux->num_linha){
                             if($l->origem == $request->SelecionarOrigem && $l->destino == $request->SelecionarDestino){
                                 $l->id = $linhaAux->id;
+
+                                $viaj = Viajem::where('id_linha','=',$l->id)
+                                                ->where('dataViajem','=', $dataSaida)
+                                                ->first();
+
+                                if($viaj != null){
+                                    $l->quantidadePassagem = $viaj->quantidadePassagem;
+                                }
                                 array_push($linhas,$l);
                             }elseif($linhaAux->origem == $request->SelecionarOrigem){
                                 $preco += $l->preco;
@@ -194,6 +191,14 @@ class LinhaController extends Controller
                                     if($l->destino == $request->SelecionarDestino){
                                         $linhaPesquisada->destino = $l->destino;
                                         $linhaPesquisada->preco = $preco;
+                                        
+                                        $viaj = Viajem::where('id_linha','=',$linhaPesquisada->id)
+                                                        ->where('dataViajem','=', $dataSaida)
+                                                        ->first();
+
+                                        if($viaj != null){
+                                            $linhaPesquisada->quantidadePassagem = $viaj->quantidadePassagem;
+                                        }
                                         array_push($linhas,$linhaPesquisada);
                                     }
                                     $destino = $l->destino;
@@ -210,6 +215,14 @@ class LinhaController extends Controller
                                     if($l->destino == $request->SelecionarDestino){
                                         $linha->preco = $preco;
                                         $linha->destino = $l->destino;
+
+                                        $viaj = Viajem::where('id_linha','=',$linha->id)
+                                                        ->where('dataViajem','=', $dataSaida)
+                                                        ->first();
+
+                                        if($viaj != null){
+                                            $linha->quantidadePassagem = $viaj->quantidadePassagem;
+                                        }
                                         array_push($linhas,$linha);
                                     }
                                 }
@@ -219,8 +232,6 @@ class LinhaController extends Controller
                 }
             }
         }
-
-        
         
         return view('verPassagens', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
     }

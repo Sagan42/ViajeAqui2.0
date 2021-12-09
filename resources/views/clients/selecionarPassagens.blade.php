@@ -77,10 +77,7 @@
 </div>
 
 <script>
-
     function trocaPesquisa(){
-
-       
         const origem = document.getElementById('origem')
         const destino = document.getElementById('destino')
         var aux;
@@ -88,14 +85,10 @@
         aux = origem.value;
         origem.value = destino.value
         destino.value = aux
-        
-
-
     }
     
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("dataSaida")[0].setAttribute('min', today);
-
 </script> 
 
 @endsection

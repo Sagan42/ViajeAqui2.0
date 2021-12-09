@@ -27,7 +27,14 @@
                     @if($p->id_viajem == $v->id && $p->id_cliente == $usuario->id )   
                         <tr class="neutro"><td class="td-border_none"></td></tr>
                         <tr>
-                            <td class="border td-first"><p>{{$v->dataViajem}}</p></td>
+                            <td class="border td-first">
+                                <p>
+                                    <?php
+                                        $date = new DateTime($v->dataViajem);
+                                    ?>
+                                    {{$date->format('d/m/Y')}}
+                                </p>
+                            </td>
                             <td class="border"><p>{{$v->horaViajem}}</p></td>
                             <td class="td-rota border">
                                 {{$p->origem}}
@@ -64,7 +71,14 @@
                         @if($p->id_viajem == $v->id && $p->id_cliente == $usuario->id)   
                             <tr class="neutro"><td class="td-border_none"></td></tr>
                             <tr>
-                                <td class="border td-first"><p>{{$v->dataViajem}}</p></td>
+                                <td class="border td-first">
+                                    <p>
+                                        <?php
+                                            $date = new DateTime($v->dataViajem);
+                                        ?>
+                                        {{$date->format('d/m/Y')}}
+                                    </p>
+                                </td>
                                 <td class="border"><p>{{$v->horaViajem}}</p></td>
                                 <td class="td-rota border">
                                     {{$p->origem}}
