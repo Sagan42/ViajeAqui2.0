@@ -40,8 +40,6 @@
                 <button><a href="{{route('site.alterarFuncao')}}"> Acessar </a></button> 
             </div>
        </div>
-    <footer>
-    </footer>
 </body>
 
 
