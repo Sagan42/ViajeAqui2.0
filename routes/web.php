@@ -107,6 +107,9 @@ Route::prefix('/adm')->middleware('checkAdm')->group(function(){
     })->name('site.adm.cadLinha');
     Route::post('/cadLinha', [LinhaController::class, 'store'])->name('site.adm.cadLinha');
 
+    Route::get('/editarLinha/{id}', [LinhaController::class, 'edit'])->name('site.adm.editarLinha');
+    Route::post('/editarLinha/{id}', [LinhaController::class, 'update'])->name('site.adm.editarLinha');
+
     Route::get('/paginaLinhas', function(){
         return view('adm.paginaLinhas');
     })->name('site.adm.paginaLinhas');

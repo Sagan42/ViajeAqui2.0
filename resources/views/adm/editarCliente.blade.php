@@ -1,5 +1,5 @@
 @extends('components.layoutTelaAdm')
-    <h2 class = "tituloPagina">Editar Usuario</h2>
+    <h2 class = "tituloPagina">Editar Cliente</h2>
 
     <div class = "container-editar-usuario">
         <h2>Dados Cadastrais</h2>

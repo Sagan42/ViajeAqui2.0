@@ -45,7 +45,6 @@ class LinhaController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
         $linha = new Linha;
         $linha->origem = $request->origem;
         $linha->destino = $request->destino;
@@ -57,6 +56,8 @@ class LinhaController extends Controller
         
         $linha->id_adm = $adm->id;
         $linha->save();
+
+        app(\App\Http\Controllers\AgendaController::class)->store($request, $linha->id);
 
         return redirect()->route('site.adm.cadLinha');
     }
@@ -81,7 +82,9 @@ class LinhaController extends Controller
     public function edit($id)
     {
         $linha = Linha::find($id);
-
+        $agenda = Agenda::where('id_linha', '=', $linha->id)->get();
+        //dd($agenda);
+        return view('adm.editLinha' ,['id'=> $id], compact('linha', 'agenda'));
     }
 
     /**
@@ -94,7 +97,7 @@ class LinhaController extends Controller
     public function update(Request $request, $id)
     {
         $linha = Linha::find($id);
-
+        //dd($linha);
         $linha->origem = $request->origem;
         $linha->destino = $request->destino;
         $linha->preco = $request->valor;
@@ -103,6 +106,8 @@ class LinhaController extends Controller
         $linha->tipoLinha = $request->linha;
 
         $linha->save();
+        app(\App\Http\Controllers\AgendaController::class)->update($request, $id);
+        return redirect()->route('site.adm.listarLinhas');
     }
 
     /**

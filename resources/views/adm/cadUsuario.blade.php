@@ -44,7 +44,7 @@
                 <select name="tipoUsuario" id="select-tipo-usuario">
                     <option value="0">Cliente</option>
                     <option value="1">Funcionario</option>
-                    <option value="2">Adminstrador</option>
+                    <option value="2">Administrador</option>
                 </select>
 
                 <div class="container-botao-cadastrar-usuario"> 
