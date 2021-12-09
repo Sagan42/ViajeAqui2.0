@@ -29,7 +29,7 @@ CREATE TABLE `acesso` (
   PRIMARY KEY (`id`),
   KEY `fk_acesso_id_cliente` (`id_cliente`),
   CONSTRAINT `fk_acesso_id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `acesso` (
 
 LOCK TABLES `acesso` WRITE;
 /*!40000 ALTER TABLE `acesso` DISABLE KEYS */;
-INSERT INTO `acesso` VALUES (1,1,'2021-10-15 13:50:00'),(2,2,'2021-10-15 14:50:00');
+INSERT INTO `acesso` VALUES (1,1,'2021-10-15 13:50:00'),(2,2,'2021-10-15 14:50:00'),(3,1,'2021-12-08 19:37:02');
 /*!40000 ALTER TABLE `acesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,8 +360,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< Updated upstream
--- Dump completed on 2021-12-08 16:39:20
-=======
--- Dump completed on 2021-12-08 16:36:20
->>>>>>> Stashed changes
+-- Dump completed on 2021-12-08 18:58:19

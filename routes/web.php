@@ -185,12 +185,11 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
     });
     Route::get('/editarLinha/{id}', [LinhaController::class, 'edit'])->name('site.adm.editarLinha');
     Route::post('/editarLinha/{id}', [LinhaController::class, 'update'])->name('site.adm.editarLinha');
-
-    Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens');
-
     Route::any('/gerenciarLinhas', [LinhaController::class, 'listarLinhaFuncionario'])->name('site.funcionario.gerenciarLinhas');
 
+    Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens');
     Route::post('/funcionario/pagamento', [FuncionarioController::class, 'pagamento'])->name('site.funcionario.pagamento');
+    Route::post('/funcionario/concluido', [FuncionarioController::class, 'confirmarPagamento'])->name('site.funcionario.confirmarPagamento');
 
 });
     

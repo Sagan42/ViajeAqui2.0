@@ -103,7 +103,7 @@ create table passagem (
     id_viajem int not null,
     key fk_passagem_id_viajem(id_viajem),
     constraint fk_passagem_id_viajem foreign key (id_viajem) references viajem (id),
-    id_cliente int not null,
+    id_cliente int,
     key fk_passagem_id_cliente(id_cliente),
     constraint fk_passagem_id_cliente foreign key (id_cliente) references cliente (id),
     origem varchar(30),

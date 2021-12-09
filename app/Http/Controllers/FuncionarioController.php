@@ -7,9 +7,15 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ClienteController;
 use App\Models\Funcionario;
 use App\Models\Linha;
+use App\Models\Adm;
 use App\Models\Agenda;
+use App\Models\Viajem;
+use App\Models\Passagem;
+use App\Models\Usuario;
+use App\Models\Cliente;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreUserRequest;
+use Session;
 
 class FuncionarioController extends Controller
 {
@@ -225,4 +231,89 @@ class FuncionarioController extends Controller
 
     }
     
+
+    public function confirmarPagamento(Request $request)
+    {
+        //$usuario = Session::get('usuario'); 
+        $usuario = Usuario::find(Session::get('usuario.id'));
+        $funcionario = Funcionario::Where('id_usuario', '=', $usuario->id)->first();
+
+        $passagens = Passagem::all();
+        $linha = Linha::all();
+        $viajens = Viajem::all();
+
+        $dataSaida = $request->dataViajem;
+        $horaSaida = $request->horaViajem;
+        $origemL = $request->origemL;
+        $destinoL = $request->destinoL;
+        $precoL = $request->precoL;
+        $tipoLinhaC = $request->tipoLinhaC;
+        $cpfCliente = $request->cpfCliente;
+
+        $origemL = Linha::where('origem','like', '%' . $origemL . '%')->first();
+        $origemL = $origemL->origem;
+        $destinoL = Linha::where('destino','like', '%' . $destinoL . '%')->first();
+        $destinoL = $destinoL->destino;        
+
+        $data = Carbon::createFromFormat('d/m/Y', $dataSaida)->format('Y-m-d');
+        $idLinha = $request->idLinhaComprada;
+
+        $linhaComprada = Linha::findOrFail($idLinha);
+        $viajemBuscada = Viajem::where([['id_linha', '=', $linhaComprada->id]])
+                                ->where([['dataViajem', '=', $data]])
+                                ->first();        
+        
+        if($viajemBuscada != null && $viajemBuscada->quantidadePassagem != 0){
+           $viajemBuscada->quantidadePassagem = ($viajemBuscada->quantidadePassagem - 1);
+           $viajemBuscada->save();
+        } else if ($viajemBuscada == null){
+            $viajem = new Viajem;
+            
+            $viajem->dataViajem = $data;
+            $viajem->horaViajem = $horaSaida;
+            $viajem->id_linha = $linhaComprada->id;
+            $viajem->quantidadePassagem = $linhaComprada->quantidadePassagem-1;
+            $viajem->save();
+            $viajemBuscada = $viajem;
+        }
+
+        $passagem = new Passagem;  
+        $passagem->id_funcionario = $funcionario->id;
+        $passagem->id_viajem = $viajemBuscada->id;
+        
+        $usuarioCliente = Usuario::Where('cpf', '=', $cpfCliente)->first();
+
+        if ($usuarioCliente != null) {
+            $cliente = Cliente::Where('id_usuario','=', $usuarioCliente->id)->first();
+            $passagem->id_cliente = $cliente->id;
+
+        } else {
+            $passagem->id_cliente = null;
+        }
+
+        $passagem->origem = $origemL;
+        $passagem->destino = $destinoL;
+        $passagem->preco = $precoL;
+        $passagem->tipoLinha = $tipoLinhaC;
+        
+        $passagem->diaVenda = Carbon::now()->format('Y-m-d');
+        
+        //dd($passagem);
+
+        $comprado = 0;
+        foreach ($passagens as $p) {
+            if($p->id_cliente == $usuario->id && $p->id_viajem == $passagem->id_viajem) {
+                $comprado++;
+            }
+        }
+        
+        if($comprado == 0){
+            $passagem->save();
+        }        
+        
+        $passagens = Passagem::all();
+        $viajens = Viajem::all();
+
+        return view('funcionario.home',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
+    }
 }

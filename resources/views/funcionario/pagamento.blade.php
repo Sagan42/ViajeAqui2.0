@@ -116,7 +116,7 @@
     </table> 
     
     <div class ="content-forma-pagamento">
-        <form id="ismForm" action="{{route('site.client.confirmarPagamento')}}" method="POST" style="display: flex">
+        <form id="ismForm" action="{{route('site.funcionario.confirmarPagamento')}}" method="POST" style="display: flex">
         @csrf
           
 
@@ -127,6 +127,7 @@
             <input type="hidden" name="destinoL" value={{$destinoLinha}}>
             <input type="hidden" name="precoL" value={{$precoLinha}}>
             <input type="hidden" name="tipoLinhaC" value={{$tipoLinha}}>
+            <input type="hidden" name="cpfCliente" value={{$cpf}}>
             
             <a href="#" id="cartao" onclick= "modalPagamento(id)" style="margin-right: 10px">
                 <div class = "retangulo-pagamento">
