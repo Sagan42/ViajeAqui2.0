@@ -48,7 +48,7 @@
                         <td>{{ $linha->origem }}</td>
                         <td> {{ $linha->destino }}</td>
                         <td>{{ $linha->tipoLinha }}</td>
-                        <td><a href=""><i class="far fa-eye"></i></a></td>
+                        <td><a href="/funcionario/editarLinha/{{$linha->id}}"><i class="far fa-eye"></i></a></td>
                     </tr>
                     @endforeach
                 @endif
