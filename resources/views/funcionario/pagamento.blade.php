@@ -83,43 +83,32 @@
                 <th>Saida</th>
                 <th>Origem/Destino</th>
                 <th>Tipo de Linha</th>
-                <th>Vagas</th>
-                <th>Preço</th>
-                <th class="th-last">Ação</th>
+                <th class="th-last">Preço</th>
+                
             </tr>
         </thead>
         <tbody>
+           
             <tr class="neutro"><td class="td-border_none"></td></tr>
-            @if(isset($linha))
-            @foreach($linha as $l)
-                @foreach($agenda as $a)
-                    @if($a->id_linha == $l->id && $dia == $a->dia_semana)
+           
                     
-                        @csrf    
+                        
                             <tr>
-                                <input type="hidden" name="num_linha" value={{$l->num_linha}}>
-                                <input type="hidden" name="origemLinha" value={{$l->origem}}>
-                                <input type="hidden" name="destinoLinha" value={{$l->destino}}>
-                                <input type="hidden" name="tipoL" value={{$l->tipoLinha}}>
-                                <input type="hidden" name="precoLinha" value={{$l->preco}}>
-                                <input type="hidden" name="selecionado" value={{$l->id}}>
+                                
                                 <td class=" td-first"><p>{{$dataSaida}}</p><input type="hidden" name="dataPesq" value={{$dataSaida}}></td>
-                                <td class="border"><p>{{$a->hora}}</p><input type="hidden" name="horaPesq" value={{$a->hora}}></td>
+                                <td class="border"><p>{{$horaSaida}}</p></td>
                                 <td class="td-rota border">
-                                    {{$l->origem}} <span>/</span>
+                                    {{$origemLinha}} 
                                     <br>
-                                    {{$l->destino}}
+                                    {{$destinoLinha}}
                                 </td>
-                                <td  class="border"><p>{{$l->tipoLinha}}</p></td>
-                                <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
-                                <td  ><p>R${{$l->preco}},00</p></td>
-                                <td  class="border td-last"><button name="selecionado" value="{{$l->id}}" id="btnSelecionar" class="btn blue-three color-white" onclick="mostrarVender()">Selecionar</button></td>
+                                <td  class="border"><p>{{$tipoLinha}}</p></td>
+                                
+                                <td ><p>R${{$precoLinha}},00</p></td>
+                                
                             </tr>
                         
-                    @endif
-                @endforeach
-            @endforeach
-            @endif
+              
         </tbody>
 
 
@@ -129,7 +118,8 @@
     <div class ="content-forma-pagamento">
         <form id="ismForm" action="{{route('site.client.confirmarPagamento')}}" method="POST" style="display: flex">
         @csrf
-            @if(isset($dataSaida))
+          
+
             <input type="hidden" name="dataViajem" value={{$dataSaida}}>
             <input type="hidden" name="horaViajem" value={{$horaSaida}}>
             <input type="hidden" name="idLinhaComprada" value={{$linhaID}}>
@@ -137,7 +127,7 @@
             <input type="hidden" name="destinoL" value={{$destinoLinha}}>
             <input type="hidden" name="precoL" value={{$precoLinha}}>
             <input type="hidden" name="tipoLinhaC" value={{$tipoLinha}}>
-            @else
+            
             <a href="#" id="cartao" onclick= "modalPagamento(id)" style="margin-right: 10px">
                 <div class = "retangulo-pagamento">
                     <div class ="retangulo-pagamento-interno">
@@ -178,7 +168,7 @@
        
     </div>
 
-    @endif
+   
 
 </div>
 

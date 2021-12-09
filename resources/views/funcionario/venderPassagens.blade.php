@@ -40,7 +40,13 @@
             </div>
             <div>
                 <label for="" class="color-blue-three">Data de Saida</label>
-                <input type="date"  name="dataSaida" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                <input type="date"  name="dataSaida" class="form-control" 
+                @if (isset($linhaPesquisada))
+                value="{{$linhaPesquisada->dataSaida}}"
+                @else
+                value="<?php echo date('Y-m-d'); ?>"
+                @endif
+                >
             </div>
             <div>
                 <br>
@@ -67,7 +73,7 @@
                 @foreach($linha as $l)
                     @foreach($agenda as $a)
                         @if($a->id_linha == $l->id && $dia == $a->dia_semana)
-                        
+                            <form action="{{route('site.funcionario.pagamento')}}" method="POST">
                             @csrf    
                                 <tr>
                                     <input type="hidden" name="num_linha" value={{$l->num_linha}}>
@@ -86,9 +92,9 @@
                                     <td  class="border"><p>{{$l->tipoLinha}}</p></td>
                                     <td  class="border"><p>{{$l->quantidadePassagem}}</p></td>
                                     <td  ><p>R${{$l->preco}},00</p></td>
-                                    <td  class="border td-last"><button name="selecionado" value="{{$l->id}}" id="btnSelecionar" class="btn blue-three color-white" onclick="mostrarVender()">Selecionar</button></td>
+                                    <td  class="border td-last"><button type="button" name="selecionado" value="{{$l->id}}" id="btnSelecionar" class="btn blue-three color-white" onclick="mostrarVender()">Selecionar</button></td>
                                 </tr>
-                            
+                                
                         @endif
                     @endforeach
                 @endforeach
@@ -97,7 +103,7 @@
 
 
         </table>
-        <form action="{{route('site.funcionario.pagamento')}}">
+        
         <div class="venderPassagemParaCPF" id="divVender" >
             
                 <div>

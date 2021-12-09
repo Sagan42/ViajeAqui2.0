@@ -187,5 +187,42 @@ class FuncionarioController extends Controller
         return view('funcionario.venderPassagens', ['linha' => $linhas, 'agenda' => $agenda, 'linhaPesquisada'=> $linhaPesq, 'dia' => $diaSemanaPesquisado, 'dataSaida' => $dataPesquisado]);
 
     }
+
+
+    public function pagamento(Request $request){
+        
+        $id = $request->selecionado;
+        $id_comum = $request->num_linha;
+        $origemDaLinha = $request->origemLinha;
+        $destinoDaLinha = $request->destinoLinha;
+        $dataSaida = $request->dataPesq;
+        $horaSaida = $request->horaPesq;
+        $tipoL = $request->tipoL;
+        $precoLinha = $request->precoLinha;
+        $cpf = $request->cpf;
+        
+        $linha = Linha::where('origem','like', '%' . $origemDaLinha . '%')->first();
+        $origemDaLinha = $linha->origem;
+
+        $linha = Linha::where('destino','like', '%' . $destinoDaLinha . '%')->first();
+        $destinoDaLinha = $linha->destino;
+        
+        if ($id_comum == null){
+            $linhaComprada = Linha::findOrFail($id);
+        } else {
+            $linhaComprada = Linha::where('num_linha', $id_comum)->first();
+        }
+
+        return view('funcionario.pagamento',['linhaID' => $id, 
+                                            'linhaComprada'=>$linhaComprada, 
+                                            'dataSaida' => $dataSaida, 
+                                            'horaSaida' => $horaSaida,
+                                            'origemLinha' => $origemDaLinha,
+                                            'destinoLinha' => $destinoDaLinha,
+                                            'tipoLinha' => $tipoL,
+                                            'precoLinha' => $precoLinha,
+                                            'cpf' => $cpf]);
+
+    }
     
 }
