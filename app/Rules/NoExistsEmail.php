@@ -24,6 +24,7 @@ class NoExistsEmail implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se o email está cadastrado
     public function passes($attribute, $value)
     {
         return Usuario::where('email', $value)->exists();

@@ -24,6 +24,8 @@ class LoginUserRequest extends FormRequest
      *
      * @return array
      */
+
+     //validações de Login
     public function rules()
     {
         return [

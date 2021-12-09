@@ -23,6 +23,7 @@ class FullName implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se escreveu o nome correto
     public function passes($attribute, $value)
     {
         //

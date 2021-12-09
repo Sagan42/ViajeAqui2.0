@@ -22,6 +22,7 @@ class RecuperarUserRequest extends FormRequest
      *
      * @return array
      */
+    //validações de recuperar senha
     public function rules()
     {
         return [
@@ -30,6 +31,7 @@ class RecuperarUserRequest extends FormRequest
         ];
     }
 
+    //mensagens de validação 
     public function messages () 
     {
 

@@ -23,6 +23,8 @@ class CampoObri implements Rule
      * @param  mixed  $value
      * @return bool
      */
+
+     // verifica se o campo está null
     public function passes($attribute, $value)
     {
         if($value != null){

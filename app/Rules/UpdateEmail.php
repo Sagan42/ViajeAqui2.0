@@ -23,6 +23,7 @@ class UpdateEmail implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // envia a mensagem que os email não correspondem
     public function passes($attribute, $value)
     {
         return false;

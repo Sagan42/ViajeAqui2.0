@@ -23,6 +23,7 @@ class validateName implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se o nome tem caracters inválidos
     public function passes($attribute, $value)
     {
         //

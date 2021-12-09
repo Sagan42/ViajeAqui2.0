@@ -23,6 +23,7 @@ class FullPassword implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se a senha tem no minímo 8 digítos
     public function passes($attribute, $value)
     {
         //

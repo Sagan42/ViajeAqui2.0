@@ -23,6 +23,7 @@ class ValidateCPF implements Rule
      * @param  mixed  $cpf
      * @return bool
      */
+    // verifica se o CPF é válido 
     public function passes($attribute,$cpf)
     {
         

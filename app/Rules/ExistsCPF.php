@@ -25,6 +25,7 @@ class ExistsCPF implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se o CPF já está cadastrado
     public function passes($attribute, $value)
     {
       

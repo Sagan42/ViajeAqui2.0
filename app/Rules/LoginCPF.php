@@ -24,6 +24,7 @@ class LoginCPF implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se o CPF está cadastrado
     public function passes($attribute, $value)
     {
         return Usuario::where('cpf', $value)->exists();

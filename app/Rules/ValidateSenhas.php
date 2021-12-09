@@ -23,6 +23,7 @@ class ValidateSenhas implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // envia a mensagem as senhas não batem
     public function passes($attribute, $value)
     {
         return false;

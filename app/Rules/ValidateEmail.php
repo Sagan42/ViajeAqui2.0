@@ -23,6 +23,7 @@ class ValidateEmail implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // verifica se o email é valido 
     public function passes($attribute, $value)
     {
         //

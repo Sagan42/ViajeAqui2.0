@@ -23,6 +23,7 @@ class validateCelular implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    // envia a mensagem número de celular inválido
     public function passes($attribute, $value)
     {
         return false;

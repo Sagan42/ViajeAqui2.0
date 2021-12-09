@@ -24,6 +24,7 @@ class ExistsPassword implements Rule
      * @param  mixed  $value
      * @return bool
      */
+    //envia a mensagem Senha incorreta 
     public function passes($attribute, $value)
     {
         return false;

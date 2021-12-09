@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
      *
      * @return array
      */
+    // validações do cadastro do usuário
     public function rules()
     {
         return [
@@ -43,6 +44,7 @@ class StoreUserRequest extends FormRequest
             
         ];
     }
+    //mensagens de validações
     public function messages () 
     {
         return [
