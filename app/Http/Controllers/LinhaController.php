@@ -84,7 +84,12 @@ class LinhaController extends Controller
         $linha = Linha::find($id);
         $agenda = Agenda::where('id_linha', '=', $linha->id)->get();
         //dd($agenda);
-        return view('adm.editLinha' ,['id'=> $id], compact('linha', 'agenda'));
+        if(Session::get('usuario.tipoUsuario')==2){
+           return view('adm.editLinha' ,['id'=> $id], compact('linha', 'agenda')); 
+        }else{
+            return view('funcionario.editarLinha' ,['id'=> $id], compact('linha', 'agenda')); 
+        }
+        
     }
 
     /**

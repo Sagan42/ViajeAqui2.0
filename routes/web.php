@@ -183,6 +183,8 @@ Route::prefix('/funcionario')->middleware('checkFuncionario')->group(function(){
             return view('funcionario.venderPassagens');
         })->name('site.funcionario.venderpassagens');
     });
+    Route::get('/editarLinha/{id}', [LinhaController::class, 'edit'])->name('site.adm.editarLinha');
+    Route::post('/editarLinha/{id}', [LinhaController::class, 'update'])->name('site.adm.editarLinha');
 
     Route::get('/funcionario/venderPassagens/', [FuncionarioController::class, 'selecionarPassagens'])->name('site.funcionario.selecionarPassagens');
 
