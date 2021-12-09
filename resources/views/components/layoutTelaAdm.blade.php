@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/adm/editarUsuario.css')}}">
     <link rel="stylesheet" href="{{asset('css/adm/cadUsuario.css')}}">
 
-
+    <link rel="icon" type="imagem/png" href="{{asset('img/bus.png')}}" />
 
 </head>
 <body id="body">

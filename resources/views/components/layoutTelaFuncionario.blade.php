@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="{{asset('css/funcionario/gerenciarLinhas.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/pagamento.css')}}">
         <link rel="stylesheet" href="{{asset('css/funcionario/cadLinha.css')}}">
+
+        <link rel="icon" type="imagem/png" href="{{asset('img/bus.png')}}" />
     </head>
 
     <body id="body">

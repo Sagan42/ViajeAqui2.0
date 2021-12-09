@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/home/home.css')}}">
     <link rel="stylesheet" href="{{asset('css/clients/style.css')}}">
 
+    <link rel="icon" type="imagem/png" href="{{asset('img/bus.png')}}" />
 
     <title>Viaje Aqui</title>
 
