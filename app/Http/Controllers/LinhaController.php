@@ -9,6 +9,7 @@ use App\Models\Agenda;
 use App\Models\Viajem;
 use App\Models\Passagem;
 use App\Models\Usuario;
+use App\Models\Log;
 use Illuminate\Support\Carbon;
 
 use Session;
@@ -44,6 +45,7 @@ class LinhaController extends Controller
      */
     public function store(Request $request)
     {
+        $r = $request;
 
         $linha = new Linha;
         $linha->origem = $request->origem;
@@ -56,6 +58,18 @@ class LinhaController extends Controller
         
         $linha->id_adm = $adm->id;
         $linha->save();
+
+
+        //$admCadastrar = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
+        
+        $logEditar = new Log;
+        $logEditar->id_adm = $adm->id;
+
+        if($r->destino != null && $r->origem != null){
+            $logEditar->descricao = "Cadastro de linha com origem = " . $r->origem . " e destino = " . $r->destino;
+        }
+
+        $logEditar->save();
 
         app(\App\Http\Controllers\AgendaController::class)->store($request, $linha->id);
 
@@ -83,7 +97,20 @@ class LinhaController extends Controller
     {
         $linha = Linha::find($id);
         $agenda = Agenda::where('id_linha', '=', $linha->id)->get();
-        //dd($agenda);
+        $adm = Adm::where('id_usuario', '=', Session::get('usuario.id'))->first();
+
+
+        $logEditar = new Log;
+        $logEditar->id_adm = $adm->id;
+
+
+        if($linha->destino != null && $linha->origem != null){
+            $logEditar->descricao = "Edição de linha com origem = " . $linha->origem . " e destino = " . $linha->destino;
+
+            $logEditar->save();
+        }
+        
+
         if(Session::get('usuario.tipoUsuario')==2){
            return view('adm.editLinha' ,['id'=> $id], compact('linha', 'agenda')); 
         }else{

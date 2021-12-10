@@ -2,7 +2,7 @@
 
 @section('contentTelaAdm')
 <h2 class = "tituloPagina">Editar de Linhas</h2>
-    <form action="" method="post" class="container-cadastro-linhas" onchange = "minhaFuncao()">
+    <form action="" method="post" class="container-cadastro-linhas" onchange = "">
         @csrf
         <div class="input-cidade-origem-destino">
 
@@ -17,12 +17,12 @@
         <div class="input-radio-linhas">
             <div>
                 <label for="radioDireta">Linha Direta &nbsp &nbsp</label>
-                <input type="radio" value="Direta" name="linha" id="radioDireta" placeholder="Origem">
+                <input type="radio" value="{{$linha->tipoLinha}}" name="linhaDireta" id="radioDireta" placeholder="Origem">
             </div>
 
             <div>
                 <label for="radioComum">Linha Comum&nbsp</label>
-                <input type="radio" value="Comum" name="linha" id="radioComum"  placeholder="Destino">
+                <input type="radio" value="{{$linha->tipoLinha}}" name="linhaComum" id="radioComum"  placeholder="Destino">
             </div>
         </div>
 
@@ -200,28 +200,31 @@
 
     <script>
 
-    function minhaFuncao(){
-
         var $radioDireta = document.getElementById('radioDireta')
         var $radioComum = document.getElementById('radioComum')
+        var $valorDireta = document.getElementById('radioDireta').value
+        var $valorComum = document.getElementById('radioComum').value
         var numeroLinha = document.getElementById('numeroLinha')
+    
 
-        if($radioDireta.checked){
-           numeroLinha.disabled = 'true'
-           numeroLinha.value = ''
-       
+        if($valorDireta === "Direta" && $valorComum === "Direta"){
+            //$radioDireta.checked = false
+            $radioDireta.click()
+            $radioComum.disabled = true
+            numeroLinha.disabled = 'true'
+            numeroLinha.value = ''
+           
         }
 
-        if($radioComum.checked){
+        if($valorComum === "Comum" && $valorComum === "Comum"){
+            //$radioDireta.checked = false
+            $radioComum.click()
+            $radioDireta.disabled = true
+            //$radioComum.checked = true
+
             numeroLinha.removeAttribute('disabled');
-            
         }
-
-      
-        
-       
-
-    }
+    
 
     //Parte Modal
 
@@ -271,12 +274,7 @@
          }else if(!dia.checked){
             horarioDia.setAttribute('disabled','disabled')
          }
-
-
-
      }
-
-
     </script>
 
 @endsection

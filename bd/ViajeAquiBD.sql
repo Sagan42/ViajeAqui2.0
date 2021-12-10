@@ -59,6 +59,15 @@ create table acesso (
 	dataAcesso datetime default current_timestamp
 );
 
+create table log (
+	id int not null auto_increment,
+    primary key (id),
+    descricao varchar(50),
+    id_adm int not null,
+    key fk_log_id_adm(id_adm),
+    constraint fk_log_id_adm foreign key (id_adm) references adm (id)
+);
+
 create table linha (
 	id int not null auto_increment,
     primary key (id),

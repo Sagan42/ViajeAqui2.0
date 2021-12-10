@@ -118,7 +118,7 @@ class UsuarioController extends Controller
         //pegar dados do user
 
         $usuario = Usuario::find(Session::get('usuario.id'));
-        //echo $usuario;
+        
         $pEmail = (\App\Http\Controllers\UsuarioController::padraoEmail($usuario->email));
         $usuario->email = $pEmail;
         return view('clients.minhaConta', ['usuario' => $usuario]);

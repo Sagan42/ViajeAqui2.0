@@ -12,6 +12,7 @@ use App\Models\Cliente;
 use App\Models\Passagem;
 use App\Models\Viajem;
 use App\Models\Agenda;
+use App\Models\Log;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
@@ -47,6 +48,11 @@ class AdmController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        $admCadastrar = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
+        
+        $logEditar = new Log;
+        $logEditar->id_adm = $admCadastrar->id;
+        $r = $request;
 
         if($request->tipoUsuario==2){
             $usuario = app(\App\Http\Controllers\ClienteController::class)->store($request);
@@ -59,6 +65,14 @@ class AdmController extends Controller
         }else{
             app(\App\Http\Controllers\ClienteController::class)->store($request);
         }
+        
+        
+        if($r->cadNome != null){
+            $logEditar->descricao = "Cadastro do usuário com nome = " . $r->cadNome;
+        }
+    
+        $logEditar->save();
+
         return redirect()->route('site.adm.cadUsuario');
     }
 
@@ -94,6 +108,9 @@ class AdmController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
+        $adm = Adm::where('id_usuario','=',$usuario->id)->first();
+        $logEditar = new Log;
+        $logEditar->id_adm = $adm->id;
 
         if($request->tipoUsuario == $usuario->tipoUsuario){
             $usuario->nome = $request->editNome;
@@ -121,6 +138,15 @@ class AdmController extends Controller
             $adm->save();
         }
 
+        
+        if($usuario->nome != null){
+            $logEditar->descricao = "Edição de dados do usuário com nome = " . $usuario->nome;
+        } else {
+            $logEditar->descricao = "Edição de dados do usuário com id = " . $usuario->id;
+        }        
+        
+        $logEditar->save();
+
         return redirect()->route('site.adm.funcionarios');
     }
 
@@ -128,6 +154,10 @@ class AdmController extends Controller
 
         $clientes = Cliente::find($id);
         $usuario = Usuario::find($clientes->id_usuario);
+        $adm = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
+        
+        $logEditar = new Log;
+        $logEditar->id_adm = $adm->id;
 
         $usuario->nome = $request->editNome;
         $usuario->senha = Hash::make($request->editSenha);
@@ -135,6 +165,14 @@ class AdmController extends Controller
         $usuario->celular = $request->editCelular;
         $usuario->email = $request->editEmail;
         $usuario->save();
+
+        if($usuario->nome != null){
+            $logEditar->descricao = "Edição de dados do usuário com nome = " . $usuario->nome;
+        } else {
+            $logEditar->descricao = "Edição de dados do usuário com id = " . $usuario->id;
+        } 
+        
+        $logEditar->save();
 
         return redirect()->route('site.adm.listaClientes');
     }
@@ -439,6 +477,17 @@ class AdmController extends Controller
         
         $passagens = Passagem::all();
         $viajens = Viajem::all();
+
+        $adm = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
+        
+        $logEditar = new Log;
+        $logEditar->id_adm = $adm->id;
+        
+        if($cpfCliente != null){
+            $logEditar->descricao = "Venda de Passagem para o cliente de cpf = " . $cpfCliente;
+        }
+
+        $logEditar->save();
 
         return view('adm.home',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
     }
