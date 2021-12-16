@@ -50,8 +50,6 @@ class AdmController extends Controller
     {
         $admCadastrar = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
         
-        $logEditar = new Log;
-        $logEditar->id_adm = $admCadastrar->id;
         $r = $request;
 
         if($request->tipoUsuario==2){
@@ -66,12 +64,6 @@ class AdmController extends Controller
             app(\App\Http\Controllers\ClienteController::class)->store($request);
         }
         
-        
-        if($r->cadNome != null){
-            $logEditar->descricao = "Cadastro do usuário com nome = " . $r->cadNome;
-        }
-    
-        $logEditar->save();
 
         return redirect()->route('site.adm.cadUsuario');
     }
@@ -110,8 +102,7 @@ class AdmController extends Controller
         $usuario = Usuario::find($id);
         $adm = Adm::where('id_usuario','=',$usuario->id)->first();
         $logEditar = new Log;
-        $logEditar->id_adm = $adm->id;
-
+        
         if($request->tipoUsuario == $usuario->tipoUsuario){
             $usuario->nome = $request->editNome;
             $usuario->senha = Hash::make($request->editSenha);
@@ -138,14 +129,9 @@ class AdmController extends Controller
             $adm->save();
         }
 
+            
         
-        if($usuario->nome != null){
-            $logEditar->descricao = "Edição de dados do usuário com nome = " . $usuario->nome;
-        } else {
-            $logEditar->descricao = "Edição de dados do usuário com id = " . $usuario->id;
-        }        
-        
-        $logEditar->save();
+        //$logEditar->save();
 
         return redirect()->route('site.adm.funcionarios');
     }
@@ -157,7 +143,7 @@ class AdmController extends Controller
         $adm = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
         
         $logEditar = new Log;
-        $logEditar->id_adm = $adm->id;
+        //$logEditar->id_adm = $adm->id;
 
         $usuario->nome = $request->editNome;
         $usuario->senha = Hash::make($request->editSenha);
@@ -165,14 +151,8 @@ class AdmController extends Controller
         $usuario->celular = $request->editCelular;
         $usuario->email = $request->editEmail;
         $usuario->save();
-
-        if($usuario->nome != null){
-            $logEditar->descricao = "Edição de dados do usuário com nome = " . $usuario->nome;
-        } else {
-            $logEditar->descricao = "Edição de dados do usuário com id = " . $usuario->id;
-        } 
         
-        $logEditar->save();
+        //$logEditar->save();
 
         return redirect()->route('site.adm.listaClientes');
     }
@@ -477,17 +457,6 @@ class AdmController extends Controller
         
         $passagens = Passagem::all();
         $viajens = Viajem::all();
-
-        $adm = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
-        
-        $logEditar = new Log;
-        $logEditar->id_adm = $adm->id;
-        
-        if($cpfCliente != null){
-            $logEditar->descricao = "Venda de Passagem para o cliente de cpf = " . $cpfCliente;
-        }
-
-        $logEditar->save();
 
         return view('adm.home',['linhaComprada'=>$linhaComprada, 'dataSaida' => $dataSaida, 'horaSaida' => $horaSaida, 'passagens' => $passagens, 'linha' => $linha, 'usuario' => $usuario, 'viajens' => $viajens, 'comprado' => $comprado]);
     }

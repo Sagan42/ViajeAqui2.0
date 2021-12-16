@@ -63,13 +63,7 @@ class LinhaController extends Controller
         //$admCadastrar = Adm::where('id_usuario','=',Session::get('usuario.id'))->first();
         
         $logEditar = new Log;
-        $logEditar->id_adm = $adm->id;
 
-        if($r->destino != null && $r->origem != null){
-            $logEditar->descricao = "Cadastro de linha com origem = " . $r->origem . " e destino = " . $r->destino;
-        }
-
-        $logEditar->save();
 
         app(\App\Http\Controllers\AgendaController::class)->store($request, $linha->id);
 
@@ -101,14 +95,8 @@ class LinhaController extends Controller
 
 
         $logEditar = new Log;
-        $logEditar->id_adm = $adm->id;
 
 
-        if($linha->destino != null && $linha->origem != null){
-            $logEditar->descricao = "Edição de linha com origem = " . $linha->origem . " e destino = " . $linha->destino;
-
-            $logEditar->save();
-        }
         
 
         if(Session::get('usuario.tipoUsuario')==2){
